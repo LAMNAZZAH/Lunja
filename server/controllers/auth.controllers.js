@@ -1,5 +1,6 @@
-const userModel = require('../models/login');
+const accountModel = require('../models/account'); 
 
-exports.signUpController = (req, res, next) => {
-    res.send('it finally worked')
+
+const createSignUpController = (pool) => {
+    const { createAccount } = accountModel(pool)
 }
