@@ -1,13 +1,13 @@
-const router = require('express').Router();
+const express = require('express')
 
 const authControllers = require('../controllers/auth.controllers'); 
 
 const authRouter = (pool) => {
   const router = express.Router(); 
 
-  const {} = authControllers(pool)
+  //const { signUpController } = authControllers(pool)
 
-  router.post('/login', loginController)
+  router.get('/signup', authControllers.signUpController)
 
   return router
 }
