@@ -1,0 +1,349 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model answer {
+  answer_id   Int      @default(autoincrement())
+  title       String?  @db.VarChar(45)
+  image_url   String?  @db.LongText
+  is_correct  Int?     @db.TinyInt
+  question_id Int
+  question    question @relation(fields: [question_id], references: [question_id], onDelete: Cascade, map: "question_card_id")
+
+  @@id([answer_id, question_id])
+  @@index([question_id], map: "question_card_id_idx")
+}
+
+model asset {
+  asset_id                 Int             @default(autoincrement())
+  name                     String          @db.VarChar(45)
+  privacy                  String          @db.VarChar(45)
+  created_at               DateTime?       @default(now()) @db.Timestamp(0)
+  subject_id               Int?
+  University_university_id Int?
+  user_id                  Int
+  class_id                 Int?
+  university               university?     @relation(fields: [University_university_id], references: [university_id], onUpdate: SetNull, map: "fk_asset_University1")
+  theclass                 theclass?       @relation(fields: [class_id], references: [class_id], onUpdate: SetNull, map: "fk_asset_Class1")
+  subject                  subject?        @relation(fields: [subject_id], references: [subject_id], onUpdate: SetNull, map: "fk_asset_Subject1")
+  user                     user            @relation(fields: [user_id], references: [user_id], onDelete: Cascade, map: "fk_asset_uset1")
+  asset_has_tag            asset_has_tag[]
+  assetcomment             assetcomment[]
+  document                 document[]
+  quizz                    quizz[]
+
+  @@id([asset_id, user_id])
+  @@index([class_id], map: "fk_Asset_Class1_idx")
+  @@index([subject_id], map: "fk_Asset_Subject1_idx")
+  @@index([University_university_id], map: "fk_Asset_University1_idx")
+  @@index([user_id], map: "user_id_idx")
+}
+
+model asset_has_tag {
+  asset_has_tag_id Int   @default(autoincrement())
+  asset_id         Int
+  tag_id           Int
+  asset            asset @relation(fields: [asset_id], references: [asset_id], onDelete: Cascade, map: "fk_Tag_has_Asset_Asset1")
+  tag              tag   @relation(fields: [tag_id], references: [tag_id], onDelete: Cascade, map: "fk_Tag_has_Asset_Tag1")
+
+  @@id([asset_has_tag_id, asset_id, tag_id])
+  @@index([asset_id], map: "fk_Tag_has_Asset_Asset1_idx")
+  @@index([tag_id], map: "fk_Tag_has_Asset_Tag1_idx")
+}
+
+model assetcomment {
+  assetcomment_id Int       @default(autoincrement())
+  created_date    DateTime? @default(now()) @db.Timestamp(0)
+  comment         String    @db.VarChar(200)
+  asset_id        Int
+  user_id         Int
+  asset           asset     @relation(fields: [asset_id], references: [asset_id], onDelete: Cascade, map: "fk_comment_Asset1")
+  user            user      @relation(fields: [user_id], references: [user_id], onDelete: Cascade, map: "fk_comment_User1")
+
+  @@id([assetcomment_id, asset_id, user_id])
+  @@index([asset_id], map: "fk_comment_Asset1_idx")
+  @@index([user_id], map: "fk_comment_User1_idx")
+}
+
+model document {
+  document_id Int    @id @default(autoincrement())
+  name        String @db.VarChar(45)
+  asset_id    Int?
+  url         String @db.LongText
+  asset       asset? @relation(fields: [asset_id], references: [asset_id], onDelete: Cascade, map: "fk_document_asset1")
+
+  @@index([asset_id], map: "asset_id_idx")
+}
+
+model interest {
+  interest_id       Int                 @id @default(autoincrement())
+  name              String              @db.VarChar(45)
+  user_has_interest user_has_interest[]
+}
+
+model location {
+  location_id Int          @id @default(autoincrement())
+  country     String       @default("morocco") @db.VarChar(45)
+  region      String       @db.VarChar(45)
+  city        String       @db.VarChar(45)
+  university  university[]
+}
+
+model post {
+  post_id         Int               @id @default(autoincrement())
+  image_url       String?           @db.LongText
+  content         String            @db.VarChar(200)
+  created_date    String?           @db.VarChar(45)
+  by_teacher      Int?              @db.TinyInt
+  user_id         Int
+  class_id        Int?
+  theclass        theclass?         @relation(fields: [class_id], references: [class_id], onDelete: Cascade, map: "fk_post_class1")
+  user            user              @relation(fields: [user_id], references: [user_id], onDelete: Cascade, map: "fk_post_user1")
+  post_has_tag    post_has_tag[]
+  postcomment     postcomment[]
+  report          report[]
+  user_liked_post user_liked_post[]
+
+  @@index([class_id], map: "fk_post_class1_idx")
+  @@index([user_id], map: "user_id_idx")
+}
+
+model post_has_tag {
+  post_has_tag_id Int  @default(autoincrement())
+  post_id         Int
+  tag_id          Int
+  post            post @relation(fields: [post_id], references: [post_id], onDelete: Cascade, map: "fk_Tag_has_Post_Post1")
+  tag             tag  @relation(fields: [tag_id], references: [tag_id], onDelete: Cascade, map: "fk_Tag_has_Post_Tag1")
+
+  @@id([post_has_tag_id, post_id, tag_id])
+  @@index([post_id], map: "fk_Tag_has_Post_Post1_idx")
+  @@index([tag_id], map: "fk_Tag_has_Post_Tag1_idx")
+}
+
+model postcomment {
+  postcomment_id Int       @default(autoincrement())
+  created_at     DateTime? @default(now()) @db.Timestamp(0)
+  comment        String    @db.VarChar(200)
+  post_id        Int
+  user_id        Int
+  post           post      @relation(fields: [post_id], references: [post_id], onDelete: Cascade, map: "fk_postcomment_Post1")
+  user           user      @relation(fields: [user_id], references: [user_id], onDelete: Cascade, map: "fk_postcomment_user1")
+
+  @@id([postcomment_id, post_id, user_id])
+  @@index([post_id], map: "fk_postcomment_Post1_idx")
+  @@index([user_id], map: "fk_postcomment_user1_idx")
+}
+
+model question {
+  question_id Int      @default(autoincrement())
+  title       String   @db.VarChar(45)
+  image_url   String?  @db.LongText
+  quizz_id    Int
+  quizz       quizz    @relation(fields: [quizz_id], references: [quizz_id], onDelete: Cascade, map: "quizz_id")
+  answer      answer[]
+
+  @@id([question_id, quizz_id])
+  @@index([quizz_id], map: "quizz_id_idx")
+}
+
+model quizz {
+  quizz_id Int        @default(autoincrement())
+  name     String     @db.VarChar(45)
+  asset_id Int
+  asset    asset      @relation(fields: [asset_id], references: [asset_id], onDelete: Cascade, map: "asset_id")
+  question question[]
+
+  @@id([quizz_id, asset_id])
+  @@index([asset_id], map: "asset_id_idx")
+}
+
+model report {
+  report_id  Int       @default(autoincrement())
+  comment    String?   @db.VarChar(200)
+  type       String    @db.VarChar(45)
+  post_id    Int
+  user_id    Int
+  created_at DateTime? @default(now()) @db.Timestamp(0)
+  post       post      @relation(fields: [post_id], references: [post_id], onDelete: Cascade, map: "fk_Report_Post1")
+  user       user      @relation(fields: [user_id], references: [user_id], onDelete: Cascade, map: "fk_report_user1")
+
+  @@id([report_id, post_id, user_id])
+  @@index([post_id], map: "fk_Report_Post1_idx")
+  @@index([user_id], map: "fk_report_user1_idx")
+}
+
+model speciality {
+  speciality_id         Int                     @id @default(autoincrement())
+  name                  String                  @db.VarChar(45)
+  brief                 String?                 @db.VarChar(200)
+  about                 String?                 @db.VarChar(400)
+  speciality_subject    speciality_subject[]
+  university_speciality university_speciality[]
+  university_user       university_user[]
+}
+
+model speciality_subject {
+  speciality_subject_id Int        @default(autoincrement())
+  speciality_id         Int
+  subject_id            Int
+  speciality            speciality @relation(fields: [speciality_id], references: [speciality_id], onDelete: Cascade, map: "fk_speciality_has_Subject_speciality1")
+  subject               subject    @relation(fields: [subject_id], references: [subject_id], onDelete: Cascade, map: "fk_speciality_has_Subject_Subject1")
+
+  @@id([speciality_subject_id, speciality_id, subject_id])
+  @@index([subject_id], map: "fk_speciality_has_Subject_Subject1_idx")
+  @@index([speciality_id], map: "fk_speciality_has_Subject_speciality1_idx")
+}
+
+model subject {
+  subject_id         Int                  @id @default(autoincrement())
+  name               String               @db.VarChar(45)
+  brief              String?              @db.VarChar(200)
+  about              String?              @db.VarChar(1000)
+  asset              asset[]
+  speciality_subject speciality_subject[]
+}
+
+model tag {
+  tag_id        Int             @id @default(autoincrement())
+  name          String          @unique(map: "name_UNIQUE") @db.VarChar(45)
+  asset_has_tag asset_has_tag[]
+  post_has_tag  post_has_tag[]
+}
+
+model theclass {
+  class_id      Int          @default(autoincrement())
+  name          String       @db.VarChar(45)
+  status        String       @db.VarChar(45)
+  created_date  DateTime?    @default(now()) @db.Timestamp(0)
+  deleted_date  DateTime?    @default(now()) @db.Timestamp(0)
+  university_id Int?
+  admin_id      Int
+  user          user         @relation(fields: [admin_id], references: [user_id], onDelete: Cascade, map: "fk_Class_User1")
+  university    university?  @relation(fields: [university_id], references: [university_id], onUpdate: SetNull, map: "fk_Class_University1")
+  asset         asset[]
+  post          post[]
+  user_class    user_class[]
+
+  @@id([class_id, admin_id])
+  @@index([university_id], map: "fk_Class_University1_idx")
+  @@index([admin_id], map: "fk_Class_User1_idx")
+}
+
+model university {
+  university_id         Int                     @id @default(autoincrement())
+  name                  String?                 @db.VarChar(100)
+  description           String?                 @db.VarChar(2000)
+  location_id           Int?
+  location              location?               @relation(fields: [location_id], references: [location_id], onUpdate: SetNull, map: "fk_university_location1")
+  asset                 asset[]
+  theclass              theclass[]
+  university_speciality university_speciality[]
+  university_user       university_user[]
+
+  @@index([location_id], map: "fk_university_location1_idx")
+}
+
+model university_speciality {
+  university_speciality_id Int        @default(autoincrement())
+  university_id            Int
+  speciality_id            Int
+  speciality               speciality @relation(fields: [speciality_id], references: [speciality_id], onDelete: Cascade, map: "fk_University_has_speciality_speciality1")
+  university               university @relation(fields: [university_id], references: [university_id], onDelete: Cascade, map: "fk_University_has_speciality_University1")
+
+  @@id([university_speciality_id, university_id, speciality_id])
+  @@index([university_id], map: "fk_University_has_speciality_University1_idx")
+  @@index([speciality_id], map: "fk_University_has_speciality_speciality1_idx")
+}
+
+model university_user {
+  university_user_id Int        @default(autoincrement())
+  user_id            Int
+  university_id      Int
+  joined_date        DateTime?  @default(now()) @db.Timestamp(0)
+  left_date          DateTime?  @default(now()) @db.Timestamp(0)
+  degree_optained    String?    @db.VarChar(45)
+  status             String     @db.VarChar(45)
+  speciality_id      Int
+  speciality         speciality @relation(fields: [speciality_id], references: [speciality_id], onDelete: Cascade, map: "speciality_id")
+  university         university @relation(fields: [university_id], references: [university_id], onDelete: Cascade, map: "university_id")
+  user               user       @relation(fields: [user_id], references: [user_id], onDelete: Cascade, map: "user_id")
+
+  @@id([university_user_id, user_id, university_id, speciality_id])
+  @@index([speciality_id], map: "fk_Univ_User_speciality1_idx")
+  @@index([user_id], map: "fk_university_user_user1_idx")
+  @@index([university_id], map: "univ_id_idx")
+}
+
+model user {
+  user_id           Int                 @id @default(autoincrement())
+  first_name        String              @db.VarChar(45)
+  last_name         String              @db.VarChar(45)
+  birth_date        DateTime?           @db.DateTime(0)
+  level             String              @db.VarChar(45)
+  about             String?             @db.VarChar(2000)
+  password          String              @db.VarChar(200)
+  account_type      String              @db.VarChar(45)
+  gender            Int?                @db.TinyInt
+  email             String              @db.VarChar(50)
+  phone             BigInt?
+  joined_at         DateTime?           @default(now()) @db.Timestamp(0)
+  status            String              @db.VarChar(45)
+  profile_url       String?             @db.LongText
+  background_url    String?             @db.LongText
+  left_at           DateTime?           @default(now()) @db.Timestamp(0)
+  asset             asset[]
+  assetcomment      assetcomment[]
+  post              post[]
+  postcomment       postcomment[]
+  report            report[]
+  theclass          theclass[]
+  university_user   university_user[]
+  user_class        user_class[]
+  user_has_interest user_has_interest[]
+  user_liked_post   user_liked_post[]
+
+  @@index([user_id], map: "user_id")
+}
+
+model user_class {
+  user_class_id Int       @default(autoincrement())
+  user_id       Int
+  class_id      Int
+  joined_date   DateTime? @default(now()) @db.Timestamp(0)
+  status        String    @db.VarChar(45)
+  theclass      theclass  @relation(fields: [class_id], references: [class_id], onDelete: Cascade, map: "fk_User_has_Class_Class1")
+  user          user      @relation(fields: [user_id], references: [user_id], onDelete: Cascade, map: "fk_User_has_Class_User1")
+
+  @@id([user_class_id, user_id, class_id])
+  @@index([class_id], map: "fk_User_has_Class_Class1_idx")
+  @@index([user_id], map: "fk_User_has_Class_User1_idx")
+}
+
+model user_has_interest {
+  user_has_interest_id Int      @default(autoincrement())
+  user_id              Int
+  interest_id          Int
+  interest             interest @relation(fields: [interest_id], references: [interest_id], onDelete: Cascade, map: "fk_Interest_has_User_Interest1")
+  user                 user     @relation(fields: [user_id], references: [user_id], onDelete: Cascade, map: "fk_Interest_has_User_User1")
+
+  @@id([user_has_interest_id, user_id, interest_id])
+  @@index([interest_id], map: "fk_Interest_has_User_Interest1_idx")
+  @@index([user_id], map: "fk_Interest_has_User_User1_idx")
+}
+
+model user_liked_post {
+  user_liked_post_id Int  @default(autoincrement())
+  user_id            Int
+  post_id            Int
+  post               post @relation(fields: [post_id], references: [post_id], onDelete: Cascade, map: "fk_User_has_Post_Post1")
+  user               user @relation(fields: [user_id], references: [user_id], onDelete: Cascade, map: "fk_User_has_Post_User1")
+
+  @@id([user_liked_post_id, user_id, post_id])
+  @@index([post_id], map: "fk_User_has_Post_Post1_idx")
+  @@index([user_id], map: "fk_User_has_Post_User1_idx")
+}
