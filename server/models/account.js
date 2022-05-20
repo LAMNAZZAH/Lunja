@@ -21,7 +21,7 @@ async function createAccount(
   const date = new Date(birth_date);
 
   try {
-      const user = await prisma.user.create({
+    const user = await prisma.user.create({
       data: {
         first_name: first_name,
         last_name: last_name,
@@ -40,19 +40,49 @@ async function createAccount(
         //left_at: ,
       },
     });
-    return {ok: true, user}
-  } catch (error) { 
-      const errors = []
+    return { ok: true, user };
+  } catch (error) {
+    const errors = [];
 
-      if (error.meta.target === "username_UNIQUE")  errors.push('this username is already taken')
-      if (error.meta.target === "email_UNIQUE") errors.push('this email already exists')
+    if (typeof(error.meta) !== 'undefined') {
+      if (error.meta.target === "username_UNIQUE")
+        errors.push("this username is already taken");
 
-      return { ok: false, errors: errors }
+      if (error.meta.target === "email_UNIQUE")
+        errors.push("this email already exists");
+    }
+
+    console.log(error);
+    return { ok: false, errors: errors };
   }
+}
+
+
+const selectByUsernameOrEmail = async (value) => {
+    try {
+        const user = await prisma.user.findMany({
+            where: {
+                OR: [
+                    {
+                        username: value,
+                    },
+                    {
+                        email: value,
+                    },
+                ],
+            }
+        }); 
+        console.log("user: " + user);
+        return {ok: true, user}
+    } catch (error) {
+        console.log("user: " + error);
+        return {ok: false, user: null}
+    }
 }
 
 module.exports = {
   createAccount,
+  selectByUsernameOrEmail, 
 };
 
 /*

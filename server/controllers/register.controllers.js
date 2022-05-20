@@ -1,4 +1,6 @@
 const accountModel = require("../models/account");
+const jwt = require("jsonwebtoken");
+const { hash } = require('../utils/crypt')
 const {
   checkRequiredFields,
   checkAllowedFields,
@@ -9,8 +11,16 @@ async function createRegisterController(req, res) {
   const { body } = req;
   const errors = [];
 
-  errors.push(...checkRequiredFields(body, ["first_name",
-  "last_name", "password", "username","account_type","email"]));
+  errors.push(
+    ...checkRequiredFields(body, [
+      "first_name",
+      "last_name",
+      "password",
+      "username",
+      "account_type",
+      "email",
+    ])
+  );
 
   errors.push(
     ...checkAllowedFields(body, [
@@ -33,6 +43,9 @@ async function createRegisterController(req, res) {
 
   if (errors.length > 0) return res.status(400).json({ ok: false, errors });
 
+  const hashedPassword = await hash(body.password);
+
+
   await createAccount(
     body.first_name,
     body.last_name,
@@ -40,7 +53,7 @@ async function createRegisterController(req, res) {
     body.birth_date,
     body.level,
     body.about,
-    body.password,
+    hashedPassword,
     body.account_type,
     body.gender,
     body.email,
@@ -48,11 +61,12 @@ async function createRegisterController(req, res) {
     //body.status,
     body.profile_url,
     body.background_url,
-    null//body.left_at
-  ).then(data => {
-    if (data.ok === true) res.status(200).json(data);
-    else res.status(500).json(data);
-  })
+    null //body.left_at
+  ).then((data) => {
+    if (data.ok === true) {
+      res.status(200).json(data);
+    } else res.status(500).json(data);
+  });
 }
 
 module.exports = {
