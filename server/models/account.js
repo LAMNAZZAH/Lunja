@@ -13,14 +13,15 @@ async function createAccount(
   gender,
   email,
   phone,
-  status,
+  //status,
   profile_url,
-  background_url, 
+  background_url,
   left_at
 ) {
-    const date = new Date(birth_date);
+  const date = new Date(birth_date);
+
   try {
-    const response = await prisma.user.create({
+      const user = await prisma.user.create({
       data: {
         first_name: first_name,
         last_name: last_name,
@@ -33,15 +34,20 @@ async function createAccount(
         gender: gender,
         email: email,
         phone: phone,
-        status: status,
+        //status: status,
         profile_url: profile_url,
         background_url: background_url,
         //left_at: ,
       },
     });
-    return response;
-  } catch (error) {
-    return error;
+    return {ok: true, user}
+  } catch (error) { 
+      const errors = []
+
+      if (error.meta.target === "username_UNIQUE")  errors.push('this username is already taken')
+      if (error.meta.target === "email_UNIQUE") errors.push('this email already exists')
+
+      return { ok: false, errors: errors }
   }
 }
 

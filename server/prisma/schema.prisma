@@ -290,10 +290,10 @@ model user {
   password          String              @db.VarChar(200)
   account_type      String              @db.VarChar(45)
   gender            String?             @db.Char(1)
-  email             String              @db.VarChar(50)
+  email             String              @unique(map: "email_UNIQUE") @db.VarChar(50)
   phone             String?             @db.VarChar(20)
   joined_at         DateTime?           @default(now()) @db.Timestamp(0)
-  status            String              @db.VarChar(45)
+  status            String              @default("active") @db.VarChar(45)
   profile_url       String?             @db.LongText
   background_url    String?             @db.LongText
   left_at           DateTime?           @db.Timestamp(0)
