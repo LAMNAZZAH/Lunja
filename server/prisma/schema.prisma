@@ -82,7 +82,7 @@ model document {
 
 model interest {
   interest_id       Int                 @id @default(autoincrement())
-  name              String              @db.VarChar(45)
+  name              String              @unique(map: "name_UNIQUE") @db.VarChar(45)
   user_has_interest user_has_interest[]
 }
 
@@ -90,7 +90,7 @@ model location {
   location_id Int          @id @default(autoincrement())
   country     String       @default("morocco") @db.VarChar(45)
   region      String       @db.VarChar(45)
-  city        String       @db.VarChar(45)
+  city        String       @unique(map: "city_UNIQUE") @db.VarChar(45)
   university  university[]
 }
 
@@ -179,7 +179,7 @@ model report {
 
 model speciality {
   speciality_id         Int                     @id @default(autoincrement())
-  name                  String                  @db.VarChar(45)
+  name                  String                  @unique(map: "name_UNIQUE") @db.VarChar(45)
   brief                 String?                 @db.VarChar(200)
   about                 String?                 @db.VarChar(400)
   speciality_subject    speciality_subject[]
@@ -201,7 +201,7 @@ model speciality_subject {
 
 model subject {
   subject_id         Int                  @id @default(autoincrement())
-  name               String               @db.VarChar(45)
+  name               String               @unique(map: "name_UNIQUE") @db.VarChar(45)
   brief              String?              @db.VarChar(200)
   about              String?              @db.VarChar(1000)
   asset              asset[]
@@ -236,7 +236,7 @@ model theclass {
 
 model university {
   university_id         Int                     @id @default(autoincrement())
-  name                  String?                 @db.VarChar(100)
+  name                  String?                 @unique(map: "name_UNIQUE") @db.VarChar(100)
   description           String?                 @db.VarChar(2000)
   location_id           Int?
   location              location?               @relation(fields: [location_id], references: [location_id], onUpdate: SetNull, map: "fk_university_location1")
@@ -283,14 +283,15 @@ model user {
   user_id           Int                 @id @default(autoincrement())
   first_name        String              @db.VarChar(45)
   last_name         String              @db.VarChar(45)
-  birth_date        DateTime?           @db.DateTime(0)
+  username          String              @unique(map: "username_UNIQUE") @db.VarChar(45)
+  birth_date        DateTime?           @db.Date
   level             String              @db.VarChar(45)
   about             String?             @db.VarChar(2000)
   password          String              @db.VarChar(200)
   account_type      String              @db.VarChar(45)
-  gender            Int?                @db.TinyInt
+  gender            String?             @db.Char(1)
   email             String              @db.VarChar(50)
-  phone             BigInt?
+  phone             String?             @db.VarChar(20)
   joined_at         DateTime?           @default(now()) @db.Timestamp(0)
   status            String              @db.VarChar(45)
   profile_url       String?             @db.LongText

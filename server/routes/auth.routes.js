@@ -5,7 +5,7 @@ const registerControllers = require("../controllers/register.controller");
 const router = express.Router();
 const { registerController } = registerControllers;
 
-router.get("/register", registerController);
+router.post("/register", registerController);
 
 
 
