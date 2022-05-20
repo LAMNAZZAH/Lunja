@@ -60,7 +60,7 @@ async function createAccount(
 
 const selectByUsernameOrEmail = async (value) => {
     try {
-        const user = await prisma.user.findMany({
+        const user = await prisma.user.findFirst({
             where: {
                 OR: [
                     {
@@ -72,10 +72,9 @@ const selectByUsernameOrEmail = async (value) => {
                 ],
             }
         }); 
-        console.log("user: " + user);
+        console.log("user: " + user );
         return {ok: true, user}
     } catch (error) {
-        console.log("user: " + error);
         return {ok: false, user: null}
     }
 }
