@@ -6,7 +6,13 @@
 
 Lunja's slogan is:
 
-##Students For Students
+## Students For Students
+
+|                | Asset                          | Post                        |
+|----------------|--------------------------------|-----------------------------|
+|Private         |`'can be seen by creator only'`                               |
+|Class           |`"can be seen by class members"`                              |
+|Public          |`"can be seen by everyone on the plateform"`                  |
 
 
 ![alt text](https://raw.githubusercontent.com/LAMNAZZAH/Lunja/main/client/public/logoColorCodes-01.jpg)
