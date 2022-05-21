@@ -15,4 +15,5 @@ Lunja's slogan is:
 |Public          |`"can be seen by everyone on the plateform"`                  |
 
 
+## Lunja's Logo:
 ![alt text](https://raw.githubusercontent.com/LAMNAZZAH/Lunja/main/client/public/logoColorCodes-01.jpg)
