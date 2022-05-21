@@ -14,6 +14,15 @@ Lunja's slogan is:
 |Class           |`"can be seen by class members"`            |`"can be seen by class members"`            |
 |Public          |`"can be seen by everyone on the plateform"`|`"can be seen by everyone on the plateform"`|
 
+## User Contributions Structure:
+
+```mermaid
+graph LR
+A[Student] --> B((Asset)) --> E(Quiz) --> F(Question Card)
+F --> G(Answers Cards)
+A  --> C(Post)
+B --> D(Document)
+```
 
 ## Lunja's Logo:
 ![alt text](https://raw.githubusercontent.com/LAMNAZZAH/Lunja/main/client/public/logoColorCodes-01.jpg)
