@@ -1,4 +1,5 @@
 const accountModel = require("../models/account");
+const { toLowerCase } = require('../helpers/case');
 const jwt = require("jsonwebtoken");
 const { hash } = require('../utils/crypt')
 const {
@@ -45,11 +46,12 @@ async function createRegisterController(req, res) {
 
   const hashedPassword = await hash(body.password);
 
+  const lowerCaseUsername = toLowerCase(body.username);
 
   await createAccount(
     body.first_name,
     body.last_name,
-    body.username,
+    lowerCaseUsername,
     body.birth_date,
     body.level,
     body.about,
@@ -65,7 +67,7 @@ async function createRegisterController(req, res) {
   ).then((data) => {
     if (data.ok === true) {
       res.status(200).json(data);
-    } else res.status(500).json(data);
+    } else res.status(400).json(data);
   });
 }
 

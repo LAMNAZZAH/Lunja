@@ -1,5 +1,8 @@
+
+
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
+
 
 async function createAccount(
   first_name,
@@ -18,7 +21,9 @@ async function createAccount(
   background_url,
   left_at
 ) {
+
   const date = new Date(birth_date);
+  
 
   try {
     const user = await prisma.user.create({
@@ -72,8 +77,8 @@ const selectByUsernameOrEmail = async (value) => {
                 ],
             }
         }); 
-        console.log("user: " + user );
-        return {ok: true, user}
+        console.log("user: " + Object.keys(user) );
+        return {user: user}
     } catch (error) {
         return {ok: false, user: null}
     }
