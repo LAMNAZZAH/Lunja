@@ -6,7 +6,9 @@
 
 Lunja's slogan is:
 
-## Students For Students
+## "Students For Students"
+
+
 
 |                | Asset                                      | Post                                       |
 |----------------|--------------------------------------------|--------------------------------------------|
