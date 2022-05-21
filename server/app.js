@@ -1,6 +1,7 @@
 const express = require('express');
 const createError = require('http-errors');
 const morgan = require('morgan');
+const { verifyToken } = require('./middlewares/Authentication');
 
 const apiRouter = require('./routes/api.route')
 
@@ -12,15 +13,18 @@ const App = () => {
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
   app.use(morgan('dev'));
+
+  // Check who is making the request : (authentication)
+  // And it should be used before handling ever request
+  app.use(verifyToken)
   
-  app.get('/', async (req, res, next) => {
+  app.get('/', async (req, res) => {
     res.send({ message: 'Awesome it works 🐻' });
   });
   
   app.use('/api', apiRouter);
   
-  
-  app.use((req, res, next) => {
+  app.use('*', (req, res, next) => {
     next(createError.NotFound());
   });
   
@@ -28,7 +32,7 @@ const App = () => {
     res.status(err.status || 500);
     res.send({
       status: err.status || 500,
-      message: err.message,
+      message: err.message || 'Something went wrong please try again.',
     });
   });
 
