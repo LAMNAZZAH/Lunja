@@ -25,6 +25,6 @@ B --> D(Document)
 ```
 
 ## Lunja's Logo:
-![alt text](https://raw.githubusercontent.com/LAMNAZZAH/Lunja/main/client/public/logoColorCodes-01.jpg){width:50%}
+![alt text](https://raw.githubusercontent.com/LAMNAZZAH/Lunja/main/client/public/logoColorCodes-01.jpg){ width=50% }
 
 ![alt text](https://raw.githubusercontent.com/LAMNAZZAH/Lunja/main/client/public/logoColorCodes-01.jpg)
