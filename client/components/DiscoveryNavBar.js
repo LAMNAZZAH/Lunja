@@ -68,10 +68,10 @@ const DiscoveryNavBar = () => {
             Blog
           </a>
         </Link>
-        <Link href="/login">
-          <Button>Login</Button>
-        </Link>
       </ul>
+        <Link href="/login">
+          <Button className={styles.loginButton}>Login</Button>
+        </Link>
 
       <div className={styles.navBurger}>
         <ActionIcon onClick={() => setBurgerIsOpen(true)}>

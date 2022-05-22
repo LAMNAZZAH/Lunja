@@ -1,4 +1,4 @@
-import styles from "./DiscoveryNavBar.module.scss";
+import styles from "./NavLinks.module.scss";
 import Link from "next/link";
 import { Button } from "@mantine/core";
 
@@ -16,7 +16,7 @@ const NavLinks = () => {
           <a className={styles.navLink}>Blog</a>
         </Link>
         <Link href="/login">
-          <Button>Login</Button>
+          <Button className={styles.loginButton}>Login</Button>
         </Link>
       </ul>
     </div>

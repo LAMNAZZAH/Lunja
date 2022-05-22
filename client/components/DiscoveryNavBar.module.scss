@@ -1,33 +1,54 @@
-@import '../styles/variables.module.scss';
+@import "../styles/variables.module.scss";
 
 .navBar {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    background-color: $main-background;
-    position: sticky;
-    top: 0;
-    width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: $main-background;
+  position: sticky;
+  top: 0;
+  width: 100%;
 
-    .logo {
-      cursor: pointer;
-      margin: 10px;
+  .logo {
+    cursor: pointer;
+    margin: 10px;
+  }
+
+  .activeNavLink {
+    color: darkgray;
+  }
+
+  .navLinks {
+    display: none;
+    position: absolute;
+
+    .navLink {
+      color: red;
     }
+  }
 
-    .activeNavLink {
-      color: darkgray;
-    }
+  .loginButton {
+    display: none;
+  }
 
+
+}
+
+@media screen and (min-width: 680px) {
+  .navBar {
     .navLinks {
       display: flex;
-      display: none;
-      position:absolute;
-      flex-direction: column;
       align-items: center;
-      justify-content: space-around;
-
-      .navLink {
-        color: red;
-      }
+      justify-content: space-between;
+      position: relative;
+      flex-grow: .3;
     }
+    .navBurger {
+      display: none;
+    }
+    .loginButton {
+      display: unset;
+    }
+    
+  }
 }

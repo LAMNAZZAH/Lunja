@@ -1,6 +1,24 @@
+@import '../styles/variables.module.scss';
+
 .navLinks {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+
+    .navLink {
+        font-weight: 700;
+        color: $main-background;
+        margin: 40px 20px;
+
+        &:hover {
+            color: $main-green;
+        }
+    }
+
+    .loginButton {
+        margin-top: 50px;
+    }
+
+
 }
