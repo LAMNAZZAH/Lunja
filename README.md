@@ -6,11 +6,12 @@
 
 Lunja's slogan is:
 
-## Students For Students
+## "Students For Students"
+
 
 |                | Asset                                      | Post                                       |
 |----------------|--------------------------------------------|--------------------------------------------|
-|Private         |`'can be seen by creator only'`             |                                            |
+|Private         |`"can be seen by creator only"`             |                                            |
 |Class           |`"can be seen by class members"`            |`"can be seen by class members"`            |
 |Public          |`"can be seen by everyone on the plateform"`|`"can be seen by everyone on the plateform"`|
 
@@ -26,3 +27,17 @@ B --> D(Document)
 
 ## Lunja's Logo:
 ![alt text](https://raw.githubusercontent.com/LAMNAZZAH/Lunja/main/client/public/logoColorCodes-01.jpg)
+#
+
+![alt text](https://raw.githubusercontent.com/LAMNAZZAH/Lunja/main/client/public/landscapeLogo-01.jpg)
+#
+
+## Api Endpoints
+### Authentification:
+
+
+|     SN           |Method     |Route    |   Request Data | Response Data | description
+|----------------|-------------------------------|-----------------------------|--|---|---
+|1|POST|/api/auth/login           |{"usernameOrEmail":"<$username>"} | {"ok": Boolean, token} |login
+|2|POST|/api/auth/register |{"first_name", "last_name", "username", "level", "password", "account_type", "email"}| {"ok":Boolean, "errors":[]}| register 
+
