@@ -3,10 +3,10 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Button, Drawer, ActionIcon } from "@mantine/core";
-import { Menu2, X } from "tabler-icons-react";
+import { Menu2, X, User } from "tabler-icons-react";
 import NavLinks from "./NavLinks";
 
-import LunjaLogo from "../public/landscapeLunjaLogoWithTitleDark.png";
+import LunjaLogo from "../public/lunjaLandscapeDark.svg";
 
 import styles from "./DiscoveryNavBar.module.scss";
 
@@ -70,7 +70,7 @@ const DiscoveryNavBar = () => {
         </Link>
       </ul>
         <Link href="/login">
-          <Button className={styles.loginButton}>Login</Button>
+          <Button leftIcon={<User />} size="md" variant="light" className={styles.loginButton}>Login</Button>
         </Link>
 
       <div className={styles.navBurger}>

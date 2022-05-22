@@ -1,6 +1,7 @@
 import styles from "./NavLinks.module.scss";
 import Link from "next/link";
 import { Button } from "@mantine/core";
+import { User } from 'tabler-icons-react';
 
 const NavLinks = () => {
   return (
@@ -16,7 +17,7 @@ const NavLinks = () => {
           <a className={styles.navLink}>Blog</a>
         </Link>
         <Link href="/login">
-          <Button className={styles.loginButton}>Login</Button>
+          <Button leftIcon={<User />} size="md" variant="light" className={styles.loginButton}>Login</Button>
         </Link>
       </ul>
     </div>
