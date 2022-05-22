@@ -8,6 +8,29 @@ const Home = () => {
     <Layout>
       <DiscoveryNavBar/>
       <h1>something</h1>
+      <h1>something</h1>
+      <h1>something</h1>
+      <h1>something</h1>
+      <h1>something</h1>
+      <h1>something</h1>
+      <h1>something</h1>
+      <h1>something</h1>
+      <h1>something</h1>
+      <h1>something</h1>
+      <h1>something</h1>
+      <h1>something</h1>
+      <h1>something</h1>
+      <h1>something</h1>
+      <h1>something</h1>
+      <h1>something</h1>
+      <h1>something</h1>
+      <h1>something</h1>
+      <h1>something</h1>
+      <h1>something</h1>
+      <h1>something</h1>
+      <h1>something</h1>
+      <h1>something</h1>
+      <h1>something</h1>
     </Layout>
   )
 }

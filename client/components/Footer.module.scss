@@ -1,0 +1,48 @@
+@import '../styles/variables.module.scss';
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: $main-green;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 170px;
+
+    .leftBlock {
+        flex-grow: 1;
+        margin: 10px 20px;
+        .footerTitle {
+            font-weight: 500;
+            color: white;
+        }
+        .footerSubTitle {
+            color: lightcyan;
+            opacity: 80%;
+            font-weight: 200;
+        }
+    }
+
+    .rightBlock {
+        display: flex;
+        flex-direction: column;
+        margin: 10px 20px;
+        
+        
+        .footerLinks {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .link {
+            color: white;
+
+            &:hover {
+                color: #4b5ddd;
+            }
+        }
+    }
+}

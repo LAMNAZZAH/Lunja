@@ -1,18 +1,31 @@
-import Image from 'next/image'
+import Image from "next/image";
+import Link from 'next/link'
+
+import LunjaLogo from "../public/lunjaLogo.svg";
+
+import styles from "./Footer.module.scss";
 
 const Footer = () => (
-    <div>
-         <a
-          href=""
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span >
-            <Image src="/landscapeLogo-01.jpg" alt="Vercel Logo" width={200} height={100} />
-          </span>
-        </a>
+  <div className={styles.footer}>
+    <div className={styles.leftBlock}>
+      <h2 className={styles.footerTitle}>Lunja Academy</h2>
+      <h5 className={styles.footerSubTitle}>
+        Copyright © 2022 Lunja Academy <br /> Technologies casablanca,
+        <br />
+        All rights reserved.
+      </h5>
     </div>
-); 
+    <div className={styles.rightBlock}>
+      <div className={styles.footerLinks}>
+      <Link href='/privacypolicy'>
+      <a className={styles.link}>Privacy Policy</a>
+      </Link>
+      <Link href='/termsofservice'>
+      <a className={styles.link}>Terms Of Service</a>
+      </Link>
+      </div>
+    </div>
+  </div>
+);
 
-export default Footer; 
+export default Footer;
