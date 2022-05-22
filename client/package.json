@@ -9,10 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mantine/core": "^4.2.5",
+    "@mantine/next": "^4.2.5",
     "next": "12.1.6",
     "react": "18.1.0",
     "react-dom": "18.1.0",
-    "sass": "^1.52.1"
+    "sass": "^1.52.1",
+    "tabler-icons-react": "^1.48.0"
   },
   "devDependencies": {
     "eslint": "8.16.0",

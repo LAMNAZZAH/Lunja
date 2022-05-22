@@ -1,18 +1,28 @@
 @import '../styles/variables.module.scss';
 
-.navbar {
+.navBar {
     display: flex;
     align-items: center;
     justify-content: space-around;
     background-color: $main-background;
 
     .logo {
+      cursor: pointer;
       margin: 10px;
     }
 
-    ul {
+    .activeNavLink {
+      color: darkgray;
+    }
+
+    .navLinks {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: space-around;
+
+      .navLink {
+        color: red;
+      }
     }
 }
