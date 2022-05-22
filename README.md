@@ -27,8 +27,10 @@ B --> D(Document)
 
 ## Lunja's Logo:
 ![alt text](https://raw.githubusercontent.com/LAMNAZZAH/Lunja/main/client/public/logoColorCodes-01.jpg)
+#
 
 ![alt text](https://raw.githubusercontent.com/LAMNAZZAH/Lunja/main/client/public/landscapeLogo-01.jpg)
+#
 
 ## Api Endpoints
 ### Authentification:
