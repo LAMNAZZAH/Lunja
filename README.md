@@ -38,4 +38,4 @@ B --> D(Document)
 |----------------|-------------------------------|-----------------------------|--|---|---
 |1|POST|/api/auth/login           |{"usernameOrEmail":"<$username>"} | {"ok": Boolean, token} |login
 |2|POST|/api/auth/register |{"first_name", "last_name", "username", "level", "password", "account_type", "email"}| {"ok":Boolean, "errors":[]}| register 
-|
+
