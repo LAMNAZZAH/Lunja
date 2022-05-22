@@ -29,3 +29,13 @@ B --> D(Document)
 ![alt text](https://raw.githubusercontent.com/LAMNAZZAH/Lunja/main/client/public/logoColorCodes-01.jpg)
 
 ![alt text](https://raw.githubusercontent.com/LAMNAZZAH/Lunja/main/client/public/landscapeLogo-01.jpg)
+
+## Api Endpoints
+### Authentification:
+
+
+|     SN           |Method     |Route    |   Request Data | Response Data | description
+|----------------|-------------------------------|-----------------------------|--|---|---
+|1|POST|/api/auth/login           |{"usernameOrEmail":"<$username>"} | {"ok": Boolean, token} |login
+|2|POST|/api/auth/register |{"first_name", "last_name", "username", "level", "password", "account_type", "email"}| {"ok":Boolean, "errors":[]}| register 
+|
