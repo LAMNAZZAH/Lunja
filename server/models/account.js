@@ -39,10 +39,8 @@ async function createAccount(
         gender: gender,
         email: email,
         phone: phone,
-        //status: status,
         profile_url: profile_url,
         background_url: background_url,
-        //left_at: ,
       },
     });
     return { ok: true, user };
@@ -77,7 +75,6 @@ const selectByUsernameOrEmail = async (value) => {
                 ],
             }
         }); 
-        console.log("user: " + Object.keys(user) );
         return {user: user}
     } catch (error) {
         return {ok: false, user: null}

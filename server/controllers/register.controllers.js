@@ -60,10 +60,8 @@ async function createRegisterController(req, res) {
     body.gender,
     body.email,
     body.phone,
-    //body.status,
     body.profile_url,
     body.background_url,
-    null //body.left_at
   ).then((data) => {
     if (data.ok === true) {
       res.status(200).json(data);
@@ -75,19 +73,3 @@ module.exports = {
   registerController: createRegisterController,
 };
 
-/*
- body.first_name,
-        body.last_name,
-        body.username, 
-        birthday,
-        body.level,
-        body.about,
-        body.password,
-        body.account_type,
-        body.gender,
-        body.email,
-        body.phone,
-        body.status,
-        body.profile_url,
-        body.background_url,
-        body.left_at*/

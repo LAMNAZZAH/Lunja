@@ -19,7 +19,7 @@ const App = () => {
   app.use(verifyToken)
   
   app.get('/', async (req, res) => {
-    res.send({ message: 'Awesome it works 🐻' });
+    res.send({ message: 'Awesome it works' });
   });
   
   app.use('/api', apiRouter);
