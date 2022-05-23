@@ -1,17 +1,25 @@
-import { getRequest } from '../http'; 
+import { getRequest } from "../http";
 
 const testGetTodos = async () => {
-    try {
+  try {
+    const response = await getRequest("todos", null);
+    if (response) return response;
 
-        const response = await getRequest('todos');
-        if (response) return response; 
+    console.log("data: " + response);
+  } catch {}
 
-        console.log('data: ' + response);
-    } catch {}
+  return null;
+};
 
-    return null;
-}
+const getIsLoggedIn = async () => {
+  try {
+    const response = await getRequest('/api/auth', null); 
+    if (response) return response;
+  } catch (error) {}
+  return null;
+};
 
 module.exports = {
-    testGetTodos, 
-}
+  testGetTodos,
+  getIsLoggedIn,
+};

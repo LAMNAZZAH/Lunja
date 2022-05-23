@@ -1,5 +1,6 @@
 const accountModel = require("../models/account");
 const jwt = require("jsonwebtoken");
+const { verifyToken } = require("../middlewares/Authentication");
 
 const {
   checkAllowedFields,
@@ -9,6 +10,7 @@ const { checkHash } = require("../utils/crypt");
 const { isNull } = require("../utils/generic");
 
 const createLoginController = async (req, res, next) => {
+
   const { selectByUsernameOrEmail } = accountModel;
   const { body } = req;
   const errors = [];
@@ -65,6 +67,19 @@ const createLoginController = async (req, res, next) => {
   });
 };
 
+const createIsLoggedInController = (req, res, next) => {
+
+  const userData = {...req.user}
+
+  delete userData.password
+  
+  if (req.user) return res.json({isLoggedIn: true, data: userData })
+  return res.status(400).json({ isLoggedIn: false })
+
+}
+
+
 module.exports = {
   LoginController: createLoginController,
+  isLoggedInController: createIsLoggedInController,
 };

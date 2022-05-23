@@ -3,7 +3,7 @@ import axios from 'axios';
 const defaultHeaders = { 'Content-Type': 'application/json'}
 
 const  urls = {
-    dev: 'http://localhost:3000', 
+    dev: 'http://localhost:5000', 
     prod: process.env.API_BASE_URL,
     test: 'https://jsonplaceholder.typicode.com'
 }
@@ -20,7 +20,7 @@ const httpRequest = async (method, url, body, headers = {}) => {
         method: method,
         url: url, 
         headers: {
-            ...defaultHeaders
+            ...defaultHeaders, ...headers
         }
     }
 
@@ -32,7 +32,7 @@ const httpRequest = async (method, url, body, headers = {}) => {
 }
 
 
-export const getRequest = (url) => httpRequest('get', url, null); 
+export const getRequest = (url, headers) => httpRequest('get', url, null, headers); 
 
 export const postRequest = (url, body, headers = {}) => httpRequest('post', url, body, headers); 
 
