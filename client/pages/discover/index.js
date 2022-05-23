@@ -1,15 +1,11 @@
-import Layout from '../../components/Layout'
-import DiscoveryNavBar from '../../components/DiscoveryNavBar'
+import DiscoveryNavBar from "../../components/DiscoveryNavBar";
 
 const discover = () => {
-    return (
-        <Layout>
-            <DiscoveryNavBar/>
-            <main>
-                <h1>Discover Page</h1>
-            </main>
-        </Layout>
-    )
-}
+  return (
+    <main>
+      <h1>Discover Page</h1>
+    </main>
+  );
+};
 
-export default discover; 
+export default discover;

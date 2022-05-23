@@ -1,12 +1,16 @@
-import Layout from '../components/Layout'; 
-import DiscoveryNavBar from '../components/DiscoveryNavBar';
+import HeadData from "../components/HeadData";
+import DiscoveryNavBar from "../components/DiscoveryNavBar";
 
-import styles from '../styles/Home.module.scss'
+import styles from "../styles/Home.module.scss";
 
 const Home = () => {
   return (
-    <Layout>
-      <DiscoveryNavBar/>
+    <>
+      <HeadData
+        title="Home Page | Lunja Academy"
+        description="find studying resources you need, prepared for you by other students"
+        keywords="university, studying, math exam"
+      />
       <h1>something</h1>
       <h1>something</h1>
       <h1>something</h1>
@@ -31,8 +35,8 @@ const Home = () => {
       <h1>something</h1>
       <h1>something</h1>
       <h1>something</h1>
-    </Layout>
-  )
-}
+    </>
+  );
+};
 
 export default Home;

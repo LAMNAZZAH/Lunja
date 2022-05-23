@@ -34,7 +34,7 @@ const DiscoveryNavBar = () => {
 
       <div className={styles.logo}>
         <Link href="/">
-          <Image src={LunjaLogo} alt="Lunja app Logo" height={80} width={200} />
+          <Image priority={true} src={LunjaLogo} alt="Lunja app Logo" height={80} width={200} />
         </Link>
       </div>
 
@@ -69,7 +69,7 @@ const DiscoveryNavBar = () => {
           </a>
         </Link>
       </ul>
-        <Link href="/login">
+        <Link href="/account/login">
           <Button leftIcon={<User />} size="md" variant="light" className={styles.loginButton}>Login</Button>
         </Link>
 

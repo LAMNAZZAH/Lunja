@@ -16,7 +16,7 @@ const NavLinks = () => {
         <Link href="/blog">
           <a className={styles.navLink}>Blog</a>
         </Link>
-        <Link href="/login">
+        <Link href="/account/login">
           <Button leftIcon={<User />} size="md" variant="light" className={styles.loginButton}>Login</Button>
         </Link>
       </ul>
