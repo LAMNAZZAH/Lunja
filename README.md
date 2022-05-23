@@ -1,6 +1,6 @@
 # Lunja Academy
 
-**Lunja** is an E-learning plateform that aims to let students share knowledge about specific university subjects. the Idea is providing students with the tools to create their own **Assets** that contains *Quizzes* and *documents* wich helps them study, these **Assets** could be Private, shared with everyone in the plateform OR specific for a **class**. 
+**Lunja** is an E-learning plateform that aims to help students share knowledge between each other about specific university subjects. the Idea is providing students with the tools to create their own **Assets** that contains *Quizzes* and *documents* wich helps them study, these **Assets** could be Private, shared with everyone in the plateform OR specific for a **class**. 
 
 **class** is another concept that lunja supports, it gathers ambisious Students sharing their usefull **Assets** with their friends along with creating **posts** to ask questions, make announcements or for other purposes that serves the learning process. 
 
@@ -26,11 +26,8 @@ B --> D(Document)
 ```
 
 ## Lunja's Logo:
-![alt text](https://raw.githubusercontent.com/LAMNAZZAH/Lunja/main/client/public/logoColorCodes-01.jpg)
-#
+![alt text](https://github.com/LAMNAZZAH/Lunja/blob/main/client/public/lunjaLandscapeLight-01.jpg)
 
-![alt text](https://raw.githubusercontent.com/LAMNAZZAH/Lunja/main/client/public/landscapeLogo-01.jpg)
-#
 
 ## Api Endpoints
 ### Authentification:
