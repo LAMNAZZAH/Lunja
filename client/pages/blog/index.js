@@ -1,17 +1,22 @@
 import { testGetTodos } from "../../utils/api/accountApi";
 import axios from "axios";
-import { AuthProvider, ProtecteRoute } from "../../contexts/auth";
+import { useRouter } from 'next/router';
+import  AuthProvider, { authContext, PrivateRoute } from "../../contexts/auth";
+import { useState, useContext } from "react";
+import Posts from "../../components/Posts";
+
 
 const blog = () => {
   //onsole.log(todos);
+  
+  
   return (
     <AuthProvider>
-      <ProtecteRoute>
+      <PrivateRoute>
         <main>
-          <h1>Blog Page</h1>
-          <h3>info</h3>
+          <Posts/>
         </main>
-      </ProtecteRoute>
+      </PrivateRoute>
     </AuthProvider>
   );
 };

@@ -13,7 +13,7 @@ const testGetTodos = async () => {
 };
 
 const getIsLoggedIn = async () => {
-    Cookies.set('token', 'Bearer xyz');
+    Cookies.set('token', 'Bearer ');
     const token = Cookies.get('token')
   try {
     const response = await getRequest('/api/auth', {'Authorization': token}); 

@@ -3,9 +3,9 @@ import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
 import { getIsLoggedIn } from '../utils/api/accountApi'
 
-const authContext = createContext({}); 
+export const authContext = createContext({}); 
 
-export const AuthProvider = ({ children }) => {
+     const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true); 
 
@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
                 const user = await response; 
                 if (user) setUser(user.data);
 
-                console.log(user);
+                console.log( user);
             }
             setLoading(false);
         }
@@ -25,17 +25,19 @@ export const AuthProvider = ({ children }) => {
     }, [])
 
     return (
-        <authContext.Provider value={{isLoggedIn: !!user, user, loading}}>
-            {children}
+        <authContext.Provider value={{ isLoggedIn: !!user, user, loading, setLoading }}>
+            {loading ? null : children}
         </authContext.Provider>
     )
 }
 
-export const ProtecteRoute = ({children}) => {
-    const router = useRouter();
-    const { isLoggedIn, isLoading,  user} = useAuth();
-    if (isLoading || !isLoggedIn) return <h3>Loaading. . .</h3>
+export const PrivateRoute = ({children}) => {
+    //!const router = useRouter();
+    const { isLoggedIn, loading} = useContext(authContext);
+    if (loading || !isLoggedIn) return <h3>Loaading. . .</h3>
+
     return children;
 }
 
-export const useAuth = () => useContext(authContext);
+
+export default AuthProvider;

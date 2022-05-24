@@ -22,7 +22,7 @@ const createLoginController = async (req, res, next) => {
 
   await selectByUsernameOrEmail(body.usernameOrEmail).then((data) => {
       
-    console.log("typeof data.user: " + data.ok);
+    console.log("data.user: " + data.ok);
     if (data.user == null) {
       res
         .status(400)
@@ -49,7 +49,7 @@ const createLoginController = async (req, res, next) => {
             status: data.user.status,
           },
           process.env.JWT_SECRET,
-          { expiresIn: "180s" },
+          { expiresIn: process.env.ACCESS_TOKEN_LIFETIME },
           (err, token) => {
             res.status(200).json({ ok: true, token });
           }
