@@ -74,7 +74,7 @@ const createIsLoggedInController = (req, res, next) => {
   delete userData.password
   
   if (req.user) return res.json({isLoggedIn: true, data: userData })
-  return res.status(400).json({ isLoggedIn: false })
+  return res.status(200).json({ isLoggedIn: false })
 
 }
 

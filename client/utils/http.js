@@ -10,11 +10,13 @@ const  urls = {
 
 const instance = axios.create({
     baseURL: urls[`${process.env.NEXT_PUBLIC_NODE_ENV}`],
-    withCredentials: true,
+    //withCredentials: true,
 }); 
 
 
 const httpRequest = async (method, url, body, headers = {}) => {
+
+    console.log( urls[`${process.env.NEXT_PUBLIC_NODE_ENV}`]);
 
     const params = {
         method: method,
@@ -28,7 +30,9 @@ const httpRequest = async (method, url, body, headers = {}) => {
     
     const response = await instance(params);
 
-    return response.data
+    const data = await response.data
+
+    return data
 }
 
 

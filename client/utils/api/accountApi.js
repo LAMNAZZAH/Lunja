@@ -1,4 +1,5 @@
 import { getRequest } from "../http";
+import Cookies from 'js-cookie';
 
 const testGetTodos = async () => {
   try {
@@ -12,8 +13,10 @@ const testGetTodos = async () => {
 };
 
 const getIsLoggedIn = async () => {
+    Cookies.set('token', 'Bearer xyz');
+    const token = Cookies.get('token')
   try {
-    const response = await getRequest('/api/auth', null); 
+    const response = await getRequest('/api/auth', {'Authorization': token}); 
     if (response) return response;
   } catch (error) {}
   return null;

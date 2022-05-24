@@ -2,6 +2,11 @@ const express = require('express');
 const createError = require('http-errors');
 const morgan = require('morgan');
 const { verifyToken } = require('./middlewares/Authentication');
+const cors = require('cors');
+
+var corsOptions = {
+  origin: 'http://localhost:3000',
+}
 
 const apiRouter = require('./routes/api.route')
 
@@ -13,10 +18,11 @@ const App = () => {
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
   app.use(morgan('dev'));
+  app.use(cors(corsOptions));
 
   // Check who is making the request : (authentication)
   // And it should be used before handling ever request
-  app.use(verifyToken)
+  app.use(verifyToken);
   
   app.get('/', async (req, res) => {
     res.send({ message: 'Awesome it works' });

@@ -1,5 +1,6 @@
 import React, {createContext, useContext, useEffect, useState} from 'react';
 import Cookies from 'js-cookie';
+import { useRouter } from 'next/router';
 import { getIsLoggedIn } from '../utils/api/accountApi'
 
 const authContext = createContext({}); 
@@ -11,9 +12,12 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         async function getUserFromCookies() {
             const token = Cookies.get('token');
-            if (token) {
-                const {data: user} = await getIsLoggedIn();
-                if (user) setUser(user);
+            if (token) { 
+                const response = await getIsLoggedIn(token);
+                const user = await response; 
+                if (user) setUser(user.data);
+
+                console.log(user);
             }
             setLoading(false);
         }
@@ -25,6 +29,13 @@ export const AuthProvider = ({ children }) => {
             {children}
         </authContext.Provider>
     )
+}
+
+export const ProtecteRoute = ({children}) => {
+    const router = useRouter();
+    const { isLoggedIn, isLoading,  user} = useAuth();
+    if (isLoading || !isLoggedIn) return <h3>Loaading. . .</h3>
+    return children;
 }
 
 export const useAuth = () => useContext(authContext);
