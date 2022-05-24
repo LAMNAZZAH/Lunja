@@ -1,0 +1,33 @@
+.loginFormContainer {
+    margin: 2em;
+    position: relative;
+    
+
+    .loginTitle {
+        left: 10%;
+        bottom: 112%;
+        position: absolute;
+
+        .titleText {
+            color: lightgray;
+        }
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .loginFormContainer {
+        .loginTitle {
+            size: 80%;
+            left: 18%;
+
+        }
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .loginFormContainer {
+        .loginTitle {
+            display: none;
+        }
+    }
+}

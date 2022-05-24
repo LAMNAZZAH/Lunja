@@ -1,0 +1,57 @@
+@import './variables.module.scss';
+
+.mainLoginSection {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 79vh;
+    margin: 2em;
+    border-radius: 14px;
+    background-color: white;
+
+
+
+    .leftBlock {
+        margin: 2em;
+        flex: .5;
+        padding: 40px 0;
+        background-color: white;
+        border-radius: 17px;
+        background: #ffffff;
+        box-shadow:  11px 11px 22px #dbdbdb,
+                     -11px -11px 22px #ffffff;
+    }
+    
+    .rightBlock {
+        flex:.5;
+        height: 100%;
+        margin: 2em;
+
+        .rightTitle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $main-background;
+            span {
+                color: $main-background;
+                padding: 10px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .mainLoginSection  {
+        flex-direction: column;
+
+        .leftBlock {
+            padding: 40px 30px;
+        }
+
+        .rightBlock {
+            display: none;
+        }
+    }
+}
+
