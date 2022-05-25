@@ -24,9 +24,27 @@ const RegisterForm = () => {
   const [page, setPage] = useState(1);
 
   const nextPage = () => {
-    if (page < 3) {
+
+    const fields = {
+      1: ['first_name', 'last_name' ],
+      2: ['email', 'account_type', 'level' ],
+      3: ['username', 'password', 'confirmPassword' ]
+    }
+
+    const hasError = false;
+
+    fields[page].forEach(pageField => {
+       hasError = form.validateField(pageField).hasError;
+       console.log(hasError);
+       if (hasError) return hasError;
+       
+       
+    });
+
+    if (page < 3 && !hasError) {
     return setPage(page + 1);
     }
+
   };
 
   const previousPage = () => {
@@ -41,20 +59,23 @@ const RegisterForm = () => {
     } else if (Object.keys(form.errors).some(key => key == "email" || key == "account_type" || key == "level")) {
       setPage(2);
     }
-  }, [form.errors])
+  }, [])
 
   const handleSubmitForm = (values) => {
     console.log(values);
   };
 
   return (
+
     <div className={styles.registerFormContainer}>
-      <Group className={styles.registerTitle} position="left" mt="xl">
+      <div className={styles.registerTitle} >
         <UserCircle size={44} color="lightgray" />
         <h1 className={styles.titleText}>Register</h1>
-      </Group>
+      </div>
 
       <Box className={styles.box} sx={{ maxWidth: 300 }} mx="auto">
+
+        
         <form onSubmit={form.onSubmit(handleSubmitForm)}>
 
           <TextInput

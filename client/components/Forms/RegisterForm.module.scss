@@ -4,8 +4,11 @@
     
 
     .registerTitle {
-        left: 10%;
-        bottom: 118%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        left: 0%;
+        bottom: 100%;
         position: absolute;
 
         .titleText {
