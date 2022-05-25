@@ -16,9 +16,14 @@ const NavLinks = () => {
         <Link href="/blog">
           <a className={styles.navLink}>Blog</a>
         </Link>
-        <Link href="/login">
-          <Button leftIcon={<User />} size="md" variant="light" className={styles.loginButton}>Login</Button>
-        </Link>
+        <Link href="/login"><a className={styles.loginLink}>Login</a></Link>
+      <Link href="/register">
+        <button
+          className={styles.registerButton}
+        >
+          Get Started
+        </button>
+      </Link>
       </ul>
     </div>
   );

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Button, Drawer, ActionIcon } from "@mantine/core";
 import { Menu2, X, User } from "tabler-icons-react";
 import NavLinks from "./NavLinks";
+import { motion } from "framer-motion";
 
 import LunjaLogo from "../public/lunjaLandscapeLight.svg";
 
@@ -29,12 +30,18 @@ const DiscoveryNavBar = () => {
         title="Menu"
         padding="xl"
       >
-          <NavLinks/>
+        <NavLinks />
       </Drawer>
 
       <div className={styles.logo}>
         <Link href="/">
-          <Image priority={true} src={LunjaLogo} alt="Lunja app Logo" height={80} width={200} />
+          <Image
+            priority={true}
+            src={LunjaLogo}
+            alt="Lunja app Logo"
+            height={80}
+            width={200}
+          />
         </Link>
       </div>
 
@@ -69,9 +76,16 @@ const DiscoveryNavBar = () => {
           </a>
         </Link>
       </ul>
-        <Link href="/login">
-          <Button leftIcon={<User />} size="md" variant="light" className={styles.loginButton}>Login</Button>
-        </Link>
+      <div className={styles.loginRegisterContainer}>
+      <Link href="/login"><a className={styles.loginLink}>Login</a></Link>
+      <Link href="/register">
+        <button
+          className={styles.registerButton}
+        >
+          Get Started
+        </button>
+      </Link>
+      </div>
 
       <div className={styles.navBurger}>
         <ActionIcon onClick={() => setBurgerIsOpen(true)}>

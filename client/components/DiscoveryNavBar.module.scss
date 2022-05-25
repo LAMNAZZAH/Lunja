@@ -10,8 +10,7 @@
   width: 100%;
   border-radius: 0px;
   background: #ffffff;
-  box-shadow:  5px 5px 5px #ebebeb,
-               -5px -5px 5px #ffffff;
+  box-shadow: 5px 5px 5px #ebebeb, -5px -5px 5px #ffffff;
   .logo {
     cursor: pointer;
     margin: 10px;
@@ -20,7 +19,7 @@
   .activeNavLink {
     color: $main-green;
     font-weight: 700;
-      font-size: 16px;
+    font-size: 16px;
   }
 
   .navLinks {
@@ -31,11 +30,20 @@
       color: $dark-gray;
       font-weight: 700;
       font-size: 16px;
+
+      &:hover {
+        color: $main-green;
+      }
     }
   }
 
-  .loginButton {
-    display: none;
+  .loginRegisterContainer {
+    .registerButton {
+      display: none;
+    }
+    .loginLink {
+      display: none;
+    }
   }
 }
 
@@ -51,8 +59,27 @@
     .navBurger {
       display: none;
     }
-    .loginButton {
-      display: unset;
+    .loginRegisterContainer {
+      .registerButton {
+        display: unset;
+        color: white;
+        padding: 10px 17px;
+        margin: 12px;
+        font-size: 18px;
+        border-radius: 93px;
+        background: #3494E6;
+        border: none;
+        cursor: pointer;
+        background: -webkit-linear-gradient(to right, #EC6EAD, #3494E6);  
+        background: linear-gradient(to right, #EC6EAD, #3494E6);
+        
+      }
+      .loginLink {
+        display: unset;
+        color: $dark-gray;
+      font-weight: 700;
+      font-size: 16px;
+      }
     }
   }
 }

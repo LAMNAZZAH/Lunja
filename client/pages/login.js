@@ -1,6 +1,8 @@
 import LoginForm from "../components/Forms/LoginForm";
 import HeadData from "../components/HeadData";
 import styles from "../styles/Login.module.scss";
+import frame1 from '../public/frame1.svg'
+import Image from 'next/image';
 
 const login = () => {
   return (
@@ -13,8 +15,9 @@ const login = () => {
           </div>
           <div className={styles.rightBlock}>
             <h1 className={styles.rightTitle}>
-              Welcome Back To Lunja
+              Welcome Back
             </h1>
+            <Image src={frame1}/>
           </div>
         </div>
       </main>

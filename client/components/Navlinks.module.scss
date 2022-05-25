@@ -16,9 +16,27 @@
         }
     }
 
-    .loginButton {
-        margin-top: 50px;
-    }
+        .registerButton {
+          display: unset;
+          color: white;
+          padding: 10px 17px;
+          margin: 12px;
+          font-size: 18px;
+          border-radius: 93px;
+          background: #3494E6;
+          border: none;
+          cursor: pointer;
+          background: -webkit-linear-gradient(to right, #EC6EAD, #3494E6);  
+          background: linear-gradient(to right, #EC6EAD, #3494E6);
+          
+        }
+        .loginLink {
+          display: unset;
+          color: $dark-gray;
+        font-weight: 700;
+        font-size: 16px;
+        }
+
 
 
 }
