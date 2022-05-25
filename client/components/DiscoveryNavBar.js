@@ -6,7 +6,7 @@ import { Button, Drawer, ActionIcon } from "@mantine/core";
 import { Menu2, X, User } from "tabler-icons-react";
 import NavLinks from "./NavLinks";
 
-import LunjaLogo from "../public/lunjaLandscapeDark.svg";
+import LunjaLogo from "../public/lunjaLandscapeLight.svg";
 
 import styles from "./DiscoveryNavBar.module.scss";
 

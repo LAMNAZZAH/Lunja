@@ -8,7 +8,7 @@
     height: 79vh;
     margin: 2em;
     border-radius: 14px;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
 
 
 
@@ -17,10 +17,9 @@
         flex: .5;
         padding: 40px 0;
         background-color: white;
+        border: 2px solid rgb(243, 243, 243);
         border-radius: 17px;
-        background: #ffffff;
-        box-shadow:  11px 11px 22px #dbdbdb,
-                     -11px -11px 22px #ffffff;
+
     }
     
     .rightBlock {

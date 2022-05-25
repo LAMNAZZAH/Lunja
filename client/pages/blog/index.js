@@ -11,13 +11,11 @@ const blog = () => {
   
   
   return (
-    <AuthProvider>
       <PrivateRoute>
         <main>
           <Posts/>
         </main>
       </PrivateRoute>
-    </AuthProvider>
   );
 };
 

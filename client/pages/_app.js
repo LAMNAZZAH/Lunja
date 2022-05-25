@@ -1,14 +1,17 @@
-import Layout from '../components/Layout'; 
+import Layout from "../components/Layout";
+import AuthProvider from '../contexts/auth';
 
-import '../styles/globals.scss'
-//?NOTE: add global Layouts 
+import "../styles/globals.scss";
+//?NOTE: add global Layouts
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
-  )
+    <AuthProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </AuthProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;

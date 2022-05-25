@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@mantine/core": "^4.2.5",
+    "@mantine/form": "^4.2.6",
     "@mantine/next": "^4.2.5",
     "axios": "^0.27.2",
     "js-cookie": "^3.0.1",
