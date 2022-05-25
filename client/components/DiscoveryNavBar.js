@@ -39,8 +39,8 @@ const DiscoveryNavBar = () => {
             priority={true}
             src={LunjaLogo}
             alt="Lunja app Logo"
-            height={80}
-            width={200}
+            height={45}
+            width={170}
           />
         </Link>
       </div>

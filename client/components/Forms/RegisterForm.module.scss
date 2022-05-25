@@ -1,0 +1,41 @@
+.registerFormContainer {
+    margin: 2em;
+    position: relative;
+    
+
+    .registerTitle {
+        left: 10%;
+        bottom: 118%;
+        position: absolute;
+
+        .titleText {
+            color: lightgray;
+        }
+    }
+}
+
+.registerFormContainer {
+    .box {
+        .invisibleInput {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .registerFormContainer {
+        .loginTitle {
+            size: 80%;
+            left: 2%;
+
+        }
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .registerFormContainer {
+        .registerTitle {
+            display: none;
+        }
+    }
+}

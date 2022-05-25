@@ -1,21 +1,15 @@
 import { useState } from "react";
 import { useForm } from "@mantine/form";
-import {
-  TextInput,
-  Checkbox,
-  Button,
-  Group,
-  Box,
-  PasswordInput,
-} from "@mantine/core";
+import { TextInput, Button, Group, Box, PasswordInput } from "@mantine/core";
 import { UserCircle } from "tabler-icons-react";
 
 import styles from "./LoginForm.module.scss";
 
 const LoginForm = () => {
   const form = useForm({
-    initialValues: { usernameOrEmail: '', password: '' },
+    initialValues: { usernameOrEmail: "", password: "" },
   });
+  
   const [errors, setErrors] = useState([]);
 
   const handleSubmitForm = (values) => {
@@ -28,6 +22,7 @@ const LoginForm = () => {
         <UserCircle size={44} color="lightgray" />
         <h1 className={styles.titleText}>Login</h1>
       </Group>
+
       <Box className={styles.box} sx={{ maxWidth: 300 }} mx="auto">
         <form onSubmit={form.onSubmit(handleSubmitForm)}>
           <TextInput
@@ -37,6 +32,7 @@ const LoginForm = () => {
             {...form.getInputProps("usernameOrEmail")}
             required
           />
+
           <PasswordInput
             mt="xl"
             placeholder="Password"
@@ -44,8 +40,10 @@ const LoginForm = () => {
             {...form.getInputProps("password")}
             required
           />
+
           <Group position="right" mt="xl">
             <Button
+            size="md"
               variant="gradient"
               gradient={{ from: "violet", to: "cyan" }}
               type="submit"

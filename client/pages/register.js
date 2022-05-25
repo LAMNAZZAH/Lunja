@@ -1,18 +1,18 @@
-import LoginForm from "../components/Forms/LoginForm";
+import RegisterForm from "../components/Forms/RegisterForm";
 import HeadData from "../components/HeadData";
 import frame1 from '../public/frame1.svg'
 import Image from 'next/image';
 
-import styles from "../styles/Login.module.scss";
+import styles from "../styles/register.module.scss";
 
-const login = () => {
+const register = () => {
   return (
     <>
-      <HeadData title="Login Page | Lunja Academy" />
+      <HeadData title="Register Page | Lunja Academy" />
       <main>
-        <div className={styles.mainLoginSection}>
+        <div className={styles.mainRegisterSection}>
           <div className={styles.leftBlock}>
-            <LoginForm />
+            <RegisterForm />
           </div>
           <div className={styles.rightBlock}>
             <h1 className={styles.rightTitle}>
@@ -26,4 +26,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default register;
