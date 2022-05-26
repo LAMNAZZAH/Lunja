@@ -1,70 +1,109 @@
 .profileContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    .leftBlockContainer {
-        flex: .7;
-        background-color: blue;
-        height: 100vh;
-        margin: 30px;
-        .mainSection {
-            .backgroundImageContainer{
-                position: relative;
-                width: 100%;
-                height: 20vh;
-                background-color: purple;
-                
-                img {
-                    object-fit: cover;
-                }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .leftBlockContainer {
+    flex: 0.7;
+    background-color: white;
+    height: 100vh;
+    margin: 30px;
+    .mainSection {
+      .ImagesContainer {
+        .backgroundImageContainer {
+          position: relative;
+          width: 100%;
+          height: 20vh;
+          background-color: white;
 
-                .profileImageContainer {
-                    width:100px;
-                    height: 100px;
-                    position: absolute;
-                    bottom: -20%;
-                    left: 5%;
-                    border: 4px solid white;
-                    border-radius: 50%;
-                }
-            }
+          img {
+            object-fit: cover;
+          }
+
+          .profileImageContainer {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            bottom: -20%;
+            left: 5%;
+            border: 4px solid white;
+            border-radius: 50%;
+          }
         }
-    }
-    .rightBlockContainer {
-        margin: 30px;
-        flex: .3;
-        background-color: red;
-        height: 100vh;
-        width: auto;
+      }
+      .mainProfileInfoContainer {
+          margin: 20px;
+          background-color: red;
+          .NameBiefSection {
+              background-color: green;
+              margin: 20px;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              .left {
+                  background-color: cyan;
+                  flex: .8;
+                  .fullname {
+                      font-size: 30px;
+                      font-weight: 700;
+                      margin: 10px ;
+                  }
+                  .degreeLevel {
+                      margin: 10px;
+                      font-size: 20px;
+                      font-weight: 500;
+                  }
+                  .following {
+                      margin: 15px;
+                      font-size: 20px;
 
-        .announcementsSection {
-            position: relative;
-            width: auto;
-            height: 270px;
-            z-index: 10;
-
-            img {
-                object-fit: cover;
-            }
-        }
+                      span {
+                          font-weight: 600;
+                          margin-left: 10px;
+                      }
+                  }
+                }
+                  .right {
+                      background-color: purple;
+                      flex: .3;
+                      
+                  }
+              
+          }
+      }
     }
+  }
+  .rightBlockContainer {
+    margin: 30px;
+    flex: 0.3;
+    background-color: white;
+    height: 100vh;
+    width: auto;
+
+    .announcementsSection {
+      position: relative;
+      width: auto;
+      height: 270px;
+
+      img {
+        object-fit: cover;
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 900px) {
-    .profileContainer {
-        .leftBlockContainer {
-            flex: 1;
-            .mainSection {
-                .backgroundImageContainer {
-                    .profileImageContainer {
-
-                    }
-                }
-            }
+  .profileContainer {
+    .leftBlockContainer {
+      flex: 1;
+      .mainSection {
+        .backgroundImageContainer {
+          .profileImageContainer {
+          }
         }
-        .rightBlockContainer {
-            display: none;
-        }
+      }
     }
+    .rightBlockContainer {
+      display: none;
+    }
+  }
 }
-
