@@ -4,6 +4,9 @@
     
 
     .loginTitle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         left: 0%;
         bottom: 100%;
         position: absolute;
@@ -18,7 +21,7 @@
     .loginFormContainer {
         .loginTitle {
             size: 80%;
-            left: 2%;
+            left: 21%;
 
         }
     }

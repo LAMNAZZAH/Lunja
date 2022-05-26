@@ -18,10 +18,9 @@ const LoginForm = () => {
 
   return (
     <div className={styles.loginFormContainer}>
-      <Group className={styles.loginTitle} position="left" mt="xl">
-        <UserCircle size={44} color="lightgray" />
+      <div className={styles.loginTitle} position="left" mt="xl">
         <h1 className={styles.titleText}>Login</h1>
-      </Group>
+      </div>
 
       <Box className={styles.box} sx={{ maxWidth: 300 }} mx="auto">
         <form onSubmit={form.onSubmit(handleSubmitForm)}>

@@ -30,21 +30,13 @@ const RegisterForm = () => {
       2: ['email', 'account_type', 'level' ],
       3: ['username', 'password', 'confirmPassword' ]
     }
-
-    const hasError = false;
-
-    fields[page].forEach(pageField => {
-       hasError = form.validateField(pageField).hasError;
-       console.log(hasError);
-       if (hasError) return hasError;
-       
-       
+    
+    const error = false;
+    fields[page].forEach(field => {
+      if (form.validateField(field).hasError == true) {error = true}
     });
-
-    if (page < 3 && !hasError) {
-    return setPage(page + 1);
-    }
-
+    if (error) return;
+    else setPage(page + 1)
   };
 
   const previousPage = () => {
@@ -52,7 +44,7 @@ const RegisterForm = () => {
       return setPage(page - 1);
       }
   };
-
+/*
   useEffect(() => {
     if (Object.keys(form.errors).some(key => key == "first_name" || key == "last_name")) {
       setPage(1);
@@ -60,6 +52,7 @@ const RegisterForm = () => {
       setPage(2);
     }
   }, [])
+  */
 
   const handleSubmitForm = (values) => {
     console.log(values);
@@ -69,7 +62,6 @@ const RegisterForm = () => {
 
     <div className={styles.registerFormContainer}>
       <div className={styles.registerTitle} >
-        <UserCircle size={44} color="lightgray" />
         <h1 className={styles.titleText}>Register</h1>
       </div>
 
@@ -160,7 +152,9 @@ mt="xl"
 
           <Group position="right" mt="xl">
 
-            <Button onClick={() => previousPage()} variant="subtle" color="violet" radius="xl" type="button">
+            <Button onClick={() => previousPage()} variant="subtle" color="violet" radius="xl" type="button"
+            disabled={page == 1}
+            >
               Back
             </Button>
 
