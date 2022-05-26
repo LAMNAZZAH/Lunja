@@ -1,5 +1,6 @@
 import { useContext, useState } from "react"
 import { authContext } from "../contexts/auth";
+import { logout } from '../utils/api/accountApi';
 
 const Posts = () => {
     const {user, loading} = useContext(authContext);
@@ -13,6 +14,7 @@ const Posts = () => {
         <h1>posts</h1>
         <h3>{user.username}</h3>
         <button onClick={() => loadIt()}>load</button>
+        <button onClick={() => logout()}>logout</button>
     </div>
   )
 }

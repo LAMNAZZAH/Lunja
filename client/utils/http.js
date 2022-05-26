@@ -1,4 +1,5 @@
 import axios from 'axios'; 
+import Cookies from 'js-cookie';
 
 const defaultHeaders = { 'Content-Type': 'application/json'}
 
@@ -11,7 +12,10 @@ const  urls = {
 const instance = axios.create({
     baseURL: urls[`${process.env.NEXT_PUBLIC_NODE_ENV}`],
     //withCredentials: true,
-}); 
+});
+
+
+
 
 
 const httpRequest = async (method, url, body, headers = {}) => {
@@ -27,9 +31,22 @@ const httpRequest = async (method, url, body, headers = {}) => {
     }
 
     if (body) params.data = body;
+
+    //intercept requests to add AUTH token to it 
+    /*instance.interceptors.request.use(function (params) {
+        const token = Cookies.get('token'); 
+        params.headers.Authorization = token ? `Bearer ${token}` : '';
+        return params
+    })*/
+
+    instance.interceptors.request.use(function (params) {
+        const token = Cookies.get('token'); 
+        params.headers.Authorization = token ? `${token}` : '';
+        return params
+    });
     
     const response = await instance(params);
-
+    
     const data = await response.data
 
     return data

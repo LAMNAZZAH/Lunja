@@ -5,15 +5,20 @@ import { UserCircle } from "tabler-icons-react";
 
 import styles from "./LoginForm.module.scss";
 
-const LoginForm = () => {
+const LoginForm = ({submitCallback}) => {
   const form = useForm({
     initialValues: { usernameOrEmail: "", password: "" },
   });
-  
-  const [errors, setErrors] = useState([]);
 
   const handleSubmitForm = (values) => {
     console.log(values);
+
+    if (typeof submitCallback === 'function') {
+      submitCallback({
+        usernameOrEmail: form.values.usernameOrEmail, 
+        password: form.values.password
+      })
+    }
   };
 
   return (
@@ -29,7 +34,7 @@ const LoginForm = () => {
             label="username/email"
             placeholder="Username/Email"
             {...form.getInputProps("usernameOrEmail")}
-            required
+            
           />
 
           <PasswordInput
@@ -37,7 +42,7 @@ const LoginForm = () => {
             placeholder="Password"
             label="Password"
             {...form.getInputProps("password")}
-            required
+            
           />
 
           <Group position="right" mt="xl">
