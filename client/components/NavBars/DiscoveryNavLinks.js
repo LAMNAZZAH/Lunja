@@ -1,4 +1,4 @@
-import styles from "./NavLinks.module.scss";
+import styles from "./DiscoveryNavLinks.module.scss";
 import Link from "next/link";
 import { Button } from "@mantine/core";
 import { User } from 'tabler-icons-react';

@@ -1,0 +1,86 @@
+@import "../../styles/variables.module.scss";
+
+.navBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: $main-background;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  border-radius: 0px;
+  background: #ffffff;
+  box-shadow: 5px 5px 5px #ebebeb, -5px -5px 5px #ffffff;
+  .logo {
+    cursor: pointer;
+    margin: 10px;
+  }
+
+  .activeNavLink {
+    color: $main-green;
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  .navLinks {
+    display: none;
+    position: absolute;
+
+    .navLink {
+      color: $dark-gray;
+      font-weight: 700;
+      font-size: 16px;
+
+      &:hover {
+        color: $main-green;
+      }
+    }
+  }
+
+  .loginRegisterContainer {
+    .registerButton {
+      display: none;
+    }
+    .loginLink {
+      display: none;
+    }
+  }
+}
+
+@media screen and (min-width: 680px) {
+  .navBar {
+    height: 10vh;
+    .navLinks {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      flex-grow: 0.3;
+    }
+    .navBurger {
+      display: none;
+    }
+    .loginRegisterContainer {
+      .registerButton {
+        display: unset;
+        color: white;
+        padding: 10px 17px;
+        margin: 12px;
+        font-size: 18px;
+        border-radius: 93px;
+        background: #3494E6;
+        border: none;
+        cursor: pointer;
+        background: -webkit-linear-gradient(to right, #EC6EAD, #3494E6);  
+        background: linear-gradient(to right, #EC6EAD, #3494E6);
+        
+      }
+      .loginLink {
+        display: unset;
+        color: $dark-gray;
+      font-weight: 700;
+      font-size: 16px;
+      }
+    }
+  }
+}

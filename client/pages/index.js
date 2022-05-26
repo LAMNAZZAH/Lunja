@@ -1,5 +1,5 @@
 import HeadData from "../components/HeadData";
-import DiscoveryNavBar from "../components/DiscoveryNavBar";
+import DiscoveryNavBar from "../components/NavBars/DiscoveryNavBar";
 
 import styles from "../styles/Home.module.scss";
 

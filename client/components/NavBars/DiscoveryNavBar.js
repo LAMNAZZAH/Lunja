@@ -4,10 +4,10 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Button, Drawer, ActionIcon } from "@mantine/core";
 import { Menu2, X, User } from "tabler-icons-react";
-import NavLinks from "./NavLinks";
+import NavLinks from "./DiscoveryNavLinks";
 import { motion } from "framer-motion";
 
-import LunjaLogo from "../public/lunjaLandscapeLight.svg";
+import LunjaLogo from "../../public/lunjaLandscapeLight.svg";
 
 import styles from "./DiscoveryNavBar.module.scss";
 
