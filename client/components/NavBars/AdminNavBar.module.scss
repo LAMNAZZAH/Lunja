@@ -1,6 +1,7 @@
 @import "../../styles/variables.module.scss";
 
 .navBar {
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -59,7 +60,7 @@
     }
     .username {
       margin-right: 10px;
-      display: unset;
+
     }
   }
 }
@@ -87,10 +88,15 @@
       }
       .username {
         display: unset;
-        color: $dark-gray;
-      font-weight: 700;
-      font-size: 16px;
       }
     }
   }
+}
+
+@media screen and (max-width: 680px) {
+
+  .username {
+    display: none;
+  }
+
 }

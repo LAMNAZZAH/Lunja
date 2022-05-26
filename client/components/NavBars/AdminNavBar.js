@@ -66,9 +66,9 @@ const AdminNavBar = () => {
 
         <div className={styles.navlink}>
           <Link href="/discover">
-            <Users strokeWidth={3} color={'#808080'} />
+            <Users  strokeWidth={3} color={'#808080'} />
           </Link>
-          <Link href='/groups'>
+          <Link href='/discover'>
           <a>Groups</a>
           </Link>
         </div>
@@ -84,10 +84,10 @@ const AdminNavBar = () => {
 
       </ul>
       <div className={styles.ProfileNameContainer}>
-        <Link href="/profile">
+        <Link href={`/profile/${user.username}`}>
           <a className={styles.username}>{user.username}</a>
         </Link>
-        <Link href="/profile">
+        <Link href={`/profile/${user.username}`}>
           <Avatar
             className={styles.profilePicture}
             src={null}

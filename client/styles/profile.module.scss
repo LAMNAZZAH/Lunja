@@ -1,0 +1,39 @@
+.profileContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .leftBlockContainer {
+        flex: .7;
+        background-color: blue;
+        height: 100vh;
+        margin: 30px;
+        .mainSection {
+            .backgroundImageContainer{
+                position: relative;
+                object-fit: cover;
+                width: 100%;
+                height: 20vh;
+                background-color: purple;
+                
+                img {
+                    object-fit: cover;
+                }
+
+                .profileImageContainer {
+                    width:100px;
+                    height: 100px;
+                    position: absolute;
+                    bottom: -20%;
+                    left: 5%;
+                }
+            }
+        }
+    }
+    .rightBlockContainer {
+        margin: 30px;
+        flex: .3;
+        background-color: red;
+        height: 100vh;
+        width: auto;
+    }
+}

@@ -9,21 +9,21 @@ const AdminNavLinks = () => {
       <ul className={styles.navLinks}>
         <div className={styles.navLink}>
           <Link href="/">
-            <SmartHome strokeWidth={3} color={"#808080"} />
+            <SmartHome size={30} strokeWidth={3} color={"#808080"} />
           </Link>
           <a>Home</a>
         </div>
 
         <div className={styles.navLink}>
           <Link href="/discover">
-            <Users strokeWidth={3} color={"#808080"} />
+            <Users size={30} strokeWidth={3} color={"#808080"} />
           </Link>
           <a>Groups</a>
         </div>
 
         <div className={styles.navLink}>
           <Link href="/blog">
-            <Notification strokeWidth={3} color={"#808080"} />
+            <Notification size={30} strokeWidth={3} color={"#808080"} />
           </Link>
           <a>Notifications</a>
         </div>
