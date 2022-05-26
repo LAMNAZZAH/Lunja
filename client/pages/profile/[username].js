@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { useContext } from 'react';
+import { Link } from 'tabler-icons-react';
 import { authContext } from '../../contexts/auth';
 
 import styles from '../../styles/profile.module.scss';
@@ -24,7 +25,9 @@ const profile = () => {
             </section>
         </div>
         <div className={styles.rightBlockContainer}>
-            <h2>People you may know</h2>
+            <section className={styles.announcementsSection}>
+                <Image layout='fill' src='/announcement.png' />
+            </section>
         </div>
     </div>
   )

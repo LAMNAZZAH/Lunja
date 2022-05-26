@@ -10,7 +10,6 @@
         .mainSection {
             .backgroundImageContainer{
                 position: relative;
-                object-fit: cover;
                 width: 100%;
                 height: 20vh;
                 background-color: purple;
@@ -25,6 +24,8 @@
                     position: absolute;
                     bottom: -20%;
                     left: 5%;
+                    border: 4px solid white;
+                    border-radius: 50%;
                 }
             }
         }
@@ -35,5 +36,35 @@
         background-color: red;
         height: 100vh;
         width: auto;
+
+        .announcementsSection {
+            position: relative;
+            width: auto;
+            height: 270px;
+            z-index: 10;
+
+            img {
+                object-fit: cover;
+            }
+        }
     }
 }
+
+@media screen and (max-width: 900px) {
+    .profileContainer {
+        .leftBlockContainer {
+            flex: 1;
+            .mainSection {
+                .backgroundImageContainer {
+                    .profileImageContainer {
+
+                    }
+                }
+            }
+        }
+        .rightBlockContainer {
+            display: none;
+        }
+    }
+}
+
