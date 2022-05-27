@@ -49,7 +49,7 @@ const createLoginController = async (req, res, next) => {
             status: data.user.status,
           },
           process.env.JWT_SECRET,
-          { expiresIn: process.env.ACCESS_TOKEN_LIFETIME },
+          { expiresIn: "600s" || process.env.ACCESS_TOKEN_LIFETIME },
           (err, token) => {
             res.status(200).json({ ok: true, token });
           }
