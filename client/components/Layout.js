@@ -5,18 +5,22 @@ import { authContext } from '../contexts/auth';
 import { useContext } from 'react';
 import AdminNavBar from './NavBars/AdminNavBar';
 
+import styles from './Layout.module.scss';
+
 export default function Layout({children}) {
 
     const { isLoggedIn, getUserFromCookies } = useContext(authContext);
 
     return (
-        <div>
+        <div className={styles.layoutContainer}>
             { isLoggedIn ?
-            (<AdminNavBar/>) : (<header>
+            (<AdminNavBar/>) : (
                 <DiscoveryNavBar/>
-                </header>)
+                )
             }
+            
             {children}
+            
             <Footer/>
         </div>
     )

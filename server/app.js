@@ -20,8 +20,7 @@ const App = () => {
   app.use(morgan('dev'));
   app.use(cors(corsOptions));
 
-  // Check who is making the request : (authentication)
-  // And it should be used before handling ever request
+  
   app.use(verifyToken);
   
   app.get('/', async (req, res) => {

@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { authContext } from "../../contexts/auth";
 
+import University from '../../components/profile/University';
+
 import styles from "../../styles/profile.module.scss";
 
 const profile = () => {
@@ -49,10 +51,42 @@ const profile = () => {
             </div>
           </div>
         </section>
+        <section className={styles.aboutSection}>
+          <div className={styles.titleBlock}>
+             <h2>About</h2>
+          </div>
+          <div className={styles.bodyBlock}>
+            <div className={styles.about}>
+              {user.about}
+            </div>
+            <div className={styles.interests}>
+              <h2>Interests</h2>
+            </div>
+          </div>
+        </section>
+        <section className={styles.myfeedSection}>
+          <div className={styles.titleBlock}>
+            <h2>Posts</h2>
+          </div>
+          <div className={styles.latestPostsBlock}>
+
+          </div>
+        </section>
+        <University user={user}/>
       </div>
       <div className={styles.rightBlockContainer}>
         <section className={styles.announcementsSection}>
           <Image layout="fill" src="/announcement.png" />
+        </section>
+        <section className={styles.peopleYouMayKnowSection}>
+          <div className={styles.titleBlock}>
+            <h2>People You May Know</h2>
+          </div>
+        </section>
+        <section className={styles.blogSection}>
+          <div className={styles.titleBlock}>
+            <h2>Blog</h2>
+          </div>
         </section>
       </div>
     </div>
