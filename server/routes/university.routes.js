@@ -5,10 +5,10 @@ const { verifyToken, authenticatedOnly } = require('../middlewares/Authenticatio
 
 
 const router = express.Router();
-const { createUniversityController, getUniversitiesController } = universityControllers
+const { createUniversityController, SelectUniversitiesController } = universityControllers
 
 router.post('/',authenticatedOnly, createUniversityController);
-router.get('/', getUniversitiesController);
+router.get('/', SelectUniversitiesController);
 
 
 

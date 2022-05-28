@@ -3,12 +3,14 @@ import { useContext } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { authContext } from "../../contexts/auth";
+import axios from 'axios';
 
 import University from '../../components/profile/University';
 
 import styles from "../../styles/profile.module.scss";
 
-const profile = () => {
+
+const profile = ({univs}) => {
   const { user } = useContext(authContext);
   const router = useRouter();
 
@@ -71,7 +73,7 @@ const profile = () => {
           <div className={styles.latestPostsBlock}>
           </div>
         </section>
-        <University/>
+        <University univs={univs}/>
       </div>
       <div className={styles.rightBlockContainer}>
         <section className={styles.announcementsSection}>
@@ -92,9 +94,21 @@ const profile = () => {
   );
 };
 
-/*export function getServerSideProps {
-    
-}*/
+export async function getServerSideProps(context) {
+  let univs = [];
+  const response = await axios.get("http://localhost:5000/api/university", {
+    Headers:
+      { 'Content-Type': 'application/json'}
+  });
+   
+  if (response?.data.ok) {
+    univs = await response.data.universities
+    console.log(univs);
+  }
+  return {
+    props: {univs}, 
+  }
+}
 
 profile.requireAuth = true;
 

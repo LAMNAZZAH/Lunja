@@ -10,16 +10,19 @@ const createUniversityController = async (req, res, next) => {
   });
 };
 
-const getUniversitiesController = async (req, res, next) => {
+const SelectUniversitiesController = async (req, res, next) => {
   const { fetchAllUniveristies } = universityModel;
 
   await fetchAllUniveristies().then((data) => {
     if (data.ok) {
-      const univs = [];
       data.universities.forEach(univ => {
-        univs.push(univ['name']);
+        univ['value'] = univ['university_id'];
+        delete univ['university_id'];
+        univ['label'] = univ['name'];
+        delete univ['name'];
       })
-      res.status(200).json({ok: true, universities: univs});
+      
+      res.status(200).json(data);
     }
     else res.status(400).json(data);
   });
@@ -27,5 +30,5 @@ const getUniversitiesController = async (req, res, next) => {
 
 module.exports = {
   createUniversityController,
-  getUniversitiesController,
+  SelectUniversitiesController,
 };

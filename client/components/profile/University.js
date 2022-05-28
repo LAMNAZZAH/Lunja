@@ -1,12 +1,12 @@
 import { ActionIcon, Select, TextInput, Modal, Button } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { Edit } from "tabler-icons-react";
-import { useEffect, useState } from "react";
-import { getUniversities } from "../../utils/api/universityApi";
+import { useState } from "react";
+
 
 import styles from "./styles/University.module.scss";
 
-const University = ({univs}) => {
+const University = (props) => {
   const [opened, setOpened] = useState(false);
 
   const form = useForm({
@@ -19,9 +19,20 @@ const University = ({univs}) => {
 
   return (
     <section className={styles.universitySection}>
-    
+      <Modal
+        opened={opened}
+        onClose={() => setOpened(false)}
+        title="Edit University"
+        padding="xl"
+        size="xl"
+      >
         <form onSubmit={form.onSubmit((values) => console.log(values))}>
-      
+          <Select
+            label="My university"
+            placeholder="Select Your university"
+            {...form.getInputProps("university")}
+            data={props.univs}
+          />
 
           <TextInput
             label="Academic Year"
@@ -29,9 +40,9 @@ const University = ({univs}) => {
             {...form.getInputProps("year")}
           />
 
-          <Button type="submit">Edit</Button>
+          <Button mt="md" type="submit">Edit</Button>
         </form>
-
+      </Modal>
 
       <div className={styles.titleBlock}>
         <h2>University</h2>
@@ -44,14 +55,7 @@ const University = ({univs}) => {
   );
 };
 
-export async function getServerSideProps(context) {
-  const response = await getUniversities(); 
-  const univs = await response.universities 
-  console.log(univs);
-  return {
-    props: {univs}, 
-  }
-}
+
 
 
 export default University;

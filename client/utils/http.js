@@ -32,13 +32,6 @@ const httpRequest = async (method, url, body, headers = {}) => {
 
     if (body) params.data = body;
 
-    //intercept requests to add AUTH token to it 
-    /*instance.interceptors.request.use(function (params) {
-        const token = Cookies.get('token'); 
-        params.headers.Authorization = token ? `Bearer ${token}` : '';
-        return params
-    })*/
-
     instance.interceptors.request.use(function (params) {
         const token = Cookies.get('token'); 
         params.headers.Authorization = token ? `${token}` : '';

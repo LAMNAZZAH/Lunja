@@ -179,9 +179,9 @@ model report {
 
 model speciality {
   speciality_id         Int                     @id @default(autoincrement())
-  name                  String                  @unique(map: "name_UNIQUE") @db.VarChar(45)
+  name                  String                  @unique(map: "name_UNIQUE") @db.VarChar(200)
   brief                 String?                 @db.VarChar(200)
-  about                 String?                 @db.VarChar(400)
+  about                 String?                 @db.VarChar(1000)
   speciality_subject    speciality_subject[]
   university_speciality university_speciality[]
   university_user       university_user[]

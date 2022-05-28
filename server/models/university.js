@@ -1,5 +1,4 @@
-const { PrismaClient } = require("@prisma/client");
-const prisma = new PrismaClient();
+const prisma = require('../prisma');
 
 const createUniversity = async (_name, description) => {
     try {
@@ -20,6 +19,7 @@ const fetchAllUniveristies = async () => {
     try {
         const universities = await prisma.university.findMany({
             select: {
+                university_id: true,
                 name: true,
             }
         }); 
