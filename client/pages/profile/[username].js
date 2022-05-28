@@ -69,10 +69,9 @@ const profile = () => {
             <h2>Posts</h2>
           </div>
           <div className={styles.latestPostsBlock}>
-
           </div>
         </section>
-        <University user={user}/>
+        <University/>
       </div>
       <div className={styles.rightBlockContainer}>
         <section className={styles.announcementsSection}>

@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
 import { Button, Drawer, ActionIcon, Avatar } from "@mantine/core";
-import motion from 'framer-motion';
+import motion from "framer-motion";
 import {
   Menu2,
   X,
@@ -44,6 +44,7 @@ const AdminNavBar = () => {
 
       <div className={styles.logo}>
         <Link href="/">
+          <a>
           <Image
             priority={true}
             src={LunjaLogo}
@@ -51,37 +52,43 @@ const AdminNavBar = () => {
             height={45}
             width={170}
           />
+          </a>
         </Link>
       </div>
 
       <ul className={styles.navLinks}>
         <div className={styles.navlink}>
           <Link href="/">
-            <SmartHome  strokeWidth={3} color={'#808080'}/>
+            <a>
+              <Image className={styles.icon} src="/home.svg" width={23} height={23} />
+            </a>
           </Link>
           <Link href="/">
-          <a>Home</a>
+            <a>Home</a>
           </Link>
         </div>
 
         <div className={styles.navlink}>
           <Link href="/discover">
-            <Users  strokeWidth={3} color={'#808080'} />
+          <a>
+              <Image className={styles.icon} src="/group.svg" width={23} height={23} />
+            </a>
           </Link>
-          <Link href='/discover'>
-          <a>Groups</a>
+          <Link href="/discover">
+            <a>Groups</a>
           </Link>
         </div>
 
         <div className={styles.navlink}>
           <Link href="/blog">
-            <Notification strokeWidth={3} color={'#808080'}/>
+          <a>
+              <Image className={styles.icon} src="/notifications.svg" width={23} height={23} />
+            </a>
           </Link>
-          <Link href='/notification'>
-          <a>Notifications</a>
+          <Link href="/notification">
+            <a>Notifications</a>
           </Link>
         </div>
-
       </ul>
       <div className={styles.ProfileNameContainer}>
         <Link href={`/profile/${user.username}`}>

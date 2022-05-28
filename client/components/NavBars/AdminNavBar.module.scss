@@ -33,6 +33,14 @@
       justify-content: center;
       flex-direction: column;
 
+      .icon {
+        opacity: 75%;
+
+        &:hover {
+          opacity: 100%;
+        }
+      }
+
       &:hover {
         cursor: pointer;
         color: black;

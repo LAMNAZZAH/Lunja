@@ -20,7 +20,7 @@ const RegisterForm = () => {
     }
   });
 
-  const [errors, setErrors] = useState([]);
+  //const [errors, setErrors] = useState([]);
   const [page, setPage] = useState(1);
 
   const nextPage = () => {

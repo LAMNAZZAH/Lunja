@@ -264,10 +264,10 @@ model university_user {
   university_user_id Int        @default(autoincrement())
   user_id            Int
   university_id      Int
-  joined_at          DateTime?  @default(now()) @db.Timestamp(0)
+  joined_at          Int?       @db.Year
   left_at            DateTime?  @db.Timestamp(0)
   degree_optained    String?    @db.VarChar(45)
-  status             String     @db.VarChar(45)
+  status             String     @default("active") @db.VarChar(45)
   speciality_id      Int
   speciality         speciality @relation(fields: [speciality_id], references: [speciality_id], onDelete: Cascade, map: "speciality_id")
   university         university @relation(fields: [university_id], references: [university_id], onDelete: Cascade, map: "university_id")

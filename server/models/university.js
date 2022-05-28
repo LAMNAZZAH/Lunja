@@ -19,12 +19,8 @@ const createUniversity = async (_name, description) => {
 const fetchAllUniveristies = async () => {
     try {
         const universities = await prisma.university.findMany({
-            include: {
-                location: {
-                    select: {
-                        city: true,
-                    }
-                }
+            select: {
+                name: true,
             }
         }); 
         return { ok: true, universities };

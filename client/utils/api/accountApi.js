@@ -2,17 +2,6 @@ import { getRequest, postRequest } from "../http";
 import Cookies from "js-cookie";
 
 
-const testGetTodos = async () => {
-  try {
-    const response = await getRequest("todos", null);
-    if (response) return response;
-
-    console.log("data: " + response);
-  } catch {}
-
-  return null;
-};
-
 const getIsLoggedIn = async () => {
   const token = Cookies.get("token");
   //Cookies.get('token', `Bearer ${token}`);
@@ -41,7 +30,6 @@ const logout = () => {
 }
 
 module.exports = {
-  testGetTodos,
   getIsLoggedIn,
   postLogin,
   logout,

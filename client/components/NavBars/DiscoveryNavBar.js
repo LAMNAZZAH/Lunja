@@ -2,12 +2,11 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { Button, Drawer, ActionIcon } from "@mantine/core";
-import { Menu2, X, User } from "tabler-icons-react";
+import { Drawer, ActionIcon } from "@mantine/core";
+import { Menu2, X } from "tabler-icons-react";
 import NavLinks from "./DiscoveryNavLinks";
-import { motion } from "framer-motion";
 
-import LunjaLogo from "../../public/lunjaLandscapeLight.svg";
+//import LunjaLogo from "../../public/lunjaLandscapeLight.svg";
 
 import styles from "./DiscoveryNavBar.module.scss";
 
@@ -35,13 +34,9 @@ const DiscoveryNavBar = () => {
 
       <div className={styles.logo}>
         <Link href="/">
-          <Image
-            priority={true}
-            src={LunjaLogo}
-            alt="Lunja app Logo"
-            height={45}
-            width={170}
-          />
+          <>
+          <Image src="/lunjaLandscapeLight.svg" width={120} height={70} />
+          </>
         </Link>
       </div>
 
