@@ -44,4 +44,4 @@ B --> D(Document)
 
 |     SN           |Method     |Route    |   Request Data | Response Data | description
 |----------------|-------------------------------|-----------------------------|--|---|---
-|1|GET|/api/university          | | {"ok": Boolean, universities: [] } |select all universities names and ids
+|1|GET|/api/university          | | {"ok": Boolean, universities: [{value: <id>, label:<name>}] } |select all universities names and ids
