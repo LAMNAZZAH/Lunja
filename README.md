@@ -39,3 +39,9 @@ B --> D(Document)
 |2|POST|/api/auth/register |{"first_name", "last_name", "username", "level", "password", "account_type", "email"}| {"ok":Boolean, "errors":[]}| register 
 |3|GET|/api/auth |    | {"isLoggedIn: Boolean, "data":{}} | checks if the user is LoggedIn
 
+### University:
+
+
+|     SN           |Method     |Route    |   Request Data | Response Data | description
+|----------------|-------------------------------|-----------------------------|--|---|---
+|1|GET|/api/university          | | {"ok": Boolean, universities: [] } |select all universities names and ids
