@@ -45,4 +45,11 @@ B --> D(Document)
 |     SN           |Method     |Route    |   Request Data | Response Data | description
 |----------------|-------------------------------|-----------------------------|--|---|---
 |1|GET|/api/university          | | {"ok": Boolean, universities: [{value: [id], label: [name] }] } |select all universities names and ids
-|2|GET|/api/speciality?university=${university_id}| | {ok: Boolean, specialities:{ value: [id], label: [name] } | select specialities that belong to a university
+
+
+### Speciality:
+
+
+|     SN           |Method     |Route    |   Request Data | Response Data | description
+|----------------|-------------------------------|-----------------------------|--|---|---
+|1|GET|/api/speciality?university=${university_id}| | {ok: Boolean, specialities:{ value: [id], label: [name] } | select specialities that belong to a university
