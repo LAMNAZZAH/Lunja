@@ -1,0 +1,81 @@
+.mainSection {
+    //height: 20vh;
+    padding-bottom: 10px;
+    background-color: white;
+    border-radius: 10px;
+    .ImagesContainer {
+      .backgroundImageContainer {
+        position: relative;
+        width: 100%;
+        height: 20vh;
+        background-color: white;
+
+        img {
+          object-fit: cover;
+        }
+
+        .profileImageContainer {
+          width: 100px;
+          height: 100px;
+          position: absolute;
+          bottom: -20%;
+          left: 5%;
+          border: 4px solid white;
+          border-radius: 50%;
+        }
+      }
+    }
+    .mainProfileInfoContainer {
+      margin: 20px;
+      //background-color: red;
+      .NameBiefSection {
+        //background-color: green;
+        margin: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .left {
+          //background-color: cyan;
+          flex: 0.8;
+          .fullname {
+            font-size: 30px;
+            font-weight: 500;
+            margin: 10px;
+          }
+          .degreeLevel {
+            margin: 10px;
+            font-size: 20px;
+            font-weight: 500;
+          }
+          .contactInfo {
+            margin: 10px;
+
+            &:hover {
+              color: rgb(187, 100, 245);
+            }
+          }
+          .followBlock {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            .following,
+            .followers {
+              margin: 15px;
+              font-size: 20px;
+              color: rgb(143, 143, 143);
+
+              span {
+                color: rgb(204, 204, 204);
+                font-weight: 600;
+                margin-left: 10px;
+              }
+            }
+          }
+        }
+        .right {
+          //background-color: purple;
+          flex: 0.3;
+        }
+      }
+    }
+  }

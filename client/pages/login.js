@@ -27,8 +27,8 @@ const login = () => {
       notifymssg("Logged In successfully");
       router.replace("/blog");
     } else {
-      const errors = response.errors;
-      errors.forEach((error) => {
+      const errors = response?.errors;
+      errors?.forEach((error) => {
         notifyerr(error);
       });
     }

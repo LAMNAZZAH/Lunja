@@ -1,13 +1,13 @@
 const express = require('express'); 
 
-const univUserControllers = require('../controllers/university.controllers');
+const univUserControllers = require('../controllers/univuser.controllers');
 const { authenticatedOnly } = require('../middlewares/Authentication');
 
 
 const router = express.Router();
-const {  } = univUserControllers;
+const { selectUniversityByUserId } = univUserControllers;
 
-router.post('/', authenticatedOnly, );
+router.get('/', selectUniversityByUserId);
 
 
 

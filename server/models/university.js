@@ -31,6 +31,7 @@ const findAllUniveristies = async () => {
 }
 
 
+
 module.exports = {
     createUniversity,
     findAllUniveristies

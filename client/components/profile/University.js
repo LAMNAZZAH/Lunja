@@ -1,6 +1,6 @@
 import { ActionIcon, Select, TextInput, Modal, Button } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import { Edit, Id } from "tabler-icons-react";
+import { Edit } from "tabler-icons-react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -85,7 +85,10 @@ const University = (props) => {
           <Edit />
         </ActionIcon> : null}
       </div>
-      <div className={styles.university}></div>
+      <div className={styles.university}>
+        <h3>{props.Univuser?.university}</h3>
+        <h4>{props.Univuser?.speciality}</h4>
+      </div>
     </section>
   );
 };
