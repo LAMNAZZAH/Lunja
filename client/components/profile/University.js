@@ -9,6 +9,7 @@ import styles from "./styles/University.module.scss";
 const University = (props) => {
   const [opened, setOpened] = useState(false);
   const [specialities, setSpecialities] = useState([]);
+
   const form = useForm({
     initialValues: {
       university: "",
@@ -28,6 +29,7 @@ const University = (props) => {
     if (response?.data.ok) {
       const data = await response.data.specialities;
       setSpecialities(data);
+      console.log("edit:" + props.editable);
       console.log(specialities);
     }
   };
@@ -79,9 +81,9 @@ const University = (props) => {
 
       <div className={styles.titleBlock}>
         <h2>University</h2>
-        <ActionIcon onClick={() => setOpened(true)}>
+        {props.editable ? <ActionIcon onClick={() => setOpened(true)}>
           <Edit />
-        </ActionIcon>
+        </ActionIcon> : null}
       </div>
       <div className={styles.university}></div>
     </section>

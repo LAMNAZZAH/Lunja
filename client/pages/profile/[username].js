@@ -1,7 +1,6 @@
 import Image from "next/image";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { authContext } from "../../contexts/auth";
 import NotFound from '../404.js';
 import axios from 'axios';
@@ -13,7 +12,9 @@ import styles from "../../styles/profile.module.scss";
 
 const profile = ({univs, User}) => {
   const { user } = useContext(authContext);
-  const router = useRouter();
+  const editable = false;
+
+  if (user.username == User.username) editable = true;
 
   return (
     <div>
@@ -76,7 +77,7 @@ const profile = ({univs, User}) => {
           <div className={styles.latestPostsBlock}>
           </div>
         </section>
-        <University univs={univs}/>
+        <University univs={univs} User={User} editable={editable}/>
       </div>
       <div className={styles.rightBlockContainer}>
         <section className={styles.announcementsSection}>

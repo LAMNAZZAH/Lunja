@@ -2,6 +2,7 @@ import React, {createContext, useContext, useEffect, useState} from 'react';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
 import { getIsLoggedIn } from '../utils/api/accountApi'
+import LoaderIcon from '../components/Loader/Loader';
 
 export const authContext = createContext({}); 
 
@@ -32,11 +33,11 @@ export const authContext = createContext({});
 }
 
 export const PrivateRoute = ({children}) => {
-    //!const router = useRouter();
-    const { isLoggedIn, loading} = useContext(authContext);
-    if (loading || !isLoggedIn && window.pathname !== '/login') return <h3>Loaading. . .</h3>
-
-    return children;
+    const router = useRouter();
+    const { isLoggedIn, loading } = useContext(authContext);
+    if (loading) return <LoaderIcon />
+    if (!loading && !isLoggedIn) return <h3>You need to login</h3>
+    return isLoggedIn && children;
 }
 
 
