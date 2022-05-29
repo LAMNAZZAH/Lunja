@@ -1,6 +1,5 @@
 const accountModel = require("../models/account");
 const jwt = require("jsonwebtoken");
-const { verifyToken } = require("../middlewares/Authentication");
 
 const {
   checkAllowedFields,
@@ -22,7 +21,6 @@ const createLoginController = async (req, res, next) => {
 
   await selectByUsernameOrEmail(body.usernameOrEmail).then((data) => {
       
-    console.log("data.user: " + data.ok);
     if (data.user == null) {
       res
         .status(400)

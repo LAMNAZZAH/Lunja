@@ -35,7 +35,7 @@ B --> D(Document)
 
 |     SN           |Method     |Route    |   Request Data | Response Data | description
 |----------------|-------------------------------|-----------------------------|--|---|---
-|1|POST|/api/auth/login           |{"usernameOrEmail":"<$username>"} | {"ok": Boolean, token} |login
-|2|POST|/api/auth/register |{"first_name", "last_name", "username", "level", "password", "account_type", "email"}| {"ok":Boolean, "errors":[]}| register 
-|3|GET|/api/auth |    | {"isLoggedIn: Boolean, "data":{}} | checks if the user is LoggedIn
+|1|POST|/api/account/auth/login           |{"usernameOrEmail":"<$username>"} | {"ok": Boolean, token} |login
+|2|POST|/api/account/auth/register |{"first_name", "last_name", "username", "level", "password", "account_type", "email"}| {"ok":Boolean, "errors":[]}| register 
+|3|GET|/api/account/auth |    | {"isLoggedIn: Boolean, "data":{}} | checks if the user is LoggedIn
 

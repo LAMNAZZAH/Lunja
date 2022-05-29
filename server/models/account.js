@@ -73,7 +73,7 @@ const selectByUsernameOrEmail = async (value) => {
         }); 
         return {user: user}
     } catch (error) {
-        return {ok: false, user: null}
+        return {ok: false, user: error}
     }
 }
 

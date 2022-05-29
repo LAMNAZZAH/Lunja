@@ -1,13 +1,13 @@
 const express = require('express'); 
 
-const universityControllers = require('../controllers/speciality.controllers');
+const specialityConrollers = require('../controllers/speciality.controllers');
 
 
 
 const router = express.Router();
-const { getSpecialitiesController } = universityControllers
+const { selectSpecialitiesByUniversityId } = specialityConrollers
 
-router.post('/',);
+router.get('/', selectSpecialitiesByUniversityId);
 
 
 

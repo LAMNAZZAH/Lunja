@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken')
-const { PrismaClient } = require('@prisma/client')
-const prismaClient = new PrismaClient()
+const prisma = require('../prisma');
 
 const { isNull } = require("../utils/generic");
 
@@ -29,11 +28,12 @@ const verifyToken = async (req, res, next) => {
 
         if (!payload?.username) return next()
 
-        const user = await prismaClient.user.findUnique({
+        const user = await prisma.user.findUnique({
             where: {
                 username: payload.username
             }
         })
+
 
         if (!user) return next()
 

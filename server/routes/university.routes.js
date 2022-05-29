@@ -1,14 +1,15 @@
 const express = require('express'); 
 
 const universityControllers = require('../controllers/university.controllers');
-const { verifyToken, authenticatedOnly } = require('../middlewares/Authentication');
+const { authenticatedOnly } = require('../middlewares/Authentication');
 
 
 const router = express.Router();
-const { createUniversityController, SelectUniversitiesController } = universityControllers
+const { createUniversityController, selectUniversitiesController } = universityControllers
 
-router.post('/',authenticatedOnly, createUniversityController);
-router.get('/', SelectUniversitiesController);
+router.post('/', authenticatedOnly, createUniversityController);
+router.get('/',selectUniversitiesController);
+router.put('/speciality')
 
 
 

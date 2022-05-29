@@ -10,10 +10,10 @@ const createUniversityController = async (req, res, next) => {
   });
 };
 
-const SelectUniversitiesController = async (req, res, next) => {
-  const { fetchAllUniveristies } = universityModel;
+const selectUniversitiesController = async (req, res, next) => {
+  const { findAllUniveristies } = universityModel;
 
-  await fetchAllUniveristies().then((data) => {
+  await findAllUniveristies().then((data) => {
     if (data.ok) {
       data.universities.forEach(univ => {
         univ['value'] = univ['university_id'];
@@ -30,5 +30,5 @@ const SelectUniversitiesController = async (req, res, next) => {
 
 module.exports = {
   createUniversityController,
-  SelectUniversitiesController,
+  selectUniversitiesController,
 };

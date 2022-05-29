@@ -6,7 +6,7 @@ const getIsLoggedIn = async () => {
   const token = Cookies.get("token");
   //Cookies.get('token', `Bearer ${token}`);
   try {
-    const response = await getRequest("/api/auth", null);
+    const response = await getRequest("/api/account/auth", null);
     return response;
   } catch (error) {}
   return null;
@@ -15,7 +15,7 @@ const getIsLoggedIn = async () => {
 const postLogin = async (usernameOrEmail, password) => {
   try {
     const response = await postRequest(
-      "/api/auth/login",
+      "/api/account/auth/login",
       { usernameOrEmail, password },
       null
     );

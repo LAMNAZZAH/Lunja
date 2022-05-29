@@ -1,21 +1,40 @@
 import { ActionIcon, Select, TextInput, Modal, Button } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import { Edit } from "tabler-icons-react";
-import { useState } from "react";
-
+import { Edit, Id } from "tabler-icons-react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 import styles from "./styles/University.module.scss";
 
 const University = (props) => {
   const [opened, setOpened] = useState(false);
-
+  const [specialities, setSpecialities] = useState([]);
   const form = useForm({
     initialValues: {
-      university: '', year: ''
-    }
+      university: "",
+      year: "",
+    },
   });
 
+  const fetchSpecialities = async () => {
+    const id = form.values.university || 8;
+    const response = await axios.get(
+      `http://localhost:5000/api/speciality?university=${id}`,
+      {
+        Headers: { "Content-Type": "application/json" },
+      }
+    );
 
+    if (response?.data.ok) {
+      const data = await response.data.specialities;
+      setSpecialities(data);
+      console.log(specialities);
+    }
+  };
+
+  useEffect(() => {
+    fetchSpecialities();
+  }, [form.values.university]);
 
   return (
     <section className={styles.universitySection}>
@@ -32,6 +51,18 @@ const University = (props) => {
             placeholder="Select Your university"
             {...form.getInputProps("university")}
             data={props.univs}
+            searchable
+            maxDropdownHeight={400}
+            nothingFound="found nothing"
+          />
+
+          <Select
+            label="My university"
+            placeholder="Select Your university"
+            {...form.getInputProps("speciality")}
+            data={specialities}
+            maxDropdownHeight={400}
+            nothingFound="found nothing"
           />
 
           <TextInput
@@ -40,7 +71,9 @@ const University = (props) => {
             {...form.getInputProps("year")}
           />
 
-          <Button mt="md" type="submit">Edit</Button>
+          <Button mt="md" type="submit">
+            Edit
+          </Button>
         </form>
       </Modal>
 
@@ -54,8 +87,5 @@ const University = (props) => {
     </section>
   );
 };
-
-
-
 
 export default University;

@@ -22,7 +22,6 @@ const login = () => {
     const { usernameOrEmail, password } = data;
     const response = await postLogin(usernameOrEmail, password);
     if (response && response.ok) {
-      //console.log("token res: " + response.token);
       Cookies.set("token", `Bearer ${response.token}`);
       getUserFromCookies();
       notifymssg("Logged In successfully");
@@ -48,7 +47,7 @@ const login = () => {
             <Image src={frame1} />
           </div>
         </div>
-        <Toaster position="top-left" />
+        <Toaster position="top-center" />
       </main>
     </>
   );

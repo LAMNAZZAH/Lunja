@@ -1,10 +1,10 @@
 const prisma = require('../prisma');
 
-const createUniversity = async (_name, description) => {
+const createUniversity = async (name, description) => {
     try {
         const university = await prisma.university.create({
             data: {
-                name: _name,
+                name: name,
                 description: description
             }
         });
@@ -15,7 +15,7 @@ const createUniversity = async (_name, description) => {
 }
 
 
-const fetchAllUniveristies = async () => {
+const findAllUniveristies = async () => {
     try {
         const universities = await prisma.university.findMany({
             select: {
@@ -33,5 +33,5 @@ const fetchAllUniveristies = async () => {
 
 module.exports = {
     createUniversity,
-    fetchAllUniveristies
+    findAllUniveristies
 }
