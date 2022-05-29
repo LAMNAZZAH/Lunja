@@ -3,6 +3,7 @@ import { useContext } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { authContext } from "../../contexts/auth";
+import NotFound from '../404.js';
 import axios from 'axios';
 
 import University from '../../components/profile/University';
@@ -10,12 +11,14 @@ import University from '../../components/profile/University';
 import styles from "../../styles/profile.module.scss";
 
 
-const profile = ({univs}) => {
+const profile = ({univs, User}) => {
   const { user } = useContext(authContext);
   const router = useRouter();
 
   return (
-    <div className={styles.profileContainer}>
+    <div>
+    { User ? (
+        <div className={styles.profileContainer}>
       <div className={styles.leftBlockContainer}>
         <section className={styles.mainSection}>
           <div className={styles.ImagesContainer}>
@@ -30,9 +33,9 @@ const profile = ({univs}) => {
             <div className={styles.NameBiefSection}>
               <div className={styles.left}>
                 <div className={styles.fullname}>
-                  {user.first_name + " " + user.last_name}
+                  {User?.first_name + " " + User?.last_name}
                 </div>
-                <div className={styles.degreeLevel}>{user.level}</div>
+                <div className={styles.degreeLevel}>{User?.level}</div>
                 <Link href="/ContactInfo">
                   <a className={styles.contactInfo} >Contact Info</a>
                 </Link>
@@ -59,10 +62,10 @@ const profile = ({univs}) => {
           </div>
           <div className={styles.bodyBlock}>
             <div className={styles.about}>
-              {user.about}
+              {User?.about}
             </div>
             <div className={styles.interests}>
-              <h2>Interests</h2>
+              <h3>Interests</h3>
             </div>
           </div>
         </section>
@@ -90,12 +93,16 @@ const profile = ({univs}) => {
           </div>
         </section>
       </div>
-    </div>
-  );
+    </div> 
+      ) : (<div><NotFound /></div>)}
+      </div>
+  )
 };
 
 export async function getServerSideProps(context) {
   let univs = [];
+  let User = {};
+
   const response = await axios.get("http://localhost:5000/api/university", {
     Headers:
       { 'Content-Type': 'application/json'}
@@ -105,8 +112,15 @@ export async function getServerSideProps(context) {
     univs = await response.data.universities
     console.log(univs);
   }
+
+  const { username } = context.params; 
+  //!note: when using utils functions throws error
+  const user = await axios.get(`${process.env.URL}/api/account/user/${username}`); 
+  User = await user.data.user
+  console.log(User);
+
   return {
-    props: {univs}, 
+    props: {univs, User}, 
   }
 }
 

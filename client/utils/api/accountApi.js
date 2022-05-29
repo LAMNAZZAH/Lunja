@@ -1,10 +1,7 @@
 import { getRequest, postRequest } from "../http";
 import Cookies from "js-cookie";
 
-
 const getIsLoggedIn = async () => {
-  const token = Cookies.get("token");
-  //Cookies.get('token', `Bearer ${token}`);
   try {
     const response = await getRequest("/api/account/auth", null);
     return response;
@@ -20,14 +17,16 @@ const postLogin = async (usernameOrEmail, password) => {
       null
     );
     return response;
-  } catch (error) { return error.response.data }
-
+  } catch (error) {
+    return error.response.data;
+  }
 };
 
+
 const logout = () => {
-  Cookies.remove('token'); 
-  window.location.pathname = '/login';
-}
+  Cookies.remove("token");
+  window.location.pathname = "/login";
+};
 
 module.exports = {
   getIsLoggedIn,

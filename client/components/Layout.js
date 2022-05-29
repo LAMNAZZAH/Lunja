@@ -9,7 +9,7 @@ import styles from './Layout.module.scss';
 
 export default function Layout({children}) {
 
-    const { isLoggedIn, getUserFromCookies } = useContext(authContext);
+    const { isLoggedIn } = useContext(authContext);
 
     return (
         <div className={styles.layoutContainer}>

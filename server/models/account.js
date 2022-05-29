@@ -71,15 +71,43 @@ const selectByUsernameOrEmail = async (value) => {
                 ],
             }
         }); 
-        return {user: user}
+        return {ok: true, user: user}
     } catch (error) {
         return {ok: false, user: error}
     }
 }
 
+const selectByUsername = async (value) => {
+  try {
+      const user = await prisma.user.findFirst({
+        where: {
+          username: value,
+        },
+        select: {
+          user_id: true,
+          first_name: true,
+          last_name: true, 
+          username: true,
+          level: true, 
+          about: true,
+          account_type: true, 
+          profile_url: true,
+          background_url: true,
+        },
+      }); 
+      return {ok: true, user: user}
+  } catch (error) {
+      return {ok: false, user: error}
+  }
+}
+
+
+
+
 module.exports = {
   createAccount,
   selectByUsernameOrEmail, 
+  selectByUsername
 };
 
 /*
