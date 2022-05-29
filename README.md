@@ -47,6 +47,14 @@ B --> D(Document)
 |1|GET|/api/university          | | {"ok": Boolean, universities: [{value: [id], label: [name] }] } |select all universities names and ids
 
 
+### univuser:
+
+
+|     SN           |Method     |Route    |   Request Data | Response Data | description
+|----------------|-------------------------------|-----------------------------|--|---|---
+|1|GET|/api/univuser?userId=${user_id}| | {ok: Boolean, univuser:{ joined_at: [], degree_optained: [], speciality_id: [], university: [name], speciality: [name] } | select a users' university including speciality name
+
+
 ### Speciality:
 
 
