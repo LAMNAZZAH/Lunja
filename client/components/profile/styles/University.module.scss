@@ -5,6 +5,7 @@
     padding: 5px;
     border-radius: 10px;
     background-color: white;
+
     
     .titleBlock {
         display: flex;
@@ -14,6 +15,13 @@
       h2 {
         margin: 15px;
         flex: .9;
+        color: $dark-gray;
+      }
+    }
+
+    .university {
+      h3, h4 {
+        margin: 15px;
         color: $dark-gray;
       }
     }

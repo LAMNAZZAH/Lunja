@@ -13,6 +13,7 @@ export default function Layout({children}) {
 
     return (
         <div className={styles.layoutContainer}>
+            <div>
             { isLoggedIn ?
             (<AdminNavBar/>) : (
                 <DiscoveryNavBar/>
@@ -20,7 +21,7 @@ export default function Layout({children}) {
             }
             
             {children}
-            
+            </div>
             <Footer/>
         </div>
     )

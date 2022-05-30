@@ -20,6 +20,7 @@ const profile = ({ univs, User, Univuser }) => {
   return (
     <div>
       {User ? (
+        <div className={styles.profile}>
         <div className={styles.profileContainer}>
           <div className={styles.leftBlockContainer}>
             <MainProfileInfo
@@ -64,8 +65,35 @@ const profile = ({ univs, User, Univuser }) => {
               <div className={styles.titleBlock}>
                 <h2>Blog</h2>
               </div>
+              <div className={styles.blogsBlock}>
+                <h4>hello</h4>
+                <h4>hello</h4>
+                <h4>hello</h4>
+                <h4>hello</h4>
+                <h4>hello</h4>
+                <h4>hello</h4>
+                <h4>hello</h4>
+                <h4>hello</h4>
+                <h4>hello</h4>
+                <h4>hello</h4>
+                <h4>hello</h4>
+                <h4>hello</h4>
+                <h4>hello</h4>
+                <h4>hello</h4>
+                <h4>hello</h4>
+                <h4>hello</h4>
+                <h4>hello</h4>
+                <h4>hello</h4>
+                <h4>hello</h4>
+                <h4>hello</h4>
+                <h4>hello</h4>
+                <h4>hello</h4>
+                <h4>hello</h4>
+                <h4>hello</h4>
+              </div>
             </section>
           </div>
+        </div>
         </div>
       ) : (
         <div>
@@ -80,7 +108,7 @@ export async function getServerSideProps(context) {
   let univs = [];
   let User = {};
   let Univuser = null;
-
+  let userId = null;
 
   const response = await axios.get("http://localhost:5000/api/university", {
     Headers: { "Content-Type": "application/json" },
@@ -101,18 +129,21 @@ export async function getServerSideProps(context) {
     console.log(User);
   }
 
-    const userId = await user?.data.user.user_id
-    const univuser = await axios.get(
-      `http://localhost:5000/api/univuser?userId=${userId}`
-    );
-    console.log(`http://localhost:5000/api/univuser?userId=${userId}`);
-    Univuser = await univuser?.data.univuser;
-    console.log("univUser: " + Univuser?.university);
+  userId = user?.data.user?.user_id 
+  const univuser = await axios.get(
+    `http://localhost:5000/api/univuser?userId=${userId}`
+  );
+  console.log(`http://localhost:5000/api/univuser?userId=${userId}`);
+  Univuser = await univuser?.data.univuser;
+  console.log("univUser: " + Univuser?.university);
 
-  //if (!Univuser) Univuser = JSON.stringify({data: 'no-data'})
 
   return {
-    props: { univs, User, Univuser: Univuser || null },
+    props: {
+      univs: univs || null,
+      User: User || null,
+      Univuser: Univuser || null,
+    },
   };
 }
 

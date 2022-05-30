@@ -1,22 +1,21 @@
-import Link from 'next/link';
-import { Badge } from '@mantine/core';
-import Image from 'next/image';
+import Link from "next/link";
+import { Badge } from "@mantine/core";
+import Image from "next/image";
 
 import styles from "./styles/MainProfileInfo.module.scss";
 
 const MainProfileInfo = (props) => {
-    const User = props.User; 
-
-
+  const User = props.User;
 
   return (
-
     <section className={styles.mainSection}>
       <div className={styles.ImagesContainer}>
         <div className={styles.backgroundImageContainer}>
-          <Image layout="fill" src="/lmz-01.jpg" />
+          {/*<Image layout="fill" src="/lmz-01.jpg" />*/}
+          <Image layout="fill" src={User?.background_url} />
           <div className={styles.profileImageContainer}>
-            <Image width={100} height={100} src="/profile-pic.png" />
+            {/*<Image width={100} height={100} src="/profile-pic.png" />*/}
+            <Image width={100} height={100} src={User?.profile_url} />
           </div>
         </div>
       </div>
@@ -44,13 +43,12 @@ const MainProfileInfo = (props) => {
           </div>
           <div className={styles.right}>
             <div className={styles.university}>
-            {props.Univuser?.university}
+              {props.Univuser?.university}
             </div>
           </div>
         </div>
       </div>
     </section>
-
   );
 };
 

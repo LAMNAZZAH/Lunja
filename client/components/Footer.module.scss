@@ -1,15 +1,14 @@
 @import '../styles/variables.module.scss';
 
 .footer {
+    
     display: flex;
     align-items: center;
     justify-content: space-around;
     background-color: $main-green;
-    width: 100%;
     position: relative;
-    margin-top: 100px;
-    left: 0;
-    bottom: 0;
+    width: 100%;
+    bottom: 0px;
 
     .leftBlock {
         flex-grow: 1;

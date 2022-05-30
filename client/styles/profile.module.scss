@@ -1,14 +1,23 @@
 @import "./variables.module.scss";
 
+
 .profileContainer {
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+  //background-color: blue;
+
   .leftBlockContainer {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    flex-direction: column;
+    align-self: flex-start;
     flex: 0.7;
-    //background-color: white;
-    height: 100vh;
+    //background-color: red;
+    min-width: 60vw;
+    min-height: 100%;
     margin: 30px;
     
 
@@ -56,21 +65,26 @@
   //!
 
   .rightBlockContainer {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-self: flex-start;
     margin: 30px;
+    min-width: 30vw;
     flex: 0.3;
-    //background-color: white;
-    height: 100vh;
-    width: auto;
+    //background-color: red;
+    min-height: 100%;
 
     .announcementsSection {
       position: relative;
-      width: auto;
       height: 270px;
       background-color: white;
       border-radius: 10px;
 
       img {
         object-fit: cover;
+        border-radius: 10px;
       }
     }
 
@@ -102,10 +116,12 @@
   }
 }
 
+
 @media screen and (max-width: 900px) {
   .profileContainer {
     flex-direction: column;
     .leftBlockContainer {
+      min-width: 80vw;
       flex: 1;
       .mainSection {
         .backgroundImageContainer {

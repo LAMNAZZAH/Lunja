@@ -1,11 +1,9 @@
 .layoutContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  flex-direction: column;
+  height: 100vh;
 
-    .children {
-        min-height: 100vh;
-    }
-    
+
 }
