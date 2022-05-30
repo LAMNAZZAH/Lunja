@@ -69,4 +69,4 @@ B --> D(Document)
 |     SN           |Method     |Route    |   Request Data | Response Data | description
 |----------------|-------------------------------|-----------------------------|--|---|---
 |1|GET|/api/interest?userId=${user_id}| | {ok: Boolean, interests:[] } | select interests for a specific user
-|2|DELETE| /api/interest?userId=${user_id} &interestId=${interst_id}| |{ok: Boolean, deleteInterest: { user_id: [] , interest_id: [] } | delete a users' interest
+|2|DELETE| /api/interest?userId=[]&interestId=[]| |{ok: Boolean, deleteInterest: { user_id: [] , interest_id: [] } | delete a users' interest
