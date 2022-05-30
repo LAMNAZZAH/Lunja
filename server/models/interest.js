@@ -10,6 +10,7 @@ const findManyInterestsByUserId = async (userId) => {
             include: {
                 interest: {
                     select: {
+                        interest_id: true,
                         name: true,
                     }
                 }
@@ -22,7 +23,23 @@ const findManyInterestsByUserId = async (userId) => {
     }
 }
 
+const deleteUserInterest = async (interestId, userId) => {
+    try {
+        const deleteInterest = await prisma.user_has_interest.delete({
+            where: {
+                user_id: userId, 
+                interest_id: interestId,
+            }
+        });
+        return { ok: true, deleteInterest }
+    } catch (error) {
+        console.log(error);
+        return { ok: false, error }
+    } 
+}
+
 
 module.exports = {
     findManyInterestsByUserId,
+    deleteUserInterest
 }

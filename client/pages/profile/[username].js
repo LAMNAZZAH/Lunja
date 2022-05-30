@@ -1,13 +1,13 @@
 import Image from "next/image";
 import { useContext } from "react";
-import Link from "next/link";
 import { authContext } from "../../contexts/auth";
-import NotFound from "../404.js";
-import MainProfileInfo from "../../components/profile/MainProfileInfo";
 
 import axios from "axios";
 
 import University from "../../components/profile/University";
+import MainProfileInfo from "../../components/profile/MainProfileInfo";
+import About from "../../components/profile/About";
+import NotFound from "../404.js";
 
 import styles from "../../styles/profile.module.scss";
 
@@ -28,17 +28,7 @@ const profile = ({ univs, User, Univuser }) => {
               Univuser={Univuser}
               editable={editable}
             />
-            <section className={styles.aboutSection}>
-              <div className={styles.titleBlock}>
-                <h2>About</h2>
-              </div>
-              <div className={styles.bodyBlock}>
-                <div className={styles.about}>{User?.about}</div>
-                <div className={styles.interests}>
-                  <h3>Interests</h3>
-                </div>
-              </div>
-            </section>
+           <About editable={editable} User={User}/>
             <section className={styles.myfeedSection}>
               <div className={styles.titleBlock}>
                 <h2>Posts</h2>

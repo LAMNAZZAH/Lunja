@@ -11,7 +11,7 @@ const selectInterestByUserId = async (req, res) => {
         if (data?.ok) {
             const interests = []
             data?.interests.forEach(interest => {
-                interests.push(interest.interest['name'])
+                interests.push({id: interest.interest_id,name: interest.interest['name']})
             });
             return res.status(200).json({ok: true, interests});
         }
@@ -20,7 +20,19 @@ const selectInterestByUserId = async (req, res) => {
     })
 }
 
+const deleteUserInterest = async (req, res) => {
+    const { deleteUserInterest } = interestModel;
+    const { userId, interestId } = req.query
+
+    await deleteUserInterest(interestId, userId).then(data => {
+        if (data?.ok) {
+            return res.status(200).json(data);
+        } else return res.status(400).json(data);
+    })
+}
+
 
 module.exports = {
     selectInterestByUserId,
+    deleteUserInterest
 }
