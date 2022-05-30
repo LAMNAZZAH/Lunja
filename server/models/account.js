@@ -1,4 +1,4 @@
-const prisma = require('../Prisma');
+const prisma = require('../instance');
 
 async function createAccount(
   first_name,

@@ -1,4 +1,4 @@
-const prisma = require('./Prisma');
+const prisma = require('./instance');
 const App = require('./app'); 
 
 

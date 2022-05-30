@@ -326,13 +326,12 @@ model user_class {
 }
 
 model user_has_interest {
-  user_has_interest_id Int      @default(autoincrement())
-  user_id              Int
-  interest_id          Int
-  interest             interest @relation(fields: [interest_id], references: [interest_id], onDelete: Cascade, map: "fk_Interest_has_User_Interest1")
-  user                 user     @relation(fields: [user_id], references: [user_id], onDelete: Cascade, map: "fk_Interest_has_User_User1")
+  user_id     Int
+  interest_id Int
+  interest    interest @relation(fields: [interest_id], references: [interest_id], onDelete: Cascade, map: "fk_Interest_has_User_Interest1")
+  user        user     @relation(fields: [user_id], references: [user_id], onDelete: Cascade, map: "fk_Interest_has_User_User1")
 
-  @@id([user_has_interest_id, user_id, interest_id])
+  @@id([user_id, interest_id])
   @@index([interest_id], map: "fk_Interest_has_User_Interest1_idx")
   @@index([user_id], map: "fk_Interest_has_User_User1_idx")
 }

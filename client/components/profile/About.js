@@ -7,7 +7,7 @@ import styles from "./styles/About.module.scss";
 
 const About = (props) => {
   const User = props.User;
-  const [interests, setInterests] = useState();
+  const [interests, setInterests] = useState([]);
 
   useEffect(() => {
     const fetchInterests = async (id) => {
@@ -22,8 +22,10 @@ const About = (props) => {
   }, []);
 
 
-  const deleteInterest = async (id) => {
-      const response = await axios.get();
+  const deleteInterest = async (interestId, index) => {
+      const response = await axios.delete(`http://localhost:5000/api/interest?userId=${User.user_id}&interestId=${interestId}`);
+      const data = await response.data; 
+      if (data?.ok) return setInterests(interests.filter(interest => interest !== interests[index]));
   }
 
   return (
@@ -38,13 +40,13 @@ const About = (props) => {
             <h3>Interests</h3>
           </div>
           <div className={styles.interests}>
-            {interests?.map((interest) => {
+            {interests?.map((interest, index) => {
               return (
                 <div key={interest?.interest_id} className={styles.interest}>
                   <Badge color="grape" variant="outline">
                     {interest?.name}
                   </Badge>
-                  <ActionIcon onClick={() => deleteInterest(interest?.interest_id)} color="red" size="sm">
+                  <ActionIcon onClick={() => deleteInterest(interest?.id, index)} color="red" size="sm">
                     <X />
                   </ActionIcon>
                 </div>

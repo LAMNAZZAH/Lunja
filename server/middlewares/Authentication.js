@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const prisma = require('../Prisma');
+const prisma = require('../instance');
 
 const { isNull } = require("../utils/generic");
 
