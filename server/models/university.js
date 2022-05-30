@@ -1,4 +1,4 @@
-const prisma = require('../prisma');
+const prisma = require('../Prisma');
 
 const createUniversity = async (name, description) => {
     try {
