@@ -17,17 +17,8 @@ const About = (props) => {
   const User = props.User;
   const [userInterests, setUserInterests] = useState([]);
   const [opened, setOpened] = useState(false);
-  const [searchInterest, setSearchInterest] = useState([
-    "something",
-    "otherthing",
-  ]);
+  const [searchInterest, setSearchInterest] = useState([]);
   const inputRef = useRef();
-
-  const form = useForm({
-    initialValues: {
-      interest: "",
-    },
-  });
 
   const fetchInterests = async (e) => {
     e.preventDefault();
@@ -41,9 +32,18 @@ const About = (props) => {
     }
   };
 
-  const addInterest = (interest) => {
-    console.log("clicked: "  + interest.value);
-  }
+  const addInterest = async (interest) => {
+    const body = {
+      interestId: interest.value,
+      userId: User.user_id,
+    };
+    const response = await axios.post(
+      "http://localhost:5000/api/interest",
+      body
+    );
+    const data = await response.data;
+    console.log("added data: " + data);
+  };
 
   useEffect(() => {
     const fetchUserInterests = async (id) => {
@@ -55,7 +55,7 @@ const About = (props) => {
       setUserInterests(data);
     };
     fetchUserInterests(User.user_id);
-  }, []);
+  }, [opened]);
 
   const deleteInterest = async (interestId, index) => {
     const response = await axios.delete(
@@ -78,9 +78,11 @@ const About = (props) => {
         <div className={styles.interestsBlock}>
           <div className={styles.title}>
             <h3>Interests</h3>
-            <ActionIcon onClick={() => setOpened(true)}>
-              <Edit />
-            </ActionIcon>
+            {props.editable ? (
+              <ActionIcon onClick={() => setOpened(true)}>
+                <Edit />
+              </ActionIcon>
+            ) : null}
 
             <Modal
               opened={opened}
@@ -89,30 +91,37 @@ const About = (props) => {
               padding="xl"
               size="xl"
             >
-
-              <form onSubmit={form.onSubmit((values) => console.log(values))}>
-                <input
-                  className={styles.searchInput}
-                  type="text"
-                  ref={inputRef}
-                  onChange={(e) => fetchInterests(e)}
-                />
-
-                <div className={styles.searchIntertBadges}>
-                  {searchInterest.map((interest, index) => {
-                    return (
-                      <div key={interest.value} className={styles.badge}>
-                        <button type="button" value={interest} onClick={() => addInterest(interest)}>
-                          {interest?.label}
-                        </button>
-                      </div>
-                    );
-                  })}
-                </div>
-                <Button mt="md" type="submit">
-                  Add
-                </Button>
-              </form>
+              {userInterests.length < 4 ? (
+                <>
+                  {" "}
+                  <input
+                    className={styles.searchInput}
+                    type="text"
+                    ref={inputRef}
+                    onChange={(e) => fetchInterests(e)}
+                  />
+                  <div className={styles.searchIntertBadges}>
+                    {searchInterest.map((interest) => {
+                      return (
+                        <div key={interest.value} className={styles.badge}>
+                          <button
+                            type="button"
+                            value={interest}
+                            onClick={() => addInterest(interest)}
+                          >
+                            {interest?.label}
+                          </button>
+                        </div>
+                      );
+                    })}
+                  </div>{" "}
+                </>
+              ) : (
+                <h2>
+                  You've reached the limit of interests <br /> you can add to
+                  your profile
+                </h2>
+              )}
             </Modal>
           </div>
           <div className={styles.interests}>
@@ -122,13 +131,15 @@ const About = (props) => {
                   <Badge color="grape" variant="outline">
                     {interest?.name}
                   </Badge>
-                  <ActionIcon
+                  {
+                    props.editable ? <ActionIcon
                     onClick={() => deleteInterest(interest?.id, index)}
                     color="red"
                     size="sm"
                   >
                     <X />
-                  </ActionIcon>
+                  </ActionIcon> : null
+                  }
                 </div>
               );
             })}

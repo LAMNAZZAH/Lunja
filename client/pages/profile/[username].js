@@ -8,6 +8,7 @@ import University from "../../components/profile/University";
 import MainProfileInfo from "../../components/profile/MainProfileInfo";
 import About from "../../components/profile/About";
 import NotFound from "../404.js";
+import PeopleYouMayKnow from "../../components/profile/PeopleYouMayKnow";
 
 import styles from "../../styles/profile.module.scss";
 
@@ -46,11 +47,7 @@ const profile = ({ univs, User, Univuser }) => {
             <section className={styles.announcementsSection}>
               <Image layout="fill" src="/announcement.png" />
             </section>
-            <section className={styles.peopleYouMayKnowSection}>
-              <div className={styles.titleBlock}>
-                <h2>People You May Know</h2>
-              </div>
-            </section>
+            <PeopleYouMayKnow/>
             <section className={styles.blogSection}>
               <div className={styles.titleBlock}>
                 <h2>Blog</h2>

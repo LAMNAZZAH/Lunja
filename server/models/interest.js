@@ -26,14 +26,13 @@ const createUserInterest = async (interestId, userId) => {
   try {
     const userInterest = await prisma.user_has_interest.create({
       data: {
-        interest_id: interestId, 
-        user_id: userId,
+        interest_id: parseInt(interestId), 
+        user_id: parseInt(userId),
       }
     });
     return { ok: true, userInterest }
   } catch (error) {
     return { ok: false, error }
-    
   }
 }
 
