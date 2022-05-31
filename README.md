@@ -53,7 +53,7 @@ B --> D(Document)
 |     SN           |Method     |Route    |   Request Data | Response Data | description
 |----------------|-------------------------------|-----------------------------|--|---|---
 |1|GET|/api/univuser?userId=${user_id}| | {ok: Boolean, univuser:{ joined_at: [], degree_optained: [], speciality_id: [], university: [name], speciality: [name] } | select a users' university including speciality name
-
+|2|GET|/api/univuser/university?query=[university_id] | | {oK: Boolean, users: [{user_id, username, fname, lname, profile_url}] | select users by university 
 
 ### Speciality:
 
