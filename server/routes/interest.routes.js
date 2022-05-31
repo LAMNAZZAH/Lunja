@@ -4,9 +4,10 @@ const interestCotrollers = require('../controllers/interest.controllers');
 
 
 const router = express.Router(); 
-const { selectInterestByUserId, deleteUserInterest } = interestCotrollers;
+const { selectInterestByUserId, deleteUserInterest, searchInterest } = interestCotrollers;
 
 router.get('/', selectInterestByUserId);
+router.get('/search', searchInterest);
 router.delete('/', deleteUserInterest);
 
 module.exports = router;

@@ -22,6 +22,21 @@ const findManyInterestsByUserId = async (userId) => {
   }
 };
 
+const createUserInterest = async (interestId, userId) => {
+  try {
+    const userInterest = await prisma.user_has_interest.create({
+      data: {
+        interest_id: interestId, 
+        user_id: userId,
+      }
+    });
+    return { ok: true, userInterest }
+  } catch (error) {
+    return { ok: false, error }
+    
+  }
+}
+
 const deleteUserInterest = async (interestId, userId) => {
   try {
     const deleteInterest = await prisma.user_has_interest.delete({
@@ -39,7 +54,27 @@ const deleteUserInterest = async (interestId, userId) => {
   }
 };
 
+
+const findManyInterestsByInput = async (Input) => {
+  try {
+    const searchInterest = await prisma.interest.findMany({
+      take: 4,
+      where: {
+        name: {
+          startsWith: Input
+        }
+      }, 
+    }); 
+    return { ok: true, searchInterest };
+  } catch (error) {
+    console.log(error);
+    return { ok: false, error };
+  }
+}
+
 module.exports = {
   findManyInterestsByUserId,
   deleteUserInterest,
+  findManyInterestsByInput,
+  createUserInterest
 };

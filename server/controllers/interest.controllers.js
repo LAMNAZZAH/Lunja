@@ -20,6 +20,12 @@ const selectInterestByUserId = async (req, res) => {
     })
 }
 
+const addUserInterest = async (req, res) => {
+    const { createUserInterest } = interestModel;
+    const { interestId, userId } = req.body; 
+
+}
+
 const deleteUserInterest = async (req, res) => {
     const { deleteUserInterest } = interestModel;
     const { userId, interestId } = req.query
@@ -31,8 +37,26 @@ const deleteUserInterest = async (req, res) => {
     })
 }
 
+const searchInterest = async (req, res) => {
+    const { findManyInterestsByInput } = interestModel;
+    const { query } = req.query
+
+    await findManyInterestsByInput(query).then(data => {
+        if(data.ok) {
+            data.searchInterest.forEach(interest => {
+                interest['value'] = interest['interest_id'];
+                delete interest['interest_id'];
+                interest['label'] = interest['name'];
+                delete interest['name'];
+            })
+            res.status(200).json(data)
+        }
+        else res.status(400).json(data)
+    })
+}
 
 module.exports = {
     selectInterestByUserId,
-    deleteUserInterest
+    deleteUserInterest,
+    searchInterest
 }

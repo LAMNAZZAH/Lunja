@@ -1,40 +1,61 @@
-@import '../../../styles/variables.module.scss';
-
+@import "../../../styles/variables.module.scss";
 
 .aboutSection {
-    margin-top: 10px;
-    padding: 5px;
-    border-radius: 10px;
-    background-color: white;
-    .titleBlock {
-      h2 {
-        margin: 15px;
-        color: $dark-gray;
-      }
-      
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: white;
+  .titleBlock {
+    h2 {
+      margin: 15px;
+      color: $dark-gray;
     }
-    .bodyBlock {
-      .about {
-        margin: 15px;
-      }
-      .interestsBlock {
+  }
+  .bodyBlock {
+    .about {
+      margin: 15px;
+    }
+    .interestsBlock {
+      .title {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+
         h3 {
           margin: 15px;
           color: $dark-gray;
         }
+        
+      }
 
-        .interests {
-            display: flex;
-            align-items: flex-start;
-            justify-content:  flex-start;
-            margin: 15px;
+      .interests {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        margin: 15px;
 
-            .interest {
-              display: flex;
-              
-                margin: 5px;
-            }
+        .interest {
+          display: flex;
+
+          margin: 5px;
         }
       }
     }
   }
+}
+
+.searchIntertBadges {
+  display: flex;
+  margin: 10px;
+  flex-wrap: wrap;
+  .badge {
+    margin: 10px;
+  }
+}
+
+.searchInput {
+  width: 400px;
+  height: 40px;
+  padding-left: 20px;
+  font-size: 18px;
+}
