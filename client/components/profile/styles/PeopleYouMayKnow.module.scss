@@ -1,15 +1,67 @@
-@import '../../../styles/variables.module.scss';
-
+@import "../../../styles/variables.module.scss";
 
 .peopleYouMayKnowSection {
-    margin-top: 10px;
-    padding: 5px;
-    border-radius: 10px;
-    background-color: white;
-    .titleBlock {
-      h2 {
-        margin: 15px;
-        color: $dark-gray;
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: white;
+  .titleBlock {
+    h2 {
+      margin: 15px;
+      color: $dark-gray;
+    }
+  }
+  .bodyBlock {
+    .user {
+      display: flex;
+      flex-direction: column;
+      margin: 10px;
+      .profileAndInfo {
+        display: flex;
+        .profile {
+          display: flex;
+          height: 50px;
+          width: 50px;
+          position: relative;
+          border: 5px solid rgb(209, 209, 209);
+          border-radius: 50%;
+          
+          img {
+            object-fit: cover;
+            border-radius: 50%;
+            
+          }
+
+        }
+        .info {
+          display: flex;
+          margin: 10px;
+          align-items: flex-end;
+          margin-bottom: 20px;
+          flex-wrap: wrap;
+
+          h3 {
+            margin: 0 5px;
+            color: $dark-gray;
+          }
+        }
+      }
+      .see {
+        align-self: flex-start;
+        margin-left: 45px;
+        width: 100px;
+        height: 30px;
+        border-radius: 20px;
+        cursor: pointer;
+        border: 2px solid rgb(201, 201, 201);
+        background: none;
+        font-size: 16px;
+
+        &:hover {
+          background-color: $main-green;
+          color: white;
+        }
       }
     }
   }
+}

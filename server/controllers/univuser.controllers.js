@@ -30,7 +30,7 @@ const selectUniversityByUserId = async (req, res) => {
       const toExclude = [
         "university_user_id",
         "user_id",
-        "university_id",
+        //"university_id",
         "left_at",
         "status",
         "univ",
@@ -39,13 +39,44 @@ const selectUniversityByUserId = async (req, res) => {
       toExclude.forEach((field) => delete univuser[`${field}`]);
 
       res.status(200).json(data);
-
     } else if (!data?.univuser) res.status(204).json(data);
     else res.status(400).json(data);
+  });
+};
+
+const selectUsersByUniversityId = async (req, res) => {
+  const { findManyUsersByUniversityId } = univuserModel;
+  const { query } = req.query;
+
+  await findManyUsersByUniversityId(query).then((data) => {
+    if (data.ok) {
+      const toExclude = [
+        "university_user_id",
+        "university_id",
+        "joined_at",
+        "left_at",
+        "degree_optained",
+        "status",
+        "speciality_id",
+      ];
+      data.users.forEach(user => {
+        toExclude.forEach(field => {
+          delete user[field]
+        });
+        user['username'] = user.user['username'];
+        user['fname'] = user.user['first_name'];
+        user['lname'] = user.user['last_name'];
+        user['profile_url'] = user.user['profile_url'];
+        delete user.user;    
+      });
+
+      res.status(200).json(data);
+    } else res.status(400).json(data);
   });
 };
 
 module.exports = {
   createUnivuserController,
   selectUniversityByUserId,
+  selectUsersByUniversityId,
 };

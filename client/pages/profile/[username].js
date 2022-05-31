@@ -47,7 +47,7 @@ const profile = ({ univs, User, Univuser }) => {
             <section className={styles.announcementsSection}>
               <Image layout="fill" src="/announcement.png" />
             </section>
-            <PeopleYouMayKnow/>
+            <PeopleYouMayKnow User={user.user_id} editable={editable}/>
             <section className={styles.blogSection}>
               <div className={styles.titleBlock}>
                 <h2>Blog</h2>

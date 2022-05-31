@@ -5,9 +5,10 @@ const { authenticatedOnly } = require('../middlewares/Authentication');
 
 
 const router = express.Router();
-const { selectUniversityByUserId } = univUserControllers;
+const { selectUniversityByUserId, selectUsersByUniversityId } = univUserControllers;
 
 router.get('/', selectUniversityByUserId);
+router.get('/university', selectUsersByUniversityId);
 
 
 

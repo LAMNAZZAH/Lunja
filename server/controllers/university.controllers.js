@@ -11,9 +11,9 @@ const createUniversityController = async (req, res, next) => {
 };
 
 const selectUniversitiesController = async (req, res, next) => {
-  const { findAllUniveristies } = universityModel;
+  const { findAllUniversities } = universityModel;
 
-  await findAllUniveristies().then((data) => {
+  await findAllUniversities().then((data) => {
     if (data.ok) {
       data.universities.forEach(univ => {
         univ['value'] = univ['university_id'];

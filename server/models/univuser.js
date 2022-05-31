@@ -47,7 +47,32 @@ const findUniversityByUserId = async (userId) => {
   }
 };
 
+const findManyUsersByUniversityId = async (universityId) => {
+  try {
+    const users = await prisma.university_user.findMany({
+      where: {
+        university_id: parseInt(universityId),
+      },
+      include: {
+        user: {
+          select: {
+            username: true,
+            first_name: true,
+            last_name: true,
+            profile_url: true,
+          }
+        }
+      }
+    });
+    return { ok: true, users }
+  } catch (error) {
+    console.log(error);
+    return { ok: false, error }
+  }
+}
+
 module.exports = {
   createUnivuser,
   findUniversityByUserId,
+  findManyUsersByUniversityId
 };

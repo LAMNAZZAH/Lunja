@@ -15,7 +15,7 @@ const createUniversity = async (name, description) => {
 }
 
 
-const findAllUniveristies = async () => {
+const findAllUniversities = async () => {
     try {
         const universities = await prisma.university.findMany({
             select: {
@@ -34,5 +34,5 @@ const findAllUniveristies = async () => {
 
 module.exports = {
     createUniversity,
-    findAllUniveristies
+    findAllUniversities
 }
