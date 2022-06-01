@@ -81,5 +81,5 @@ B --> D(Document)
 
  - [ ] add Auth middlewares where needed in routes 
  - [ ] refactor code to avoid many if elses. . .
- - [ ] be more specific with error msg returns in server 
- - [ ] add more validations on inputs in the both on client/server
+ - [ ] be more specific with error msg returns
+ - [ ] add more validations on inputs both on client and server
