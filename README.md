@@ -74,3 +74,12 @@ B --> D(Document)
 |2|GET| /api/interest/search?query=[] | | {ok: Boolean, searchInterest: [{ value:[] label:[] }] | search interests "to add to profile"
 |3|POST| /api/interest | {ok:Boolean, userInterest: { "interestId": [],"userId": [] }} | { ok: Boolean, userInterest: [{ user_id: [], interest_id: []}]
 |4|DELETE| /api/interest?userId=[]&interestId=[]| |{ok: Boolean, deleteInterest: { user_id: [] , interest_id: [] } | delete a users' interest
+
+##
+
+## TODO:
+
+ - [ ] add Auth middlewares where needed in routes 
+ - [ ] refactor code to avoid many if elses. . .
+ - [ ] be more specific with error msg returns in server 
+ - [ ] add more validations on inputs in the both on client/server
