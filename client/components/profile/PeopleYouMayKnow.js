@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./styles/PeopleYouMayKnow.module.scss";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 const PeopleYouMayKnow = (props) => {
+  const router = useRouter()
   const [users, setUsers] = useState([{}]);
 
   useEffect(() => {
@@ -14,6 +16,8 @@ const PeopleYouMayKnow = (props) => {
         `http://localhost:5000/api/univuser?userId=${userId}`
       );
       universityId = await response.data?.univuser?.university_id;
+
+      if (!response.data?.univuser) return;
 
       const res = await axios.get(
         `http://localhost:5000/api/univuser/university?query=${universityId}`
@@ -31,9 +35,9 @@ const PeopleYouMayKnow = (props) => {
       <div className={styles.titleBlock}>
         <h2>People You May Know</h2>
         <div className={styles.bodyBlock}>
-          {users?.map((user) => {
+          {users?.map((user, index) => {
             return (
-              <div className={styles.user}>
+              <div key={index} className={styles.user}>
                 <div className={styles.profileAndInfo}>
                 <div className={styles.profile}>
                   {user?.profile_url && (
@@ -47,7 +51,7 @@ const PeopleYouMayKnow = (props) => {
           
                 </div>
                 </div>
-                  <button className={styles.see}>See</button>
+                  <button onClick={() => router.push(`http://localhost:3000/profile/${user?.username}`)} className={styles.see}>See</button>
               </div>
             );
           })}

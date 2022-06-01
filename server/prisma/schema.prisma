@@ -261,19 +261,17 @@ model university_speciality {
 }
 
 model university_user {
-  university_user_id Int        @default(autoincrement())
-  user_id            Int
-  university_id      Int
-  joined_at          Int?       @db.Year
-  left_at            DateTime?  @db.Timestamp(0)
-  degree_optained    String?    @db.VarChar(45)
-  status             String     @default("active") @db.VarChar(45)
-  speciality_id      Int
-  speciality         speciality @relation(fields: [speciality_id], references: [speciality_id], onDelete: Cascade, map: "speciality_id")
-  university         university @relation(fields: [university_id], references: [university_id], onDelete: Cascade, map: "university_id")
-  user               user       @relation(fields: [user_id], references: [user_id], onDelete: Cascade, map: "user_id")
+  user_id         Int
+  university_id   Int
+  year            Int?       @db.Year
+  degree_optained String?    @db.VarChar(60)
+  status          String     @default("active") @db.VarChar(45)
+  speciality_id   Int
+  speciality      speciality @relation(fields: [speciality_id], references: [speciality_id], onDelete: Cascade, map: "speciality_id")
+  university      university @relation(fields: [university_id], references: [university_id], onDelete: Cascade, map: "university_id")
+  user            user       @relation(fields: [user_id], references: [user_id], onDelete: Cascade, map: "user_id")
 
-  @@id([university_user_id, user_id, university_id, speciality_id])
+  @@id([user_id, university_id, speciality_id])
   @@index([speciality_id], map: "fk_Univ_User_speciality1_idx")
   @@index([user_id], map: "fk_university_user_user1_idx")
   @@index([university_id], map: "univ_id_idx")

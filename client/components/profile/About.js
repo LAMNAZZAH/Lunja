@@ -1,13 +1,11 @@
 import { useEffect, useRef, useState } from "react";
+import { useRouter } from 'next/router';
 import {
   Badge,
   ActionIcon,
-  Select,
   Modal,
-  Button,
-  Autocomplete,
+
 } from "@mantine/core";
-import { useForm } from "@mantine/form";
 import axios from "axios";
 import { X, Edit } from "tabler-icons-react";
 
@@ -15,6 +13,7 @@ import styles from "./styles/About.module.scss";
 
 const About = (props) => {
   const User = props.User;
+  const router = useRouter();
   const [userInterests, setUserInterests] = useState([]);
   const [opened, setOpened] = useState(false);
   const [searchInterest, setSearchInterest] = useState([]);
@@ -55,7 +54,7 @@ const About = (props) => {
       setUserInterests(data);
     };
     fetchUserInterests(User.user_id);
-  }, [opened]);
+  }, [opened, User]);
 
   const deleteInterest = async (interestId, index) => {
     const response = await axios.delete(
@@ -101,9 +100,9 @@ const About = (props) => {
                     onChange={(e) => fetchInterests(e)}
                   />
                   <div className={styles.searchIntertBadges}>
-                    {searchInterest.map((interest) => {
+                    {searchInterest.map((interest, index) => {
                       return (
-                        <div key={interest.value} className={styles.badge}>
+                        <div key={index} className={styles.badge}>
                           <button
                             type="button"
                             value={interest}
@@ -127,12 +126,12 @@ const About = (props) => {
           <div className={styles.interests}>
             {userInterests?.map((interest, index) => {
               return (
-                <div key={interest?.interest_id} className={styles.interest}>
+                <div key={index} className={styles.interest}>
                   <Badge color="grape" variant="outline">
                     {interest?.name}
                   </Badge>
                   {
-                    props.editable ? <ActionIcon
+                    props.editable ? <ActionIcon  
                     onClick={() => deleteInterest(interest?.id, index)}
                     color="red"
                     size="sm"

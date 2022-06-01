@@ -1,6 +1,6 @@
 import { ActionIcon, Select, TextInput, Modal, Button } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import { Edit } from "tabler-icons-react";
+import { Plus, User, X } from "tabler-icons-react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -16,6 +16,17 @@ const University = (props) => {
       year: "",
     },
   });
+
+  const degrees = [
+    "Bachelor",
+    "DEUG",
+    "DEUST",
+    "DUT",
+    "BTS",
+    "DTS",
+    "LF",
+    "LP",
+  ];
 
   const fetchSpecialities = async () => {
     const id = form.values.university || 8;
@@ -38,6 +49,36 @@ const University = (props) => {
     fetchSpecialities();
   }, [form.values.university]);
 
+  const addUnivuser = async (values) => {
+    const body = {
+      userId: props.User.user_id,
+      universityId: values.university,
+      degree: values.degree,
+      specialityId: values.speciality,
+      year: values.year,
+    };
+    const response = await axios.post(
+      "http://localhost:5000/api/univuser",
+      body
+    );
+    const data = await response.data;
+    console.log(data);
+  };
+
+  const deleteUnivuser = async () => {
+    const keys = {
+      userId: props.User.user_id,
+      universityId: props.Univuser.university_id,
+      specialityId: props.Univuser.speciality_id,
+    };
+
+    const response = await axios.delete(
+      `http://localhost:5000/api/univuser?userId=${keys.userId}&universityId=${keys.universityId}&specialityId=${keys.specialityId}`);
+
+    const data = await response.data;
+    console.log(data);
+  };
+
   return (
     <section className={styles.universitySection}>
       <Modal
@@ -47,7 +88,7 @@ const University = (props) => {
         padding="xl"
         size="xl"
       >
-        <form onSubmit={form.onSubmit((values) => console.log(values))}>
+        <form onSubmit={form.onSubmit((values) => addUnivuser(values))}>
           <Select
             label="My university"
             placeholder="Select Your university"
@@ -59,7 +100,16 @@ const University = (props) => {
           />
 
           <Select
-            label="My university"
+            label="degree"
+            placeholder="Select the degree you are preparing"
+            {...form.getInputProps("degree")}
+            data={degrees}
+            maxDropdownHeight={100}
+            nothingFound="found nothing"
+          />
+
+          <Select
+            label="Speciality"
             placeholder="Select Your university"
             {...form.getInputProps("speciality")}
             data={specialities}
@@ -81,9 +131,16 @@ const University = (props) => {
 
       <div className={styles.titleBlock}>
         <h2>University</h2>
-        {props.editable ? <ActionIcon onClick={() => setOpened(true)}>
-          <Edit />
-        </ActionIcon> : null}
+        {props.editable ? (
+          <ActionIcon onClick={() => setOpened(true)}>
+            <Plus />
+          </ActionIcon>
+        ) : null}
+        {props.Univuser && (
+          <ActionIcon onClick={() => deleteUnivuser()}>
+            <X color="red" />
+          </ActionIcon>
+        )}
       </div>
       <div className={styles.university}>
         <h3>{props.Univuser?.university}</h3>

@@ -32,6 +32,7 @@ const createUserInterest = async (interestId, userId) => {
     });
     return { ok: true, userInterest }
   } catch (error) {
+    console.log(error);
     return { ok: false, error }
   }
 }

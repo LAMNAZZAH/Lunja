@@ -109,7 +109,7 @@ export async function getServerSideProps(context) {
   const { username } = context.params;
   //!note: when using utils functions throws error, for that using axios directly here
   const user = await axios.get(
-    `${process.env.URL}/api/account/user/${username}`
+    `http://localhost:5000/api/account/user/${username}`
   );
   if (user.data?.ok) {
     User = await user?.data.user;

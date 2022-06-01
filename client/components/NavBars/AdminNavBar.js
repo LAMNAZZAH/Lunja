@@ -2,16 +2,9 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
-import { Button, Drawer, ActionIcon, Avatar } from "@mantine/core";
-import motion from "framer-motion";
-import {
-  Menu2,
-  X,
-  Notification,
-  SmartHome,
-  Album,
-  Users,
-} from "tabler-icons-react";
+import { Drawer, ActionIcon, Avatar } from "@mantine/core";
+
+import { Menu2, X } from "tabler-icons-react";
 import AdminNavLinks from "./AdminNavLinks";
 import { authContext } from "../../contexts/auth";
 
@@ -45,13 +38,13 @@ const AdminNavBar = () => {
       <div className={styles.logo}>
         <Link href="/">
           <a>
-          <Image
-            priority={true}
-            src={LunjaLogo}
-            alt="Lunja app Logo"
-            height={45}
-            width={170}
-          />
+            <Image
+              priority={true}
+              src={LunjaLogo}
+              alt="Lunja app Logo"
+              height={45}
+              width={170}
+            />
           </a>
         </Link>
       </div>
@@ -60,7 +53,12 @@ const AdminNavBar = () => {
         <div className={styles.navlink}>
           <Link href="/">
             <a>
-              <Image className={styles.icon} src="/home.svg" width={23} height={23} />
+              <Image
+                className={styles.icon}
+                src="/home.svg"
+                width={23}
+                height={23}
+              />
             </a>
           </Link>
           <Link href="/">
@@ -70,8 +68,13 @@ const AdminNavBar = () => {
 
         <div className={styles.navlink}>
           <Link href="/discover">
-          <a>
-              <Image className={styles.icon} src="/group.svg" width={23} height={23} />
+            <a>
+              <Image
+                className={styles.icon}
+                src="/group.svg"
+                width={23}
+                height={23}
+              />
             </a>
           </Link>
           <Link href="/discover">
@@ -81,8 +84,13 @@ const AdminNavBar = () => {
 
         <div className={styles.navlink}>
           <Link href="/blog">
-          <a>
-              <Image className={styles.icon} src="/notifications.svg" width={23} height={23} />
+            <a>
+              <Image
+                className={styles.icon}
+                src="/notifications.svg"
+                width={23}
+                height={23}
+              />
             </a>
           </Link>
           <Link href="/notification">
@@ -95,14 +103,9 @@ const AdminNavBar = () => {
           <a className={styles.username}>{user.username}</a>
         </Link>
         <Link href={`/profile/${user.username}`}>
-          <Avatar
-            className={styles.profilePicture}
-            src={null}
-            alt="profile picture"
-            color="indigo"
-            radius="xl"
-            size="lg"
-          />
+          <div className={styles.avatarContainer}>
+          <Image layout="fill" src={user.profile_url} className={styles.avatar} />
+          </div>
         </Link>
       </div>
 
