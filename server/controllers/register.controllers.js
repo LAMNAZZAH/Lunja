@@ -52,21 +52,20 @@ async function createRegisterController(req, res) {
     body.first_name,
     body.last_name,
     lowerCaseUsername,
-    body.birth_date,
+    //body.birth_date,
     body.level,
-    body.about,
+    //body.about,
     hashedPassword,
     body.account_type,
-    body.gender,
+    //body.gender,
     body.email,
-    body.phone,
-    body.profile_url,
-    body.background_url,
+    //body.phone,
+    //body.profile_url,
+    //body.background_url,
   ).then((data) => {
-    if (data.ok === true) {
-      res.status(200).json(data);
-    } else res.status(400).json(data);
-  });
+    if (!data.ok) return res.status(400).json(data);
+    return res.status(200).json(data);
+});
 }
 
 module.exports = {

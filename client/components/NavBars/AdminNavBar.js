@@ -104,7 +104,7 @@ const AdminNavBar = () => {
         </Link>
         <Link href={`/profile/${user.username}`}>
           <div className={styles.avatarContainer}>
-          <Image layout="fill" src={user.profile_url} className={styles.avatar} />
+          <Image layout="fill" src={user.profile_url || '/defaultProfile.png'} className={styles.avatar} />
           </div>
         </Link>
       </div>

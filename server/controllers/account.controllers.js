@@ -5,9 +5,8 @@ const selectUserByUsername = async (req, res) => {
     const username = req.params['username']
 
     await selectByUsername(username).then( data => {
-        if (data.ok) res.status(200).json(data);
-
-        else res.status(400).json(data);
+        if (!data.ok)  return res.status(400).json(data);
+        return res.status(200).json(data);
     })
 }
 

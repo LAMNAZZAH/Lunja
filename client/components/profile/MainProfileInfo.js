@@ -12,10 +12,10 @@ const MainProfileInfo = (props) => {
       <div className={styles.ImagesContainer}>
         <div className={styles.backgroundImageContainer}>
           {/*<Image layout="fill" src="/lmz-01.jpg" />*/}
-          <Image layout="fill" src={User?.background_url} />
+          <Image layout="fill" src={User?.background_url || '/defaultBackground.png'} />
           <div className={styles.profileImageContainer}>
             {/*<Image width={100} height={100} src="/profile-pic.png" />*/}
-            <Image width={100} height={100} src={User?.profile_url} />
+            <Image width={100} height={100} src={User?.profile_url || '/defaultProfile.png'} />
           </div>
         </div>
       </div>

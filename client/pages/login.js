@@ -43,7 +43,9 @@ const login = () => {
             <LoginForm submitCallback={loggingIn} />
           </div>
           <div className={styles.rightBlock}>
-            <h1 className={styles.rightTitle}></h1>
+            <h1 className={styles.rightTitle}>
+              Welcome Back!
+            </h1>
             <Image src={frame1} />
           </div>
         </div>

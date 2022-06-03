@@ -5,7 +5,7 @@ import { UserCircle } from "tabler-icons-react";
 
 import styles from "./RegisterForm.module.scss";
 
-const RegisterForm = () => {
+const RegisterForm = ({submitCallback}) => {
   const form = useForm({
     initialValues: { first_name: "", last_name: "", email:"" , account_type: "", level: "", username:"", password:"", confirmPassword: ""},
     validate: {
@@ -44,18 +44,21 @@ const RegisterForm = () => {
       return setPage(page - 1);
       }
   };
-/*
-  useEffect(() => {
-    if (Object.keys(form.errors).some(key => key == "first_name" || key == "last_name")) {
-      setPage(1);
-    } else if (Object.keys(form.errors).some(key => key == "email" || key == "account_type" || key == "level")) {
-      setPage(2);
-    }
-  }, [])
-  */
 
   const handleSubmitForm = (values) => {
     console.log(values);
+
+    if (typeof submitCallback === 'function') {
+      submitCallback({
+        first_name: form.values.first_name, 
+        last_name: form.values.last_name,
+        email: form.values.email,
+        account_type: form.values.account_type,
+        level: form.values.level,
+        username: form.values.username,
+        password: form.values.password
+      })
+    }
   };
 
   return (

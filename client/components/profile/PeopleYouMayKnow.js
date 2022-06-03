@@ -40,9 +40,9 @@ const PeopleYouMayKnow = (props) => {
               <div key={index} className={styles.user}>
                 <div className={styles.profileAndInfo}>
                 <div className={styles.profile}>
-                  {user?.profile_url && (
-                    <Image layout="fill" src={user?.profile_url} />
-                  )}
+
+                    <Image layout="fill" src={user?.profile_url || "/defaultProfile.png"} />
+                  
                 </div>
                 <div className={styles.info}>
                  

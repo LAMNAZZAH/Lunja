@@ -12,9 +12,9 @@ const createUnivuser = async (
       data: {
         user_id: parseInt(userId),
         university_id: parseInt(universityId),
-        degree_optained: degree,
+        degree_optained: degree || null,
         speciality_id: parseInt(specialityId),
-        year: parseInt(year),
+        year: parseInt(year) || null,
       },
     });
     return { ok: true, univuser };

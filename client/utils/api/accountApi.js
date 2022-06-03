@@ -9,6 +9,33 @@ const getIsLoggedIn = async () => {
   return null;
 };
 
+const postRegister = async (
+  first_name,
+  last_name,
+  email,
+  account_type,
+  level,
+  username,
+  password
+) => {
+  try {
+    const response = await postRequest(
+      "/api/account/auth/register",
+      {
+        first_name,
+        last_name,
+        email,
+        account_type,
+        level,
+        username,
+        password,
+      },
+      null
+    );
+    return response;
+  } catch (error) { return error.response.data; }
+};
+
 const postLogin = async (usernameOrEmail, password) => {
   try {
     const response = await postRequest(
@@ -22,7 +49,6 @@ const postLogin = async (usernameOrEmail, password) => {
   }
 };
 
-
 const logout = () => {
   Cookies.remove("token");
   window.location.pathname = "/login";
@@ -30,6 +56,7 @@ const logout = () => {
 
 module.exports = {
   getIsLoggedIn,
+  postRegister,
   postLogin,
   logout,
 };

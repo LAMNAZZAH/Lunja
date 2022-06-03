@@ -25,14 +25,17 @@
     .rightBlock {
         flex:.5;
         height: 100%;
-        margin: 2em;
+        margin: 4em;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: column;
+
 
         .rightTitle {
-            display: flex;
-            align-items: center;
-            justify-content: center;
             color: #3f3d56;
         }
+
     }
 }
 

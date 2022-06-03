@@ -4,21 +4,21 @@ async function createAccount(
   first_name,
   last_name,
   username,
-  birth_date,
+  //birth_date,
   level,
-  about,
+  //about,
   password,
   account_type,
-  gender,
+  //gender,
   email,
-  phone,
+  //phone,
   //status,
-  profile_url,
-  background_url,
+  //profile_url,
+  //background_url,
   left_at
 ) {
 
-  const date = new Date(birth_date);
+  //const date = new Date(birth_date);
   
 
   try {
@@ -27,16 +27,16 @@ async function createAccount(
         first_name: first_name,
         last_name: last_name,
         username: username,
-        birth_date: date,
+        //birth_date: date,
         level: level,
-        about: about,
+        //about: about,
         password: password,
         account_type: account_type,
-        gender: gender,
+        //gender: gender,
         email: email,
-        phone: phone,
-        profile_url: profile_url,
-        background_url: background_url,
+        //phone: phone,
+        //profile_url: profile_url,
+        //background_url: background_url,
       },
     });
     return { ok: true, user };

@@ -1,28 +1,37 @@
-@import '../../../styles/variables.module.scss';
+@import "../../../styles/variables.module.scss";
 
 .universitySection {
-    margin-top: 10px;
-    padding: 5px;
-    border-radius: 10px;
-    background-color: white;
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: white;
 
-    
-    .titleBlock {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
+  .titleBlock {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 
-      h2 {
-        margin: 15px;
-        flex: .9;
-        color: $dark-gray;
-      }
+    h2 {
+      margin: 15px;
+      flex: 0.9;
+      color: $dark-gray;
     }
+  }
 
-    .university {
-      h3, h4 {
+  .university {
+    h3,
+    h4 {
+      margin: 8px 15px;
+      color: $dark-gray;
+    }
+    .degreeAndYear {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      h3 {
         margin: 15px;
-        color: $dark-gray;
+        color: rgb(109, 109, 109);
       }
     }
   }
+}
