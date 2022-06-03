@@ -101,13 +101,33 @@ const selectByUsername = async (value) => {
   }
 }
 
+//? --------- About -----------
+
+const updateAbout = async (userId, about) => {
+  try {
+    const updateAbout = await prisma.user.update({
+      where: {
+        user_id: parseInt(userId), 
+      },
+      data: {
+        about: about,
+      }
+    });
+    return { ok: true, updateAbout: updateAbout.about }
+  } catch (error) {
+    console.log(error);
+    return { ok: false, error }
+  }
+}
+
 
 
 
 module.exports = {
   createAccount,
   selectByUsernameOrEmail, 
-  selectByUsername
+  selectByUsername,
+  updateAbout
 };
 
 /*

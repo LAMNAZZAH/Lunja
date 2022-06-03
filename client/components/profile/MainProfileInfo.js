@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { Badge } from "@mantine/core";
+import { Badge, ActionIcon } from "@mantine/core";
 import Image from "next/image";
+import { Upload } from 'tabler-icons-react';
 
 import styles from "./styles/MainProfileInfo.module.scss";
 
@@ -11,11 +12,21 @@ const MainProfileInfo = (props) => {
     <section className={styles.mainSection}>
       <div className={styles.ImagesContainer}>
         <div className={styles.backgroundImageContainer}>
-          {/*<Image layout="fill" src="/lmz-01.jpg" />*/}
+          
           <Image layout="fill" src={User?.background_url || '/defaultBackground.png'} />
+          {props.editable && (
+            <ActionIcon onClick={() => console.log()}>
+            <Upload color="gray" />
+          </ActionIcon>
+          )}
           <div className={styles.profileImageContainer}>
-            {/*<Image width={100} height={100} src="/profile-pic.png" />*/}
+            
             <Image width={100} height={100} src={User?.profile_url || '/defaultProfile.png'} />
+            {props.editable && (
+              <ActionIcon onClick={() => console.log()}>
+              <Upload color="gray" />
+            </ActionIcon>
+            )}
           </div>
         </div>
       </div>

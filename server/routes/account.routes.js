@@ -11,7 +11,7 @@ const { verifyToken } = require("../middlewares/Authentication");
 const router = express.Router();
 const { registerController } = registerControllers;
 const { LoginController, isLoggedInController } = authControllers;
-const { selectUserByUsername } = accountControllers;
+const { selectUserByUsername, editAbout } = accountControllers;
 
 //?login/register
 router.post("/auth/register", registerController);
@@ -21,6 +21,10 @@ router.get("/auth/", verifyToken,  isLoggedInController);
 
 //?user
 router.get('/user/:username', selectUserByUsername);
+
+
+//?Edit
+router.post('/user/about', editAbout); 
 
 
 module.exports = router;
