@@ -41,6 +41,7 @@ B --> D(Document)
 |2|POST|/api/account/auth/register |{"first_name", "last_name", "username", "level", "password", "account_type", "email"}| {"ok":Boolean, "errors":[]}| register 
 |3|GET|/api/account/auth |    | {"isLoggedIn: Boolean, "data":{}} | checks if the user is LoggedIn
 |4|POST|/api/account/user/about|{"userId": [], "about": []}| {"ok": Boolean,"updateAbout": []} | edits the users' About
+|5|GET|/api/account/user/[username]| | {"ok": Boolean,"user":{"user_id","first_name","last_name","username","level","about","account_type","profile_url","background_url"}}| get user by username "ex: to show its profile"
 
 ### University:
 
