@@ -32,7 +32,7 @@ B --> D(Document)
 
 
 ## Api Endpoints
-### Authentification:
+### Account:
 
 
 |     SN           |Method     |Route    |   Request Data | Response Data | description
@@ -40,6 +40,7 @@ B --> D(Document)
 |1|POST|/api/account/auth/login           |{"usernameOrEmail":"<$username>"} | {"ok": Boolean, token} |login
 |2|POST|/api/account/auth/register |{"first_name", "last_name", "username", "level", "password", "account_type", "email"}| {"ok":Boolean, "errors":[]}| register 
 |3|GET|/api/account/auth |    | {"isLoggedIn: Boolean, "data":{}} | checks if the user is LoggedIn
+|4|POST|/api/account/user/about|{"userId": [], "about": []}| {"ok": Boolean,"updateAbout": []} | edits the users' About
 
 ### University:
 
