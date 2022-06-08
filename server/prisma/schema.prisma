@@ -310,15 +310,14 @@ model user {
 }
 
 model user_class {
-  user_class_id Int       @default(autoincrement())
-  user_id       Int
-  class_id      Int
-  joined_at     DateTime? @default(now()) @db.Timestamp(0)
-  status        String    @db.VarChar(45)
-  theclass      theclass  @relation(fields: [class_id], references: [class_id], onDelete: Cascade, map: "fk_User_has_Class_Class1")
-  user          user      @relation(fields: [user_id], references: [user_id], onDelete: Cascade, map: "fk_User_has_Class_User1")
+  user_id   Int
+  class_id  Int
+  joined_at DateTime? @default(now()) @db.Timestamp(0)
+  status    String    @db.VarChar(45)
+  theclass  theclass  @relation(fields: [class_id], references: [class_id], onDelete: Cascade, map: "fk_User_has_Class_Class1")
+  user      user      @relation(fields: [user_id], references: [user_id], onDelete: Cascade, map: "fk_User_has_Class_User1")
 
-  @@id([user_class_id, user_id, class_id])
+  @@id([user_id, class_id])
   @@index([class_id], map: "fk_User_has_Class_Class1_idx")
   @@index([user_id], map: "fk_User_has_Class_User1_idx")
 }

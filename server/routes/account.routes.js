@@ -1,6 +1,6 @@
 const express = require("express");
 
-//?this Router gathers the login register and user related routes
+
 
 const registerControllers = require("../controllers/register.controllers");
 const authControllers = require("../controllers/auth.controllers");
@@ -11,7 +11,7 @@ const { verifyToken } = require("../middlewares/Authentication");
 const router = express.Router();
 const { registerController } = registerControllers;
 const { LoginController, isLoggedInController } = authControllers;
-const { selectUserByUsername, editAbout } = accountControllers;
+const { selectUserByUsername, editAbout, selectProfilePicture } = accountControllers;
 
 //?login/register
 router.post("/auth/register", registerController);
@@ -21,7 +21,7 @@ router.get("/auth/", verifyToken,  isLoggedInController);
 
 //?user
 router.get('/user/:username', selectUserByUsername);
-
+router.get('/user/profile/:profile', selectProfilePicture);
 
 //?Edit
 router.post('/user/about', editAbout); 

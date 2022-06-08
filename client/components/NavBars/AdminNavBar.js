@@ -2,7 +2,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
-import { Drawer, ActionIcon, Avatar } from "@mantine/core";
+import { Drawer, ActionIcon } from "@mantine/core";
+import axios from 'axios';
 
 import { Menu2, X } from "tabler-icons-react";
 import AdminNavLinks from "./AdminNavLinks";
@@ -13,13 +14,31 @@ import LunjaLogo from "../../public/lunjaLandscapeLight.svg";
 import styles from "./AdminNavBar.module.scss";
 
 const AdminNavBar = () => {
+  const { user } = useContext(authContext);
   const router = useRouter();
   const [burgerIsOpen, setBurgerIsOpen] = useState(false);
-  const { user } = useContext(authContext);
+  const [profile, setProfile] = useState();
+
+
+  const fetchImage = async (userProfile) => {
+    const profileUrl = `http://localhost:5000/api/account/user/profile/${userProfile}`;
+        await axios.get(profileUrl, { responseType: "blob" }).then((res) => {
+          let imageUrl = URL.createObjectURL(res.data);
+          setProfile(imageUrl);
+        }).catch(err => {
+          return;
+        });
+  } 
+
+  useEffect(() => {
+    fetchImage(user?.profile_url);
+  }, [])
+
 
   useEffect(() => {
     setBurgerIsOpen(false);
   }, [router.pathname]);
+
 
   return (
     <div className={styles.navBar}>
@@ -67,7 +86,7 @@ const AdminNavBar = () => {
         </div>
 
         <div className={styles.navlink}>
-          <Link href="/discover">
+          <Link href="/group">
             <a>
               <Image
                 className={styles.icon}
@@ -104,7 +123,7 @@ const AdminNavBar = () => {
         </Link>
         <Link href={`/profile/${user.username}`}>
           <div className={styles.avatarContainer}>
-          <Image layout="fill" src={user.profile_url || '/defaultProfile.png'} className={styles.avatar} />
+          {profile && <Image layout="fill" src={profile || '/defaultProfile.png'} className={styles.avatar} />}
           </div>
         </Link>
       </div>

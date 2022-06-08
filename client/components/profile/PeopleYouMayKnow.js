@@ -3,6 +3,7 @@ import Image from "next/image";
 import styles from "./styles/PeopleYouMayKnow.module.scss";
 import axios from "axios";
 import { useRouter } from "next/router";
+import UserProfileFetch from './UserProfileFetch';
 
 const PeopleYouMayKnow = (props) => {
   const router = useRouter()
@@ -40,9 +41,7 @@ const PeopleYouMayKnow = (props) => {
               <div key={index} className={styles.user}>
                 <div className={styles.profileAndInfo}>
                 <div className={styles.profile}>
-
-                    <Image layout="fill" src={user?.profile_url || "/defaultProfile.png"} />
-                  
+                  <UserProfileFetch  profileUrl={user?.profile_url} />                  
                 </div>
                 <div className={styles.info}>
                  

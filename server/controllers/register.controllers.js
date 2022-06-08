@@ -42,6 +42,9 @@ async function createRegisterController(req, res) {
     ])
   );
 
+  const usernameArray = body.username.split(" "); 
+  if (usernameArray.length > 1) errors.push('Please Remove all white spaces from username');
+
   if (errors.length > 0) return res.status(400).json({ ok: false, errors });
 
   const hashedPassword = await hash(body.password);

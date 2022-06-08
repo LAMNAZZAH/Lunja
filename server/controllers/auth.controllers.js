@@ -45,6 +45,7 @@ const createLoginController = async (req, res, next) => {
             username: data.user.username,
             account_type: data.user.account_type,
             status: data.user.status,
+            profile: data.user.profile_url
           },
           process.env.JWT_SECRET,
           { expiresIn: "600s" || process.env.ACCESS_TOKEN_LIFETIME },

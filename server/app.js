@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const { verifyToken } = require('./middlewares/Authentication');
 const cors = require('cors');
 
+
 var corsOptions = {
   origin: 'http://localhost:3000',
 }

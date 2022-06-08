@@ -48,9 +48,9 @@ const verifyToken = async (req, res, next) => {
 
 // This should be used to authorize only authenticated requests
 const authenticatedOnly = (req, res, next) => {
-    if (req.authenticated || req.user) return next()
+    if (req.authenticated || req.user) return next();
 
-    req.status(401).json({ ok: false, errors: ['authentication_required']})
+    res.status(401).json({ ok: false, errors: ['authentication_required']})
 }
 
 module.exports = {

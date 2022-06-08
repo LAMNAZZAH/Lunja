@@ -120,14 +120,50 @@ const updateAbout = async (userId, about) => {
   }
 }
 
+//? --------- update profile Picture -----------
+const updateProfile = async (username, filename) => {
+  try {
+    const updateProfile = await prisma.user.update({
+      where: {
+        username: username,
+      },
+      data: {
+        profile_url: filename,
+      }
+    });
+    console.log(updateProfile);
+    return { ok: true, updateProfile }
+  } catch (error) {
+    console.log(error);
+    return { ok: false, error }
+  }
+}
 
+//? --------- update background Picture -----------
+const updateBackground = async (username, filename) => {
+  try {
+    const updateBackground = await prisma.user.update({
+      where: {
+        username: username, 
+      }, 
+      data: {
+        background_url: filename,
+      }
+    });
+    return { ok: true, updateBackground }
+  } catch (error) {
+    return { ok: false, error }
+  }
+}
 
 
 module.exports = {
   createAccount,
   selectByUsernameOrEmail, 
   selectByUsername,
-  updateAbout
+  updateAbout,
+  updateProfile,
+  updateBackground
 };
 
 /*

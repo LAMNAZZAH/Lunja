@@ -1,4 +1,6 @@
 const accountModel = require('../models/account');
+const path = require('path');
+const fs = require('fs');
 
 const selectUserByUsername = async (req, res) => {
     const { selectByUsername } = accountModel;
@@ -20,7 +22,21 @@ const editAbout = async (req, res) => {
     });
 }
 
+const selectProfilePicture = (req, res) => {
+    const profile = req.params.profile; 
+    console.log(`${__dirname}/images/${profile}`);
+    const Path = path.join(__dirname, '../', 'images', 'profiles', profile);
+    try {
+        if(fs.existsSync(Path)) return res.sendFile(Path);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+    
+}
+
+
 module.exports = {
     selectUserByUsername,
-    editAbout
+    editAbout,
+    selectProfilePicture
 }

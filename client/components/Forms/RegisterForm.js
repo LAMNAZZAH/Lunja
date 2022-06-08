@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useForm } from "@mantine/form";
-import { TextInput, Button, Group, Box, PasswordInput,Select } from "@mantine/core";
+import { TextInput, Button, Group, Box, PasswordInput,Select} from "@mantine/core";
 import { UserCircle } from "tabler-icons-react";
 
 import styles from "./RegisterForm.module.scss";
@@ -69,8 +69,6 @@ const RegisterForm = ({submitCallback}) => {
       </div>
 
       <Box className={styles.box} sx={{ maxWidth: 300 }} mx="auto">
-
-        
         <form onSubmit={form.onSubmit(handleSubmitForm)}>
 
           <TextInput
@@ -125,6 +123,9 @@ mt="xl"
         { value: 'bac', label: 'Bac' },
         { value: 'bac+1', label: 'Bac+1' },
         { value: 'bac+2', label: 'Bac+2' },
+        { value: 'bac+2', label: 'Bac+3' },
+        { value: 'bac+2', label: 'Bac+4' },
+        { value: 'bac+2', label: 'Bac+5' },
       ]}
       
     />
