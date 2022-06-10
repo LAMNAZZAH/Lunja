@@ -38,7 +38,7 @@ const MainProfileInfo = (props) => {
           setProfile(null);
           return;
         });
-  } 
+  }
 
   useEffect(() => {
     fetchImage(props.User?.profile_url, 'profile');

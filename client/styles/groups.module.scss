@@ -2,24 +2,26 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    background-color: red;
     margin: 15px;
+    gap: 10px 20px;
 
 
     .leftContainer {
-        flex: .2;
+        flex: .3;
         position: sticky;
         top: 100px;
         margin: 5px;
         margin-left: 15px;
-        background-color: white;
         border-radius: 10px;
     }
     .middleContainer {
         flex: .6;
-        margin-top: 23px;
-        background-color: white;
+        margin-top: 8px;
         border-radius: 10px;
+
+        .addPostContainer {
+            
+        }
     }
     .rightContainer {
         flex: .2;
@@ -29,5 +31,32 @@
         margin-right: 15px;
         background-color: white;
         border-radius: 10px;
+    }
+}
+
+
+@media screen and (max-width: 850px) {
+    .groupsContainer {
+        .leftContainer {
+            display: none;
+            flex: none;
+        }
+        .middleContainer {
+            flex: .7;
+        }
+        .rightContainer {
+            flex: .3;
+        }
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .groupsContainer {
+        .middleContainer {
+            flex: 1;
+        }
+        .rightContainer {
+            display: none;
+        }
     }
 }

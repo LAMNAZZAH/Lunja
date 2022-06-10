@@ -1,5 +1,6 @@
 
 const accountModels = require('../models/account');
+const postModels = require('../models/post');
 
 const uploadProfile = async (req, res) => {
     const { updateProfile } = accountModels;
@@ -20,15 +21,29 @@ const uploadBackground = async (req, res) => {
     const filename = req.file?.filename;
 
     if (!req.file) return res.status(500).json({errors: ['no file found to update the background']});
-
+    
     await updateBackground(username, filename).then(data => {
         if (!data.ok) return res.status(500).json(data); 
         return res.json({});
+    });
+}
+
+const uploadPostImage = async (req, res) => {
+    const { createPost } = postModels;
+    const { userId, classId, content } = req.query;
+    const imageName = req.file?.filename;
+    
+
+    await createPost(userId, classId, imageName, content).then(data => {
+        if (!data?.ok) return res.status(500).json(data)
+
+        return res.status(200).json(data);
     })
 }
 
 
 module.exports = {
     uploadProfile,
-    uploadBackground
+    uploadBackground,
+    uploadPostImage
 }

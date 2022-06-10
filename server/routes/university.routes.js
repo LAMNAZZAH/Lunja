@@ -5,11 +5,11 @@ const { authenticatedOnly } = require('../middlewares/Authentication');
 
 
 const router = express.Router();
-const { createUniversityController, selectUniversitiesController } = universityControllers
+const { createUniversityController, selectUniversitiesController, searchUniversity } = universityControllers
 
 router.post('/', authenticatedOnly, createUniversityController);
 router.get('/',selectUniversitiesController);
-router.put('/speciality')
+router.get('/search', searchUniversity)
 
 
 

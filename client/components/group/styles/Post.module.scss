@@ -1,0 +1,42 @@
+@import '../../../styles/variables.module.scss';
+
+.postContainer {
+}
+
+.post {
+    background-color: white;
+    margin: 10px 0px;
+    border-radius: 10px;
+
+    .userInfoBLock {
+        display: flex;
+        align-items: center;
+        padding: 10px 20px;
+        gap: 10px;
+
+        .nameAndGroup {
+            display: flex;
+            gap: 15px;
+        
+            h3 {
+                color: rgb(78, 78, 78);
+            }
+        
+            h4 {
+                color: $main-green;
+            }
+        }
+    }
+
+    .bodyBlock {
+        .textContainer {
+            padding: 10px 20px;
+
+            h3 {
+                color: rgb(124, 124, 124);
+                font-weight: 500;
+            }
+        }
+    }
+
+}

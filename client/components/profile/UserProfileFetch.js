@@ -2,6 +2,8 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
+import styles from './styles/UserProfileFetch.module.scss';
+
 const UserProfileFetch = (props) => {
     const [profile, setProfile] = useState();
 
@@ -25,7 +27,9 @@ const UserProfileFetch = (props) => {
     
 
   return (
+    <div className={styles.profileContainer}>
     <Image layout="fill" src={ profile || "/defaultProfile.png" } />
+    </div>
   )
 }
 

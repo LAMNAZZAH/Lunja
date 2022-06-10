@@ -98,7 +98,7 @@ model post {
   post_id         Int               @id @default(autoincrement())
   image_url       String?           @db.LongText
   content         String            @db.VarChar(200)
-  created_at      String?           @db.VarChar(45)
+  created_at      DateTime?         @default(now()) @db.Timestamp(0)
   by_teacher      Int?              @db.TinyInt
   user_id         Int
   class_id        Int?
@@ -222,6 +222,7 @@ model theclass {
   created_at    DateTime?    @default(now()) @db.Timestamp(0)
   deleted_at    DateTime?    @db.Timestamp(0)
   university_id Int?
+  secret        String       @unique(map: "secret_UNIQUE") @db.VarChar(100)
   admin_id      Int
   user          user         @relation(fields: [admin_id], references: [user_id], onDelete: Cascade, map: "fk_Class_User1")
   university    university?  @relation(fields: [university_id], references: [university_id], onUpdate: SetNull, map: "fk_Class_University1")

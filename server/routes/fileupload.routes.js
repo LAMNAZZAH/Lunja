@@ -22,10 +22,12 @@ const uploadControllers = require('../controllers/upload.controllers');
 const { authenticatedOnly } = require('../middlewares/Authentication');
 
 const router = express.Router();
-const { uploadProfile, uploadBackground } = uploadControllers;
+const { uploadProfile, uploadBackground, uploadPostImage } = uploadControllers;
 
 
 router.post("/uploadProfile", authenticatedOnly, upload.single('file'), uploadProfile);
-router.post("/uploadBackground", authenticatedOnly, upload.single('file'), uploadBackground)
+router.post("/uploadBackground", authenticatedOnly, upload.single('file'), uploadBackground);
+router.post("/uploadPostImage", upload.single('file'), uploadPostImage)
+
 
 module.exports = router;

@@ -1,0 +1,71 @@
+@import "../../../styles/variables.module.scss";
+
+.createGroupContainer {
+    background-color: white;
+    padding: 5px;
+    border-radius: 10px;
+
+  .CreateGroup {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: rgb(80, 80, 80);
+  }
+}
+
+.inputUniv,
+.groupName {
+  padding: 10px 10px;
+  margin: 5px 0px;
+  font-weight: 500;
+  font-size: 18px;
+  width: 100%;
+}
+
+.univButton {
+  padding: 5px 10px;
+  font-size: 18px;
+  border-radius: 10px;
+  margin: 3px;
+  border: none;
+  cursor: pointer;
+  background-color: rgb(236, 236, 236);
+
+  &:hover {
+    background-color: $main-green;
+  }
+}
+
+.secret {
+    border: 3px solid rgb(214, 214, 214);
+    padding: 10px 30px;
+    height: 60px;
+    border-radius: 10px;
+    background-color: lightcoral;
+}
+
+.note {
+  color: lightcoral;
+}
+
+.submitFormButton {
+    padding: 10px 40px;
+    font-size: 20px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $main-green;
+        color: white;
+    }
+}
+
+.univInputBlock {
+    position: relative;
+    .deleteSelection {
+        position: absolute;
+        top: 15px;
+        left: 95%;
+    }
+}

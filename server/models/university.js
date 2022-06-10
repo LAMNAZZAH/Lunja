@@ -30,9 +30,31 @@ const findAllUniversities = async () => {
     }
 }
 
+const findManyUniversitiesByInput = async (input) => {
+    try {
+        const searchUniversities = await prisma.university.findMany({
+            take: 10,
+            where: {
+                name: {
+                    contains: input,
+                }
+            },
+            select: {
+                university_id: true,
+                name: true,
+            }
+        });
+        return { ok: true, searchUniversities };
+    } catch (error) {
+        console.log(error);
+        return { ok: false, error };
+    }
+}
+
 
 
 module.exports = {
     createUniversity,
-    findAllUniversities
+    findAllUniversities,
+    findManyUniversitiesByInput
 }
