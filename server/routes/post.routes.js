@@ -5,9 +5,10 @@ const postControllers = require('../controllers/post.controllers');
 
 const router = express.Router(); 
 
-const { selectPosts } = postControllers;
+const { selectPosts, selectPostImage } = postControllers;
 
 router.get('/', selectPosts);
+router.get('/postImage/:image', selectPostImage);
 
 
 module.exports = router;

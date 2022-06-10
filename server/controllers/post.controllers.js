@@ -1,4 +1,8 @@
+const path = require('path');
+const fs = require('fs');
+
 const postModels = require('../models/post');
+
 
 const selectPosts = async (req, res) => {
     const {  findManyPosts } = postModels;
@@ -12,6 +16,18 @@ const selectPosts = async (req, res) => {
     })
 }
 
+const selectPostImage  = async (req, res) => {
+    const image = req.params.image; 
+    const Path = path.join(__dirname, '../', 'images', 'profiles', image);
+    try {
+        if(fs.existsSync(Path)) return res.sendFile(Path);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+}
+
+
 module.exports = {
     selectPosts,
+    selectPostImage
 }

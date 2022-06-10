@@ -28,24 +28,7 @@ const groups = () => {
                 <div className={styles.addPostContainer}></div>
                 <CreatePost />
                 <Post />
-                <h1>middle</h1>
-                <h1>middle</h1>
-                <h1>middle</h1>
-                <h1>middle</h1>
-                <h1>middle</h1>
-                <h1>middle</h1>
-                <h1>middle</h1>
-                <h1>middle</h1>
-                <h1>middle</h1>
-                <h1>middle</h1>
-                <h1>middle</h1>
-                <h1>middle</h1>
-                <h1>middle</h1>
-                <h1>middle</h1>
-                <h1>middle</h1>
-                <h1>middle</h1>
-                <h1>middle</h1>
-                <h1>middle</h1>
+             
 
             </div>
             <div className={styles.rightContainer}>

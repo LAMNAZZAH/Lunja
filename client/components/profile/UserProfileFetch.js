@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
-import styles from './styles/UserProfileFetch.module.scss';
+import styles from './styles/UserProfileFetch.module.scss'
 
 const UserProfileFetch = (props) => {
     const [profile, setProfile] = useState();

@@ -76,11 +76,11 @@ const CreatePost = () => {
       >
         <form onSubmit={form.onSubmit((values) => handleSubmitPost(values))}>
         <Textarea placeholder="Inspire other students" required  {...form.getInputProps('content')}/>
-        <h1>Upload background Picture</h1>
+        <h3 className={styles.UploadTitle}>Upload background Picture</h3>
         {image.preview && <img src={image.preview} width="100" height="100" />}
         <hr />
-          <input type="file" name="file" onChange={handleImageChange} />
-          <button type="submit">Submit</button>
+          <input className={styles.fileButton} type="file" name="file" onChange={handleImageChange} />
+          <button className={styles.submitButton}  type="submit">Submit</button>
         </form>
       </Modal>
 

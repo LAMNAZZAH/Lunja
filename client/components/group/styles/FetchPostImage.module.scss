@@ -1,0 +1,11 @@
+.imageContainer {
+    position: relative;
+    width: auto;
+    height: 200px;
+    background-color: rgb(250, 250, 250);
+    margin-bottom: 10px;
+
+    img {
+        object-fit: contain;
+    }
+}
