@@ -22,6 +22,9 @@ const findManyPosts = async () => {
     try {
         const Posts = await prisma.post.findMany({
             take: 10,
+            orderBy: {
+                created_at: 'desc'
+            },
             include: {
                 user: {
                     select: {
@@ -34,7 +37,8 @@ const findManyPosts = async () => {
                     select: {
                         name: true,
                     }
-                }
+                },
+                
             }
         });
         return { ok: true, Posts }

@@ -217,8 +217,8 @@ model tag {
 
 model theclass {
   class_id      Int          @default(autoincrement())
-  name          String       @db.VarChar(45)
-  status        String       @db.VarChar(45)
+  name          String       @unique(map: "name_UNIQUE") @db.VarChar(45)
+  status        String       @default("active") @db.VarChar(45)
   created_at    DateTime?    @default(now()) @db.Timestamp(0)
   deleted_at    DateTime?    @db.Timestamp(0)
   university_id Int?

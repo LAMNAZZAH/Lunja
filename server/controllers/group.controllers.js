@@ -1,4 +1,6 @@
-const groupModels = require('../models/group'); 
+const groupModels = require('../models/group');
+const uuid = require('uuid');
+
 
 const selectGroupsByAdminId = async (req, res) => {
     const { findManyGroupsByAdminId } = groupModels;
@@ -20,6 +22,18 @@ const selectGroupsByAdminId = async (req, res) => {
     })
 }
 
+const addGroup = async (req, res) => {
+    const { createGroup } = groupModels;
+    const { adminId, name, universityId } = req.query;
+    const secret = uuid.v4();
+
+    await createGroup(adminId, name, universityId, secret).then(data => {
+        if (!data.ok) return res.status(400).json(data); 
+        res.status(200).json(data)
+    })
+}
+
 module.exports = {
     selectGroupsByAdminId,
+    addGroup
 }
