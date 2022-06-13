@@ -6,7 +6,7 @@ import FetchPostImage from "./FetchPostImage";
 
 import styles from "./styles/Post.module.scss";
 
-const Post = () => {
+const Posts = () => {
   const [posts, setPosts] = useState();
 
   const fetchPosts = async () => {
@@ -49,4 +49,4 @@ const Post = () => {
   );
 };
 
-export default Post;
+export default Posts;

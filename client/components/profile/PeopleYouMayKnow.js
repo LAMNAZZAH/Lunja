@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import styles from "./styles/PeopleYouMayKnow.module.scss";
 import axios from "axios";
 import { useRouter } from "next/router";
 import UserProfileFetch from './UserProfileFetch';
+
+import styles from "./styles/PeopleYouMayKnow.module.scss";
 
 const PeopleYouMayKnow = (props) => {
   const router = useRouter()

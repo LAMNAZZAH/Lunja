@@ -4,9 +4,10 @@ import { useState } from "react";
 import { Plus, X } from "tabler-icons-react";
 import axios from "axios";
 
+
 import styles from "./styles/CreateGroup.module.scss";
 
-const CreateGroup = () => {
+const CreateGroup = ({ user }) => {
   const [opened, setOpened] = useState();
   const [searchedUnivs, setSearchedUnivs] = useState();
   const [university, setUniversity] = useState();
@@ -19,6 +20,7 @@ const CreateGroup = () => {
       universityId: "",
     },
   });
+
 
   const fetchUniversities = async (e) => {
     e.preventDefault();
@@ -35,6 +37,17 @@ const CreateGroup = () => {
     setLoading(false);
   };
 
+  const createGroup = async (values) => {
+    const adminId = user.user_id; 
+    const name = values.name; 
+    const universityId = university.value; 
+
+    const response = await axios.post(`http://localhost:5000/api/group?adminId=${adminId}&name=${name}&universityId=${universityId}`);
+    const data = await response.data;
+    if (!data.ok) return;
+    return setSecret(data?.Secret?.secret);
+  }
+
   return (
     <div className={styles.createGroupContainer}>
       <Modal
@@ -43,9 +56,9 @@ const CreateGroup = () => {
         title="Create a group"
         size="80%"
       >
-        <form>
+        <form onSubmit={form.onSubmit((values) => createGroup(values))}>
           <label name="university">Group Name</label>
-          <input className={styles.groupName} type="text" />
+          <input className={styles.groupName} type="text" {...form.getInputProps('name')}/>
           <label name="university">University</label>
           <div className={styles.univInputBlock}>
             <input

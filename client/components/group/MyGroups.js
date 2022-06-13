@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { Button } from '@mantine/core'
+import Link from 'next/link';
+import { ActionIcon, Button } from '@mantine/core'
 
 import styles from './styles/MyGroups.module.scss';
 
@@ -38,7 +39,9 @@ const MyGroups = ({ user }) => {
                         <div className={styles.infoContainer}>
                             <h4>{group.university_name}</h4>
                         </div>
+                        <ActionIcon component={Link} href={`/group/${group.name}`}>
                         <Button variant='outline'>Explore</Button>
+                        </ActionIcon>
                         </div>
                     )
                 })

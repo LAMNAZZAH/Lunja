@@ -5,7 +5,7 @@ import { authContext } from '../../contexts/auth';
 import CreateGroup from '../../components/group/CreateGroup';
 import CreatePost from '../../components/group/CreatePost';
 import MyGroups from '../../components/group/MyGroups';
-import Post from '../../components/group/Post';
+import Posts from '../../components/group/Posts';
 
 import styles from '../../styles/groups.module.scss';
 
@@ -15,28 +15,17 @@ const groups = () => {
     <div>
         <div className={styles.groupsContainer}>
             <div className={styles.leftContainer}>
-                <CreateGroup />
+                <CreateGroup user={user}/>
                 <MyGroups user={user}/>
-                <h1>left</h1>
-                <h1>left</h1>
-                <h1>left</h1>
-                <h1>left</h1>
-                <h1>left</h1>
-                <h1>left</h1>
+                
             </div>
             <div className={styles.middleContainer}>
                 <div className={styles.addPostContainer}></div>
                 <CreatePost />
-                <Post />
-             
-
+                <Posts />
             </div>
             <div className={styles.rightContainer}>
-                <h1>right</h1>
-                <h1>right</h1>
-                <h1>right</h1>
-                <h1>right</h1>
-                <h1>right</h1>
+        
 
             </div>
         </div>
