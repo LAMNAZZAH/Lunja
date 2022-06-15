@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useRouter } from 'next/router';
 
 import UserProfileFetch from "../profile/UserProfileFetch";
 import FetchPostImage from "./FetchPostImage";
@@ -7,14 +8,19 @@ import PostTags from './PostTags';
 
 import styles from "./styles/Post.module.scss";
 
-const Posts = ({ user }) => {
+const GroupPosts = () => {
+  const router = useRouter();
   const [posts, setPosts] = useState();
 
+
+  
+  const groupId = router.query.groupId; 
+
   const fetchPosts = async () => {
-    const response = await axios.get(`http://localhost:5000/api/post`);
+    const response = await axios.get(`http://localhost:5000/api/post/${groupId}`);
     const data = response.data;
     if (!data?.ok) return;
-    setPosts(data?.Posts);
+    setPosts(data?.groupPosts);
   };
 
   useEffect(() => {
@@ -53,4 +59,4 @@ const Posts = ({ user }) => {
   );
 };
 
-export default Posts;
+export default GroupPosts;

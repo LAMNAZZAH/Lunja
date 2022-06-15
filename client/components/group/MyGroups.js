@@ -39,7 +39,7 @@ const MyGroups = ({ user }) => {
                         <div className={styles.infoContainer}>
                             <h4>{group.university_name}</h4>
                         </div>
-                        <ActionIcon component={Link} href={`/group/${group.name}`}>
+                        <ActionIcon component={Link} href={`/group/${group.class_id}`}>
                         <Button variant='outline'>Explore</Button>
                         </ActionIcon>
                         </div>

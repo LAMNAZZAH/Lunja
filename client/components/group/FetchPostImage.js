@@ -22,7 +22,7 @@ const FetchPostImage = (props) => {
     
       useEffect(() => {
         fetchImage(props.image);
-      }, [])
+      }, [props])
     
 
   return (

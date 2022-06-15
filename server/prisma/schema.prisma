@@ -314,7 +314,7 @@ model user_class {
   user_id   Int
   class_id  Int
   joined_at DateTime? @default(now()) @db.Timestamp(0)
-  status    String    @db.VarChar(45)
+  status    String    @default("active") @db.VarChar(45)
   theclass  theclass  @relation(fields: [class_id], references: [class_id], onDelete: Cascade, map: "fk_User_has_Class_Class1")
   user      user      @relation(fields: [user_id], references: [user_id], onDelete: Cascade, map: "fk_User_has_Class_User1")
 

@@ -55,7 +55,7 @@ const AdminNavBar = () => {
       </Drawer>
 
       <div className={styles.logo}>
-        <Link href="/">
+        <Link href="/feed">
           <a>
             <Image
               priority={true}
@@ -70,7 +70,7 @@ const AdminNavBar = () => {
 
       <ul className={styles.navLinks}>
         <div className={styles.navlink}>
-          <Link href="/">
+          <Link href="/feed">
             <a>
               <Image
                 className={styles.icon}
@@ -80,7 +80,7 @@ const AdminNavBar = () => {
               />
             </a>
           </Link>
-          <Link href="/">
+          <Link href="/feed">
             <a>Home</a>
           </Link>
         </div>
@@ -96,7 +96,7 @@ const AdminNavBar = () => {
               />
             </a>
           </Link>
-          <Link href="/discover">
+          <Link href="/group">
             <a>Groups</a>
           </Link>
         </div>

@@ -10,6 +10,7 @@ import Interests from "../../components/profile/Interests";
 import NotFound from "../404.js";
 import PeopleYouMayKnow from "../../components/profile/PeopleYouMayKnow";
 import About from "../../components/profile/About";
+import ProfilePosts from "../../components/profile/ProfilePosts";
 
 import styles from "../../styles/profile.module.scss";
 
@@ -32,12 +33,7 @@ const profile = ({ univs, User, Univuser }) => {
               />
               <About editable={editable} User={User} />
               <Interests editable={editable} User={User} />
-              <section className={styles.myfeedSection}>
-                <div className={styles.titleBlock}>
-                  <h2>Posts</h2>
-                </div>
-                <div className={styles.latestPostsBlock}></div>
-              </section>
+              <ProfilePosts User={User}/>
               <University
                 univs={univs}
                 Univuser={Univuser}

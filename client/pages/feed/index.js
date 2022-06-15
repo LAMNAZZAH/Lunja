@@ -1,16 +1,14 @@
-import { useRouter } from 'next/router';
 
-import CreatePost from '../../../components/group/CreatePost';
-import GroupPosts from '../../../components/group/GroupPosts';
+import Posts from '../../components/group/Posts';
+import CreatePost from '../../components/group/CreatePost';
 
-import styles from '../../../styles/group.module.scss';
+import styles from '../../styles/Feed.module.scss'
 
-const group = () => {
-    const router = useRouter();
 
+const Feed = () => {
   return (
     <div>
-        <div className={styles.groupContainer}>
+        <div className={styles.feedContainer}>
             <div className={styles.leftContainer}>
                 
                 
@@ -18,7 +16,7 @@ const group = () => {
             <div className={styles.middleContainer}>
                 <div className={styles.addPostContainer}></div>
                 <CreatePost />
-                <GroupPosts />
+                <Posts />
             </div>
             <div className={styles.rightContainer}>
         
@@ -29,6 +27,6 @@ const group = () => {
   )
 }
 
-group.requireAuth = true;
+Feed.requireAuth = true;
 
-export default group
+export default Feed

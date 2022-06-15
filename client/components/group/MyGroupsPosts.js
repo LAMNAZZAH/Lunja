@@ -5,16 +5,39 @@ import UserProfileFetch from "../profile/UserProfileFetch";
 import FetchPostImage from "./FetchPostImage";
 import PostTags from './PostTags';
 
+
 import styles from "./styles/Post.module.scss";
 
-const Posts = ({ user }) => {
+const MyGroupsPosts = ({User}) => {
   const [posts, setPosts] = useState();
+  const [myGroups, setMyGroups] = useState();
+
+  const fetchMyGroups = async () => {
+      const adminId = User.user_id;
+
+      const response = await axios.get(`http://localhost:5000/api/group?adminId=${adminId}`); 
+      const data = await response.data;
+      if (!data.ok) return;
+      return setMyGroups(data?.myGroups);
+  }
+
+
 
   const fetchPosts = async () => {
-    const response = await axios.get(`http://localhost:5000/api/post`);
+    const array = []; 
+    fetchMyGroups();
+    myGroups?.forEach(group => {
+        array.push(group.class_id);
+    });
+    const body = {
+      groups: array,
+    }
+    console.log("'BODY: '" + body.groups);
+    const response = await axios.post(`http://localhost:5000/api/post`, body);
     const data = response.data;
     if (!data?.ok) return;
-    setPosts(data?.Posts);
+    setPosts(data?.groupPosts);
+    console.log("dddd: " +myGroups);
   };
 
   useEffect(() => {
@@ -51,6 +74,6 @@ const Posts = ({ user }) => {
       })}
     </div>
   );
-};
+}
 
-export default Posts;
+export default MyGroupsPosts;

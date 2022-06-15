@@ -30,11 +30,11 @@ const uploadBackground = async (req, res) => {
 
 const uploadPostImage = async (req, res) => {
     const { createPost } = postModels;
-    const { userId, classId, content } = req.query;
+    const { userId, classId, byTeacher, content } = req.query;
     const imageName = req.file?.filename;
     
 
-    await createPost(userId, classId, imageName, content).then(data => {
+    await createPost(userId, classId, imageName, byTeacher,  content).then(data => {
         if (!data?.ok) return res.status(500).json(data)
 
         return res.status(200).json(data);

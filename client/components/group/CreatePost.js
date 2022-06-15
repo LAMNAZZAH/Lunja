@@ -37,8 +37,14 @@ const CreatePost = () => {
     let formData = new FormData();
     formData.append("file", image.data);
     const token = Cookies.get("token");
+    const byTeacher = 0;
+    
+    if (user?.account_type == 'teacher') {
+      return byTeacher = 1;
+    }
+
     const response = await fetch(
-      `http://localhost:5000/api/upload/uploadPostImage?userId=${user.user_id}&classId=${1}&content=${form.values.content}`,
+      `http://localhost:5000/api/upload/uploadPostImage?userId=${user.user_id}&classId=${1}&byTeacher=${byTeacher}&content=${form.values.content}`,
       {
         method: "POST",
         headers: {
